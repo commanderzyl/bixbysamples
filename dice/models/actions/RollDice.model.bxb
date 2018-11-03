@@ -1,0 +1,67 @@
+action (RollDice) {
+  collect{
+    input (numDice) {
+      type (NumDice)
+      min (Required)
+      max (One)
+      default-init {
+        intent {
+          goal {NumDice}
+          value {
+            NumDice (2)
+          }
+        }
+      }
+      
+      validate {
+        if (numDice < 1) {
+          prompt {
+            dialog {
+              template ("骰子数必须大于1")
+            }
+          }
+        }
+      }
+    }
+
+    input (numSides) {
+      type (NumSides)
+      min (Required)
+      max (One)
+      default-init {
+        intent {
+          goal {NumSides}
+          value {
+            NumSides (6)
+          }
+        }
+      }
+      validate {
+         if (numSides < 2) {
+           prompt {
+             dialog {
+               template ("A dice must have at least 2 sides.")              
+             }
+           }
+         }                                      
+       }
+    }
+  } 
+  output (RollResult) {
+    on-empty {
+      if (exists(numSides) && numSides < 5) {
+        replace (numSides) {
+            
+            intent {
+              goal {NumSides}
+              value {
+                NumSides (7)
+              }
+            }
+                   
+        }
+      }
+    }
+  }
+  type (Calculation)
+}

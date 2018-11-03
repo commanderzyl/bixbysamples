@@ -1,0 +1,13 @@
+<layout mode="Details">
+  <match>
+    RollResult (r)
+  </match>
+  <content>
+    <div>
+      和：{{r.sum}}      
+    </div>
+    <div>
+      点数：{{list(r.roll, 'value')}}
+    </div>
+  </content>
+</layout>

@@ -1,0 +1,16 @@
+dialog (Result) {
+  match {
+    RollResult (rollResult) {
+      from-output: RollDice (rollOutput)
+    }
+  }
+  if (rollOutput.numDice == 1) {
+     template ("You've got a ${value(rollResult.roll)}!!!")    
+   }
+   if (rollOutput.numDice > 1) {
+     choose (Random) {
+       template ("The sum is ${value(rollResult.sum)}")
+       template ("You rolled ${list(rollResult.roll, 'value')}")    
+     }
+   }
+}

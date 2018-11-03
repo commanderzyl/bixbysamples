@@ -1,0 +1,35 @@
+<layout-macro-def id="shoe-details-fragment">
+  <params>
+    <param name="shoe" type="Shoe" max="One" min="Required"/>
+  </params>
+  <content>
+    <layout-macro id="entity:photo-carousel">
+      <photos>{{shoe.photo}}</photos>
+      <photoCrop>middle</photoCrop>
+    </layout-macro>
+    <layout-macro id="common:sectionedContent">
+      <title>{{shoe.name}}</title>
+      <titleSize>medium</titleSize>
+      <borders>false</borders>
+      <content>
+        {{shoe.price}} <br/>
+        {{shoe.type}} <br/>
+        {{shoe.description}} <br/>
+      </content>
+    </layout-macro>
+    {{#if exists(shoe.accessories)}}
+    <layout-macro id="common:sectionedContent">
+      <borders>false</borders>
+      <title>Accessories</title>
+      <content>
+        {{#each shoe.accessories}}
+        <layout-macro id="accessory-short-fragment">
+          <accessory>{{this}}</accessory>
+        </layout-macro>
+        {{/each}}
+      </content>
+    </layout-macro>
+    {{/if}}
+  </content>
+  <style></style>
+</layout-macro-def>

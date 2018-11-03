@@ -1,0 +1,4 @@
+train (t-qd6gna6ewtgh0vsrr3fqnc84c) {
+  utterance ("[g:viv_docs.shoe.Shoe] Find a (dance)[v:viv_docs.shoe.Type:Dance] shoe for me!")
+  plan (Y2BmECrLLItPyU8u1ivOyE/VCwYSDGKoYm6ZeSlgcTS1IZUFqQxMDIxAzAAkGRlAgAmCAQ==)
+}

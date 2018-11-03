@@ -1,0 +1,18 @@
+<layout-macro-def id="accessory-short-fragment">
+  <params>
+    <param name="accessory" type="Accessory" max="One" min="Required"/>
+  </params>
+  <content>
+    <layout-macro id="common:cell">
+      <title>{{accessory.name}}</title>
+      <selectable>false</selectable>
+      <secondaryText>
+        {{accessory.details}}
+      </secondaryText>
+      <secondarySlotPosition>bottom</secondarySlotPosition>
+      <avatar>/images/red-shoe-icon.png</avatar>
+      <avatarShape>circle</avatarShape>
+    </layout-macro>
+  </content>
+  <style></style>
+</layout-macro-def>

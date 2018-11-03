@@ -1,0 +1,4 @@
+train (t-d1iwowcdaepl1ejbvnys47fpr) {
+  utterance ("[g:viv_docs.shoe.Shoe] Find a (dance)[v:viv_docs.shoe.Type:Dance] shoe less than {[g:viv.money.MaxPrice] ($)[v:viv.money.PrefixSymbol:$](85)[v:viv.money.CurrencyValue]}!")
+  plan (fdDJCsIwEAbgv2pd6kEQqRePXu3BR1DwpFBQvEptRwy2SUkXmrc3qWJdwIQM5JuFEAwxLll5ikSYedlVkLfXAe6nbRiPaje1XiI4KW8XVL5kIWHU2AMmDawKFkcPdRtdF1ISD9VBpYTprx+DuCDMmsRWiFuRfrQt/2XnoeBZLgPG80UqRUoyZ5S9P8GXdGHVXiVnEX//QD3fgYUW2ujARhc99DHQhpcaN2rpDX0zEc9olq2Po2u7uk/33AE=)
+}

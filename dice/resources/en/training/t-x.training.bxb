@@ -1,0 +1,4 @@
+train (t-xa2far7dy85xslvfsuyijttk2) {
+  utterance ("[g:RollDice] roll (2)[v:NumDice] (6)[v:NumSides]-sided dice")
+  plan (Y2BhEC7LLNNLyUxO1QvKz8kJSi0uzSlhEEQRdAEyGATgQn6luWARQWSR4MyU1GIGZgZGBiYgyQCkQRAC4KIA)
+}
