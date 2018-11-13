@@ -27,6 +27,7 @@ HttpClient.prototype.getUrl = function(url, options) {
  * 返回false，可以让调用者根据情况处理，比如自己返回假数据。
  */
 HttpClient.prototype.disabled = function() {
+    console.log("HttpClient, http: " + http);
     var http = http;
     if (!http) {
         return true;

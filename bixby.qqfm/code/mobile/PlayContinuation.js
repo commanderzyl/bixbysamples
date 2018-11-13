@@ -1,4 +1,4 @@
-module.exports.function = function playContinuation (ordinal, sSinger, sAlbum, sShow, sBroadcast) {
+module.exports.function = function playContinuation (ordinal, sSinger, sAlbum, sShow, sBroadcast, $vivContext) {
   return {
     ordinal: ordinal,
     sSinger: sSinger,

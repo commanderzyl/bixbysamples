@@ -1,4 +1,4 @@
-module.exports.function = function findContinuation (ordinal, sSinger, sAlbum) {
+module.exports.function = function findContinuation (ordinal, sSinger, sAlbum, $vivContext) {
   return {
     ordinal: ordinal,
     sSinger: sSinger,

@@ -1,6 +1,6 @@
 var configInfo = {
-    "appid": "experience",
-    "appkey": "experiencekey",
+    "appid": config ? config.get("qqfm.appid") : "experience",
+    "appkey": config ? config.get("qqfm.appkey") : "experiencekey",
     "deviceid": undefined
 };
 

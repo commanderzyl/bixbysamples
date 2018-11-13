@@ -5,9 +5,7 @@ var Singer = require("./schema/Singer");
  * 主播对象管理器，建议使用单例模式，如
  * SingerMgr.getInstance();
  */
-function SingerMgr() {
-
-}
+function SingerMgr() {}
 
 /**
  * 搜索含有关键词searchWord的专辑列表
