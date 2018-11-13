@@ -2,8 +2,9 @@
  * http客户端对象，如果在bixby环境上，使用
  * bixby对象，如果不是，则使用node js下的客户端对象
  */
-function HttpClient() {}
-
+function HttpClient() {
+    this.http = http;
+}
 /**
  * 执行一个http GET请求
  * @param {string} url 请求的完整地址
@@ -12,8 +13,8 @@ function HttpClient() {}
  * query: 请求参数，query: {'a':b}
  */
 HttpClient.prototype.getUrl = function(url, options) {
-    var http = http;
-    if (!http) {
+    console.log("HttpClient, getUrl http: " + this.http);
+    if (!this.http) {
         //使用node js发起请求
         return getUrl(url, options);
     }
@@ -27,13 +28,14 @@ HttpClient.prototype.getUrl = function(url, options) {
  * 返回false，可以让调用者根据情况处理，比如自己返回假数据。
  */
 HttpClient.prototype.disabled = function() {
-    console.log("HttpClient, http: " + http);
-    var http = http;
-    if (!http) {
+    console.log("HttpClient, disabled http: " + this.http);
+    if (!this.http) {
         return true;
     }
     return false;
 };
+
+//HttpClient.http = http;
 
 /**
  * 使用node js发起请求，由于公司网络限制原因，无法加载必要的库，所以此处返回空，

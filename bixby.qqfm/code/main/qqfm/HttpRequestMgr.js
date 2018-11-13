@@ -66,7 +66,7 @@ HttpRequestMgr.prototype.getAlbumList = function(category) {
         arrayList.push(new Album(albumList[index]));
     }
     return arrayList;
-}
+};
 
 /**
  * 以下接口负责搜索，搜索关键字相关主播/专辑/节目/广播
@@ -91,7 +91,7 @@ HttpRequestMgr.prototype.searchAlbum = function(searchWord) {
         albumList = FakeHttpResponseData.getAlbumList();
     } else {
         //从config对象中获取请求url, 设置请求参数，然后获取结果即可
-        albumList = search("album", searchWord);
+        albumList = search.call(this, "album", searchWord);
     }
 
     // 得到专辑列表后，生成对应的Array<Album>
@@ -100,7 +100,7 @@ HttpRequestMgr.prototype.searchAlbum = function(searchWord) {
         arrayList.push(new Album(albumList[index]));
     }
     return arrayList;
-}
+};
 
 /**
  * 搜索主播
@@ -113,7 +113,7 @@ HttpRequestMgr.prototype.searchSinger = function(searchWord) {
         singerList = FakeHttpResponseData.getSingerList();
     } else {
         //从config对象中获取请求url, 设置请求参数，然后获取结果即可
-        singerList = search("singer", searchWord);
+        singerList = search.call(this, "singer", searchWord);
     }
 
     // 得到主播列表后，生成对应的Array<Singer>
@@ -122,7 +122,7 @@ HttpRequestMgr.prototype.searchSinger = function(searchWord) {
         arrayList.push(new Singer(singerList[index]));
     }
     return arrayList;
-}
+};
 
 /**
  * 搜索节目列表
@@ -135,7 +135,7 @@ HttpRequestMgr.prototype.searchShow = function(searchWord) {
         showList = FakeHttpResponseData.getShowList();
     } else {
         //从config对象中获取请求url, 设置请求参数，然后获取结果即可
-        showList = search("show", searchWord);
+        showList = search.call(this, "show", searchWord);
     }
 
     // 得到专辑列表后，生成对应的Array<Show>
@@ -144,7 +144,7 @@ HttpRequestMgr.prototype.searchShow = function(searchWord) {
         arrayList.push(new Show(showList[index]));
     }
     return arrayList;
-}
+};
 
 /**
  * 搜索广播电台

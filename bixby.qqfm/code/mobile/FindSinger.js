@@ -1,9 +1,10 @@
 var ConfigMgr = require("../main/qqfm/config/ConfigMgr");
 var SingerMgr = require("../main/qqfm/SingerMgr");
+var base = require("../main/qqfm/lib/base");
 
 module.exports.function = function findSinger(eSearch, eSinger, tKeyword, $vivContext) {
     //首先设置deviceID
-    ConfigMgr.getInstance().setDeviceId($vivContext.userId);
+    ConfigMgr.getInstance().setDeviceId(base.getUserId($vivContext.userId));
     var singerMgr = SingerMgr.getInstance();
     var singerList = singerMgr.searchSinger(tKeyword);
     if (singerList instanceof Array && singerList.length > 0) {
