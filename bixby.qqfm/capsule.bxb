@@ -1,0 +1,20 @@
+capsule {
+  id (bixby.qqfm)
+  version (0.1.0)
+  format (3)
+  targets {
+    target (bixby-mobile-zh-CN)
+  }
+  
+  capsule-imports {
+    import (viv.entity){
+      version (3.9.10)
+      as(entity)
+    }
+    
+    import (viv.common) {
+      as(common)
+      version-from (entity)
+    }
+  }
+}

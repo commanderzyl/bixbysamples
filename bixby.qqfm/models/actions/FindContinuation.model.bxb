@@ -1,0 +1,27 @@
+action (FindContinuation) {
+  type (Search)
+  description (Goal ID: QQFM_12 搜索指定专辑的节目列表 Follow-up Goal)
+  //Repesentative: 查看第一个
+  collect {
+    input-group(displayContent) {
+      requires (OneOf)
+      collect {
+        input (sSinger) {
+          type (SSinger)
+          min (Optional) max (Many)
+        }
+        
+        input (sAlbum) {
+          type (SAlbum)
+          min (Optional) max (Many)
+        }       
+      }
+    }
+    
+    input(ordinal) {
+      type(common.Ordinal)
+      min (Required) max (One)
+    }
+  }
+  output (SFindContinuation)
+}

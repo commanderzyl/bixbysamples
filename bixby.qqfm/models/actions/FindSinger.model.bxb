@@ -1,0 +1,22 @@
+action (FindSinger) {
+  type (Search)
+  description (Goal ID: QQFM_3 搜索主播列表)
+  //Repesentative: 在企鹅FM中搜索主播蕊希
+  //Repesentative: 在企鹅FM中搜索主播DJ林浪
+  //Repesentative: 在企鹅FM中搜索主播郭德纲
+  collect {
+    input (eSearch) {
+      type (ESearch)
+      min (Required) max (One)
+    }
+    input(eSinger) {
+      type(ESinger)
+      min(Required) max (One)
+    }
+    input (tKeyword) {
+      type(TKeyword)
+      min (Required) max (One)
+    }
+  }
+  output (SSinger)
+}

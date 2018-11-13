@@ -1,0 +1,23 @@
+action (FindRecentShow) {
+  type (Search)
+  description (Goal ID: QQFM_5 搜索最近更新的节目)
+  //Repesentative: 在企鹅FM中搜索最新更新的节目
+  //Repesentative: 在企鹅FM中搜索最近更新的节目
+  collect {
+    input (eSearch) {
+      type (ESearch)
+      min (Required) max (One)
+    }
+  
+    input (eRecent) {
+      type (ERecent)
+      min (Required) max (One)
+    }
+    
+    input (eShow) {
+      type (EShow)
+      min (Required) max (One)
+    }
+  }
+  output (SShow)
+}

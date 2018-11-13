@@ -1,0 +1,8 @@
+structure (SBroadcast) {
+  description (广播电台对象)
+  //电台名字
+  property (name) {
+    type (TBroadcastName)
+    min (Required) max (One)
+  }
+}

@@ -1,0 +1,4 @@
+train (t-0rak7ktk27wkndm44ic1z4y1n) {
+  utterance ("[g:PlayRecentAlbum] 在企鹅FM中(播放)[v:EPlay:播放](最新)[v:ERecent:最新]更新的(专辑)[v:EAlbum:专辑]")
+  plan (Y2BlEEzKrEiq1CssTMvVC3bMSSrNZZBCEgrISawMSk1OzSuByCErd4UICSALgdQzCCGLQHQzsDAwMjAxMANpBiALAmEASQ4A)
+}

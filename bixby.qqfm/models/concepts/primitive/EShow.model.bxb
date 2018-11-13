@@ -1,0 +1,4 @@
+enum (EShow) {
+  description (节目类型)
+  symbol (节目)
+}

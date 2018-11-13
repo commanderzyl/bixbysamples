@@ -1,0 +1,23 @@
+action (PlayRecentShow) {
+  type (Search)
+  description (Goal ID: QQFM_9 播放最近更新的节目)
+  //Repesentative: 在企鹅FM中播放最新更新的节目
+  //Repesentative: 在企鹅FM中播放最近更新的节目
+  collect {
+    input (ePlay) {
+      type (EPlay)
+      min (Required) max (One)
+    }
+  
+    input (eRecent) {
+      type (ERecent)
+      min (Required) max (One)
+    }
+    
+    input (eShow) {
+      type (EShow)
+      min (Required) max (One)
+    }
+  }
+  output (SShow)
+}

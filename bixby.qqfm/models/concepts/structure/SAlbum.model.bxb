@@ -1,0 +1,8 @@
+structure (SAlbum) {
+  description (专辑对象)
+  //专辑名字
+  property (name) {
+    type (TAlbumName)
+    min (Required) max (One)
+  }
+}

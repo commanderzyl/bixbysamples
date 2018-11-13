@@ -1,0 +1,4 @@
+enum (ERecent) {
+  description (时间类型，用于搜索最新更新的节目或专辑)
+  symbol (最新)
+}

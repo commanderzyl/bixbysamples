@@ -1,0 +1,8 @@
+structure (SShow) {
+  description (节目对象)
+  //节目名字
+  property (name) {
+    type (TShowName)
+    min (Required) max (One)
+  }
+}

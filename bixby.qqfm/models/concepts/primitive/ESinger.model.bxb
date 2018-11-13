@@ -1,0 +1,4 @@
+enum (ESinger) {
+  description (主播类型)
+  symbol (主播)
+}

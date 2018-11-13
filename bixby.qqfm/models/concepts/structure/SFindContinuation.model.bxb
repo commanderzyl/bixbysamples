@@ -1,0 +1,15 @@
+structure (SFindContinuation) {
+  description (查看第几个的输出)
+  property (ordinal) {
+    type (common.Ordinal)
+    min(Required) max (One)
+  }
+  property (sSinger) {
+    type (SSinger)
+    min (Optional) max (Many)
+  }
+  property (sAlbum) {
+    type (SAlbum)
+    min (Optional) max (Many)
+  }
+}

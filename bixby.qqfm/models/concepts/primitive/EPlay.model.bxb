@@ -1,0 +1,4 @@
+enum (EPlay) {
+  description (用来区分动作，这个动作是播放，用于类似“播放主播....”的goal中)
+  symbol (播放)
+}

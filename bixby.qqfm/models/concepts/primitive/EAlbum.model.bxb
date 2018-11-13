@@ -1,0 +1,4 @@
+enum (EAlbum) {
+  description (专辑类型)
+  symbol (专辑)
+}

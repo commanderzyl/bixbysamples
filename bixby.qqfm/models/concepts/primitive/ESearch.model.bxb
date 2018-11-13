@@ -1,0 +1,4 @@
+enum (ESearch) {
+  description (用来区分动作，这个动作是搜索，用于类似“搜索主播....”的goal中)
+  symbol (搜索)
+}

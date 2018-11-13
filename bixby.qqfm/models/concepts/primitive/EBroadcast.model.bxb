@@ -1,0 +1,4 @@
+enum (EBroadcast) {
+  description (广播类型)
+  symbol (广播)
+}

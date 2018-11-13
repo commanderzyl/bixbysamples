@@ -1,0 +1,4 @@
+train (t-812qzopszu1iklck7u7a2mtrj) {
+  utterance ("[g:PlayContinuation:continue:*] 播放(第一个)[v:viv.common.Ordinal:1]")
+  plan (Y2BhkEnKrEiq1CssTMvVCw7ISax0zs8rycwrTSzJzM9jkEaSxZBUxyNZVwAVSM0rYRAqyyzTS87Pzc3P0/MvSsnMS8xhYGZgZGACkgxAGgQhgAnIAooBAA==)
+}

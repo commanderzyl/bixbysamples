@@ -1,0 +1,37 @@
+action (PlayContinuation) {
+  type (Search)
+  description (Goal ID: QQFM_13 播放指定节目 Follow-up Goal)
+  //Repesentative: 播放第一个
+  collect {
+    input-group(playContent) {
+      requires (OneOf)
+      collect {
+        input (sSinger) {
+          type (SSinger)
+          min (Optional) max (Many)
+        }
+        
+        input (sAlbum) {
+          type (SAlbum)
+          min (Optional) max (Many)
+        }
+        
+        input (sShow) {
+          type (SShow)
+          min (Optional) max (Many)
+        } 
+        
+        input (sBroadcast) {
+          type (SBroadcast)
+          min (Optional) max (Many)
+        } 
+      }
+    }
+    
+    input(ordinal) {
+      type(common.Ordinal)
+      min (Required) max (One)
+    }
+  }
+  output (SPlayContinuation)
+}

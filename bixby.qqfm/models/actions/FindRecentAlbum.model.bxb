@@ -1,0 +1,23 @@
+action (FindRecentAlbum) {
+  type (Search)
+  description (Goal ID: QQFM_4 搜索最近更新的专辑)
+  //Repesentative: 在企鹅FM中搜索最新更新的专辑
+  //Repesentative: 在企鹅FM中搜索最近更新的专辑
+  collect {
+    input (eSearch) {
+      type (ESearch)
+      min (Required) max (One)
+    }
+  
+    input (eRecent) {
+      type (ERecent)
+      min (Required) max (One)
+    }
+    
+    input (eAlbum) {
+      type (EAlbum)
+      min (Required) max (One)
+    }
+  }
+  output (SAlbum)
+}

@@ -1,0 +1,23 @@
+action (PlayRecentAlbum) {
+  type (Search)
+  description (Goal ID: QQFM_8 播放最近更新的专辑)
+  //Repesentative: 在企鹅FM中播放最新更新的专辑
+  //Repesentative: 在企鹅FM中播放最近更新的专辑
+  collect {
+    input (ePlay) {
+      type (EPlay)
+      min (Required) max (One)
+    }
+  
+    input (eRecent) {
+      type (ERecent)
+      min (Required) max (One)
+    }
+    
+    input (eAlbum) {
+      type (EAlbum)
+      min (Required) max (One)
+    }
+  }
+  output (SAlbum)
+}
