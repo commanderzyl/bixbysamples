@@ -219,7 +219,7 @@ HttpRequestMgr.prototype.getRecentAlbum = function(params) {
             pagination_size: 30
         };
 
-        if (!params.timestamp_start) {
+        if (!params || !params.timestamp_start) {
             query.timestamp_end = (new MyDate).getCurrentMilliseconds();
             query.timestamp_start = query.timestamp_end - 3600;
         }
@@ -275,7 +275,7 @@ HttpRequestMgr.prototype.getRecentShow = function(params) {
             pagination_size: 30
         };
 
-        if (!params.timestamp_start) {
+        if (!params || !params.timestamp_start) {
             query.timestamp_end = (new MyDate).getCurrentMilliseconds();
             query.timestamp_start = query.timestamp_end - 3600;
         }
