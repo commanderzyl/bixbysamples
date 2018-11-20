@@ -4,8 +4,8 @@ structure (SPlayContinuation) {
     type (common.Ordinal)
     min(Required) max (One)
   }
-  property (sSinger) {
-    type (SSinger)
+  property (singer) {
+    type (Singer)
     min (Optional) max (Many)
   }
   property (sAlbum) {

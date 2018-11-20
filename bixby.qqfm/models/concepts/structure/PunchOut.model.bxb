@@ -1,0 +1,17 @@
+action (PunchOut) {
+  type (Constructor)
+  description (跳转到企鹅FM)
+  collect {
+    input (uri) {
+      type (Uri)
+      min (Required) max (One)
+    }
+  }
+  output (URI) {
+    evaluate {
+      URI {
+        uri: $expr(uri)
+      }      
+    }
+  }
+}

@@ -1,0 +1,19 @@
+result-view {
+  match {
+    Singer(this) {
+      from-output: ViewSingerDetail(action)
+    }
+  }
+  
+  message {
+     template-macro(QQFM_3_3_Search_the_anchors_list_Singer_Match_Yes)
+  }
+  
+  render {
+    layout-macro (singer_details_macro) {
+      param (singer) {
+        expression (this)
+      }
+    }
+  }  
+}

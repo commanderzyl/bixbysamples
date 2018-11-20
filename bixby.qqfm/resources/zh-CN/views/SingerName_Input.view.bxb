@@ -1,0 +1,47 @@
+input-view {
+  match {
+    SingerName (this) {
+      to-input: FindSinger (action)
+    }
+  }
+  
+  message {
+    template-macro(QQFM_3_1_Search_the_anchors_list_Singer_Exist_No)
+  }
+  
+  render {
+    auto-complete{
+      type (Singer)
+      no-result-text{template ("未匹配")}
+      placeholder{
+        template ("请输入要查找的名字")
+      }
+      source{
+        collect-with (query) {
+          intent {
+              goal: GetInputSinger
+              value: Keyword$expr(query)
+            }
+        }
+        label { template ("为你找到以下搜索结果") }
+        where-each (Singer) {
+          display {
+            primary-text {
+                template ("#{value(Singer.name)}")
+            }
+            // secondary-text {          
+            //     template ("[#{value(InputInfo.location)}]")
+            // }            
+          }
+       
+          on-select {
+            intent {
+              goal: SingerName
+              value: viv.core.FormElement(Singer)
+            }
+          }
+        }
+      }  
+    }      
+  }
+}

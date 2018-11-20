@@ -6,8 +6,8 @@ action (PlayContinuation) {
     input-group(playContent) {
       requires (OneOf)
       collect {
-        input (sSinger) {
-          type (SSinger)
+        input (singer) {
+          type (Singer)
           min (Optional) max (Many)
         }
         

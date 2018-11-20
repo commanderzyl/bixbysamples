@@ -1,4 +1,4 @@
 train (t-i7f62ksp3wi5cpf33lh48dm8b) {
-  utterance ("[g:FindSinger] 在企鹅FM中(搜索)[v:ESearch:搜索](主播)[v:ESinger:主播](蕊希)[v:TKeyword]")
-  plan (Y2BlEErKrEiq1CssTMvVCw7OzEtPLWIQRRJzy8xLgQojK3UNTk0sSs5AE4OoE0YSC/FOrSzPL0phYGFgZGBiYAbSDEAWBMIAkhwA)
+  utterance ("[g:FindSinger] 在企鹅FM中搜索主播(蕊希)[v:SingerName]")
+  plan (Y2BmkEzKrEiq1CssTMvVC05NLErOSE0JzsxLTy1iEEWScsvMwyYMEfJLzE1lYGJgBGIGIMnIAAJQPgA=)
 }

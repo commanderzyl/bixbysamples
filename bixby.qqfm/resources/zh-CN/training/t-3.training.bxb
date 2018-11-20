@@ -6,3 +6,7 @@ train (t-3kyyli9mn1v1t0ioo9t8rq484) {
   utterance ("[g:FindRecentShow] 在企鹅FM中(搜索)[v:ESearch:搜索](最近)[v:ERecent:最新]更新的(节目)[v:EShow:节目]")
   plan (Y2BlEEjKrEiq1CssTMvVCw7OyC9nkEQSccvMSwlKTU7NKwFLCSFJuULEUcWCUxOLkjNQDHUF62RhYGRgYmAG0gxAFgTCAJIcAA==)
 }
+train (t-3y6prpiy44ilyxmlowy8rm1si) {
+  utterance ("[g:SingerName:prompt] (郭德纲)[v:SingerName]")
+  plan (Y2BiEE3KrEiq1CssTMvVC87MS08t8kvMTcUlzAiEDAw8QMwExEA2AA==)
+}

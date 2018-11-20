@@ -1,8 +1,8 @@
-structure (SSinger) {
+structure (Singer) {
   description (主播对象)
   //主播名字
   property (name) {
-    type (TSingerName)
+    type (SingerName)
     min (Required) max (One)
-  }
+  }  
 }

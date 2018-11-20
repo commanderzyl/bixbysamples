@@ -1,0 +1,14 @@
+action (ViewSingerDetail) {
+  type (Search)
+  description (查看主播详情)
+  collect {
+    input (singer) {
+      description (主播对象)
+      type (Singer)
+      min (Required) max (One)
+    }
+  }
+  output (Singer) {
+    description (主播对象，此输出对象包含更详细的内容)
+  }
+}

@@ -1,0 +1,12 @@
+action (GetInputSinger) {
+  type (Search)
+  description (输入主播名字时获取的提示列表)
+  collect {
+    input (keyword) {
+      type (Keyword)
+      min(Required)
+      max(One)
+    }
+  }
+  output (Singer)
+}

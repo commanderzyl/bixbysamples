@@ -1,0 +1,22 @@
+<layout-macro-def id="singer_summary_macro">
+  <params>
+    <param name="singer" type="Singer" min="Required" max="One"/>
+  </params>
+  <content>
+    <viv:IntentContainer>
+      <onClickIntent>
+        intent {
+          goal {
+            bixby.qqfm.ViewSingerDetail
+          }
+          value { $expr(singer) }
+        }
+      </onClickIntent>
+      <children>
+         <div>主播列表: {{singer.name}}</div>
+      </children>
+    </viv:IntentContainer>   
+  </content>
+  <style>
+  </style>
+</layout-macro-def>

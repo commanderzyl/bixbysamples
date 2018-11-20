@@ -1,0 +1,4 @@
+train (t-10vn6012shk2otsgoldun8es5) {
+  utterance ("[g:SingerName:prompt] (蕊希)[v:SingerName]")
+  plan (Y2BiEE3KrEiq1CssTMvVC87MS08t8kvMTcUlzAiEDAw8QMwExEA2AA==)
+}

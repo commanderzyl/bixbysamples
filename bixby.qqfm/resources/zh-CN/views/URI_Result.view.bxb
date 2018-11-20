@@ -1,0 +1,20 @@
+result-view{
+  match: URI(this){
+    min(Required)
+  }
+  message()
+  app-launch { 
+    payload-uri{
+      if(exists(this.uri)) {
+        template("#{value(this.uri)}")
+      }
+    }
+    requires {
+      app-id (com.tencent.radio)
+      app-name(企鹅FM)
+      // app-min-version (800053000)
+      app-store-url (samsungapps://ProductDetail/com.tencent.radio)    
+    }    
+
+  }  
+}

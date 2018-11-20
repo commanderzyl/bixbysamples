@@ -1,0 +1,12 @@
+structure (SearchedSinger) {
+  description (搜索主播的结果)
+  property (isRecommonded) {
+    type (IsRecommended)
+    min (Required) max (One)
+  }
+  
+  property (singer) {
+    type (Singer)
+    min (Required) max (Many)
+  }
+}

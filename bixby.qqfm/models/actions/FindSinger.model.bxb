@@ -5,18 +5,18 @@ action (FindSinger) {
   //Repesentative: 在企鹅FM中搜索主播DJ林浪
   //Repesentative: 在企鹅FM中搜索主播郭德纲
   collect {
-    input (eSearch) {
-      type (ESearch)
-      min (Required) max (One)
-    }
-    input(eSinger) {
-      type(ESinger)
-      min(Required) max (One)
-    }
-    input (tKeyword) {
-      type(TKeyword)
+    // input (eSearch) {
+    //   type (ESearch)
+    //   min (Required) max (One)
+    // }
+    // input(eSinger) {
+    //   type(ESinger)
+    //   min(Required) max (One)
+    // }
+    input (singerName) {
+      type(SingerName)
       min (Required) max (One)
     }
   }
-  output (SSinger)
+  output (SearchedSinger)
 }

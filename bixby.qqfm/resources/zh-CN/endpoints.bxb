@@ -5,12 +5,23 @@ endpoints {
 
   action-endpoints {
     action-endpoint (FindSinger) {
-      accepted-inputs (eSearch, eSinger, tKeyword,$vivContext)
+      // accepted-inputs (eSearch, eSinger, tKeyword,$vivContext)
+      accepted-inputs (singerName,$vivContext)
       local-endpoint (mobile/FindSinger.js)
     }
     
+    action-endpoint (GetInputSinger) {
+      accepted-inputs (keyword,$vivContext)
+      local-endpoint (mobile/GetInputSinger.js)
+    }
+    
+    action-endpoint (ViewSingerDetail) {
+      accepted-inputs (singer,$vivContext)
+      local-endpoint (mobile/ViewSingerDetail.js)
+    }
+    
     action-endpoint (FindContinuation) {
-      accepted-inputs (ordinal, sSinger, sAlbum,$vivContext)
+      accepted-inputs (ordinal, singer, sAlbum,$vivContext)
       local-endpoint (mobile/FindContinuation.js)
     }
     
@@ -25,7 +36,7 @@ endpoints {
     }
     
     action-endpoint (PlayContinuation) {
-      accepted-inputs (ordinal, sSinger, sAlbum, sShow, sBroadcast, $vivContext)
+      accepted-inputs (ordinal, singer, sAlbum, sShow, sBroadcast, $vivContext)
       local-endpoint (mobile/PlayContinuation.js)
     }
     
