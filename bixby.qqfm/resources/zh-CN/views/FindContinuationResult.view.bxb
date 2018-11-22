@@ -1,0 +1,27 @@
+result-view {
+  match {
+    FindContinuationResult(this) {
+      from-output: FindContinuation(action)
+    }
+  }
+  
+  message {
+    if (size(this) == 0) {
+      template-macro(QQFM_12_1_See_one_Number_Match_No)
+    } else {
+      template-macro(QQFM_12_2_See_one_Number_Match_Yes)
+    }
+  }
+  
+  render {
+    if (size(this) == 1) {
+      if (exists(this.singer)) {
+        layout-macro (singer_details_macro) {
+          param (singer) {
+            expression (this.singer)
+          }
+        }
+      }
+    }    
+  }  
+}

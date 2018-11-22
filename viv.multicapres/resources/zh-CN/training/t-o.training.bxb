@@ -1,0 +1,4 @@
+train (t-oebormvn3pqghfjy9muv6egn8) {
+  utterance ("[g:Ticket:continue] (西安)[v:ctrip.ArrivalCity]呢")
+  plan (Y2BmECvLLNPLLc0pyUxOLChKLdYLyUzOTi1hkEIXd8vMS4HKSYPkkkuKMgvScjLTM0r0HIuKMssSc5wzSyoZmBgYgZgBSDIygAATBAMA)
+}

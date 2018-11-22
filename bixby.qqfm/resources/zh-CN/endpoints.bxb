@@ -21,7 +21,7 @@ endpoints {
     }
     
     action-endpoint (FindContinuation) {
-      accepted-inputs (ordinal, singer, sAlbum,$vivContext)
+      accepted-inputs (ordinal, ssinger, sAlbum,$vivContext)
       local-endpoint (mobile/FindContinuation.js)
     }
     

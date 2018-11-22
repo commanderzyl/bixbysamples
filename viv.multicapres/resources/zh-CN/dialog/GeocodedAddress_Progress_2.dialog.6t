@@ -1,0 +1,7 @@
+dialog (Progress) {
+  match {
+    geo.GeocodedAddress
+  }
+  // template-macro (FINDING)
+  template ()
+}

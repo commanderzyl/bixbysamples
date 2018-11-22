@@ -1,0 +1,4 @@
+train (t-zwz3ghv1znya0nx75or3iw7ak) {
+  utterance ([g:FindMovie] 推荐一下今晚看的电影)
+  plan (Y2BikCzLLNPLLc0pyUxOLChKLdbzzS/LTPXMS8vHlHLLzEsBSzMwAiEDFANJAA==)
+}

@@ -1,0 +1,5 @@
+dialog (Progress) {
+  match: tencentNews.NewsInfo
+  //template-macro (FINDING)
+  template ()
+}

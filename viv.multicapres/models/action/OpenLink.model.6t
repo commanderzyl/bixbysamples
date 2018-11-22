@@ -1,0 +1,17 @@
+action (OpenLink) {
+  type(Constructor)
+  description (__DESCRIPTION__)
+  collect {
+    input-group(url){
+      requires (OneOf)
+      collect{
+        input (detailsUrl) {
+          type (DetailsUrl)
+          min (Optional) max (One)
+        }
+      }
+    }
+    
+  }
+  output (ActionResult)
+}

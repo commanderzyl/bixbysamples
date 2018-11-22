@@ -1,0 +1,144 @@
+<layout-macro-def id="weatherInfo-layout">
+  <params>
+    <param name="ticket" type="Ticket" max="Many" min="Optional">
+    <param name="w" type="weather.DayInformation" max="Many" min="Optional">
+    <param name="month" type="Title" max="Many" min="Optional">
+    <param name="day" type="City" max="Many" min="Optional">
+  </params>
+  <content>    
+    <viv:IntentContainer>      
+      <onClickIntent>
+        intent {
+          goal {
+            viv.weatherNews.FindWeather        
+          }
+          value-set:geo.LevelTwoDivisionName{$expr(ticket.arrivalCity)}
+        }
+      </onClickIntent>      
+      <children>
+    <div class="item">
+      <div class="text">{{ticket.arrivalCity}}</div>
+      <svg viewBox="0 0 395 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+	{{#try}}
+          <polyline class="line"
+            fill="none"
+            stroke="#FAFAFA"
+            stroke-opacity="0.3"
+            stroke-width="1"
+            points="
+            {{#each w : index}}
+              {{#if !hide}}
+                {{highPositionX}}, {{highPositionY}}{{' '}}
+              {{/if}}
+            {{/each}}
+             "
+          />
+<!--           <polyline class="line"
+            fill="none"
+            stroke="#FAFAFA"
+            stroke-opacity="0.3"
+            stroke-width="1"
+            points="
+              {{#each w : index}}
+                {{#if !hide}}
+                   {{lowPositionX}}, {{lowPositionY}}{{' '}}
+                 {{/if}}
+              {{/each}}
+             "
+          /> -->
+        {{/try}}
+	<g class="temp">
+          {{#each w : index}}
+            {{#if !hide}}
+              {{#try}}
+                <circle cx={{highPositionX}} cy={{highPositionY}} stroke="#FAFAFA" stroke-width="1" data-value={{highTemperature.value}} r="2"></circle>
+              {{/try}}
+            {{/if}}
+          {{/each}}
+        </g>
+<!-- 	<g class="temp">
+		<circle cx="32.5" cy="138.57142857142858" data-value="21.0" r="2" stroke="#FAFAFA" stroke-width="1"></circle>
+		<circle cx="98.5" cy="144.28571428571428" data-value="20.0" r="2" stroke="#FAFAFA" stroke-width="1"></circle>
+		<circle cx="164.5" cy="150.0" data-value="19.0" r="2" stroke="#FAFAFA" stroke-width="1"></circle>
+		<circle cx="230.5" cy="150.0" data-value="19.0" r="2" stroke="#FAFAFA" stroke-width="1"></circle>
+		<circle cx="296.5" cy="150.0" data-value="19.0" r="2" stroke="#FAFAFA" stroke-width="1"></circle>
+		<circle cx="362.5" cy="144.28571428571428" data-value="20.0" r="2" stroke="#FAFAFA" stroke-width="1"></circle> 
+	</g>-->
+	<g class="svgLabel">
+          {{#each w : index}}
+            {{#if !hide}}
+              {{#try}}
+                {{#if highTemperature.value >= 0 && highTemperature.value < 10}}
+                  <text x={{highPositionX-7}} y={{highPositionY-10}}>
+                    {{integer(highTemperature.value)}}°
+                  </text>
+                {{else}}
+                  {{#if highTemperature.value >= 10 || (highTemperature.value < 0 && highTemperature.value > -10)}}
+                    <text x={{highPositionX-10}} y={{highPositionY-10}}>
+                      {{integer(highTemperature.value)}}°
+                    </text>
+                  {{else}}
+                    <text x={{highPositionX-13}} y={{highPositionY-10}}>
+                      {{integer(highTemperature.value)}}°
+                    </text>
+                  {{/if}}
+                {{/if}}
+              {{/try}}
+            {{/if}}
+          {{/each}}
+        </g>
+  <g class="text">
+		<text x="14.5" y="90.0">{{month[0]}}-{{day[0]}}</text>
+    <text x="80.5" y="90">{{month[1]}}-{{day[1]}}</text>
+    <text x="146.5" y="90">{{month[2]}}-{{day[2]}}</text>
+    <text x="212.5" y="90">{{month[3]}}-{{day[3]}}</text>
+    <text x="278.5" y="90">{{month[4]}}-{{day[4]}}</text>
+    <text x="344.5" y="90">{{month[5]}}-{{day[5]}}</text>
+	</g>
+<!-- 	<g class="svgLabel">
+		<text x="22.5" y="128.57142857142858">21°</text>
+		<text x="88.5" y="134.28571428571428">20°</text>
+		<text x="154.5" y="140.0">19°</text>
+		<text x="220.5" y="140.0">19°</text>
+		<text x="286.5" y="140.0">19°</text>
+		<text x="352.5" y="134.28571428571428">20°</text>
+	</g> -->
+<!-- 	<g style="stroke: rgba(250, 250, 250, 0.1); stroke-width: 1;">
+		<line x1="65.5" x2="65.5" y1="6" y2="180"></line>
+		<line x1="131.5" x2="131.5" y1="6" y2="180"></line>
+		<line x1="197.5" x2="197.5" y1="6" y2="180"></line>
+		<line x1="263.5" x2="263.5" y1="6" y2="180"></line>
+		<line x1="329.5" x2="329.5" y1="6" y2="180"></line>
+	</g> -->
+</svg>
+    </div>
+    
+      </children>
+    </viv:IntentContainer>   
+  </content>
+  <style>
+    .svgLabel {
+      font-family: Roboto-Regular;
+      fill: #FAFAFA;
+      font-size: 20px;
+      line-height: 18px;
+    }
+    .temp {
+      fill: #FAFAFA;
+    }
+    .text {
+      font-family: Roboto-Regular;
+      fill: rgba(250, 250, 250, 0.6);
+      font-size: 16px;
+      line-height: 18px;
+    }
+    
+    .item {
+      background: rgba(250, 250, 250, 0.08);
+      height: 130px;
+      width: 100%;      
+      border-radius: 10px;
+      padding: 12px 12px;
+    }
+  </style>
+</layout-macro-def>

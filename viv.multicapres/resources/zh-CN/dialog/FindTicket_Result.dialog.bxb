@@ -1,0 +1,6 @@
+dialog (Result) {
+  match: Ticket(this){
+     from-output:FindTicket(action)
+  }
+  template("")
+}

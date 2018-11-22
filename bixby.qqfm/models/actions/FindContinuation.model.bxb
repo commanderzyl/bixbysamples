@@ -6,8 +6,8 @@ action (FindContinuation) {
     input-group(displayContent) {
       requires (OneOf)
       collect {
-        input (singer) {
-          type (Singer)
+        input (ssinger) {
+          type (SearchedSinger)
           min (Optional) max (Many)
         }
         
@@ -23,5 +23,5 @@ action (FindContinuation) {
       min (Required) max (One)
     }
   }
-  output (SFindContinuation)
+  output (FindContinuationResult)
 }

@@ -1,0 +1,37 @@
+structure (Ticket) {
+  description (__DESCRIPTION__)
+  property (arrivalCity) {
+    type (ctrip.ArrivalCity)
+    min (Required) max (One)
+  }
+  
+  // property (levelTwo){
+  //   type (geo.LevelTwoDivisionName)
+  //   min (Required) max (One)
+  // }
+  
+  property (ticket) {
+    type(ctrip.BaseResult)
+    min (Optional) max (One)
+  }
+  
+  property (weather) {
+    type(weatherNews.Weather)
+    min (Required) max (One)
+  }
+  
+  property (newsInfo) {
+    type(tencentNews.NewsInfo)
+    min (Required) max (One)
+  }
+  
+  property (month) {
+    type(Title)
+    min (Optional) max (Many)
+  }
+  
+  property (day) {
+    type(City)
+    min (Optional) max (Many)
+  }
+}

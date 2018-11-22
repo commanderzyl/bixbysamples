@@ -1,0 +1,4 @@
+train (t-i5jlf3xytlye0at4r5ahpyyjk) {
+  utterance ([g:FindMovie] 今晚有什么好看的电影)
+  plan (Y2BikCzLLNPLLc0pyUxOLChKLdbzzS/LTPXMS8vHlHLLzEsBSzMwAiEDFANJAA==)
+}

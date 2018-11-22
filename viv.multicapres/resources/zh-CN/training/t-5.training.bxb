@@ -1,0 +1,4 @@
+train (t-59wb4wcr96znk4jaa0283zag1) {
+  utterance ("[g:FindTicket] 下周想去(成都)[v:ctrip.ArrivalCity]玩")
+  plan (Y2BmECvLLNPLLc0pyUxOLChKLdYLyUzOTi1hkEIXd8vMS4HKSYPkkkuKMgvScjLTM0r0HIuKMssSc5wzSyoZmBgYgZgBSDIygACUDwA=)
+}

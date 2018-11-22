@@ -1,0 +1,4 @@
+dialog (Result) {
+  match: weatherNews.Weather
+  template-macro (FINDING)
+}

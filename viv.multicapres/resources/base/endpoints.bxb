@@ -1,0 +1,36 @@
+endpoints {
+  authorization {
+    none    
+  }
+
+  action-endpoints {
+    action-endpoint (FindMovie) {
+      local-endpoint (findMovie.js)
+    }
+    
+    action-endpoint (OpenLink){
+      accepted-inputs (detailsUrl)
+      local-endpoint (OpenLink.js)
+    }
+    
+    action-endpoint (FindTicket) {
+      accepted-inputs (arrivalCity, ticket, weather, newsInfo)
+      local-endpoint (FindTicket.js)
+    }
+    
+    action-endpoint (SearchFlight) {
+      //accepted-inputs (location, arrivalCity)
+      local-endpoint (ctrip/SearchFlight.js)
+    }
+    
+    action-endpoint (FindWeather) {
+      accepted-inputs (where, date, dateTime, dateInterval, dateTimeInterval, duration, type, tempUnitName, dustType, $vivContext)
+      local-endpoint (FindWeather.js)
+    }
+    
+    action-endpoint (ViewNews) {
+      accepted-inputs (newsCategory, dateTime, person,srcfrom,location,keywords,searchOption,currentL,type,action,newsDateTimeInterval,$vivContext)
+      local-endpoint (ViewNews.js)
+    }
+  }
+}

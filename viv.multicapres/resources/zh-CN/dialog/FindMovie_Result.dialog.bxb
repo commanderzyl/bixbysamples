@@ -1,0 +1,6 @@
+dialog (Result) {
+  match: MovieInfo(this){
+     from-output:FindMovie(action)
+  }
+  template("")
+}

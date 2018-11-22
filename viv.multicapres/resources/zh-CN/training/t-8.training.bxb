@@ -1,0 +1,4 @@
+train (t-82hsbumbdngw25dkz6nt7oid0) {
+  utterance ("[g:SearchFlight] 查找到(成都)[v:ctrip.ArrivalCity]的航班")
+  plan (Y2BhkCrLLNNLLinKLEjLyUzPKNFzSixODUotLs0pYZAByeUCWZnJiQVFqcV6wamJRckZbmCFDNLoOh2LijLLEnOcM0sqGdTxaa1LSS1ILCpxSSxJZWBmYGRgApIMQBoEIYAJLMoAAA==)
+}

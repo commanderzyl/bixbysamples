@@ -1,0 +1,5 @@
+dialog (Progress) {
+  match: weatherNews.Weather
+  //template-macro (FINDING)
+  template ()
+}

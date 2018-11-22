@@ -1,0 +1,59 @@
+action (FindTicket) {
+  type (Search)
+  description (__DESCRIPTION__)
+  collect {
+    input (arrivalCity) {
+      min (Required)
+      type (ctrip.ArrivalCity)
+    }
+    
+    computed-input(ticket) {
+      min (Optional)
+      type (ctrip.BaseResult)
+      compute {
+        intent {
+          goal: SearchFlight
+          value: ctrip.ArrivalCity$expr(arrivalCity)
+          // value: ctrip.DepartureCity(北京)
+        }
+      }
+    }
+    
+    computed-input (weather) {
+      min (Required)
+      type (weatherNews.Weather)
+      compute {
+        intent {
+          goal: FindWeather
+          value-set: geo.LevelTwoDivisionName {$expr(arrivalCity)}
+         }  
+      }
+    }
+    
+    computed-input (newsInfo) {
+      min (Required)
+      type (tencentNews.NewsInfo)
+      compute {
+        intent {
+          goal: ViewNews
+          value-set: ctrip.ArrivalCity {
+            $expr(arrivalCity)
+          }
+          // value: tencentNews.SearchOption(currentLocation)
+          // subplan {
+          //   goal: geo.GeocodedAddress
+          //   subplan {
+          //       goal:geo.ReverseGeocode
+          //       subplan{
+          //         goal: geo.NamedPoint
+          //         value: geo.LevelTwoDivisionName(arrivalCity)
+          //       }
+          //     }  
+          // }                 
+        }
+      }
+        
+    }
+  }
+  output (Ticket)
+}

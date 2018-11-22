@@ -1,0 +1,7 @@
+structure (MovieInfo) {
+  description (__DESCRIPTION__)
+  property (title) {
+    type (Title)
+    min (Optional) max (One)
+  }
+}

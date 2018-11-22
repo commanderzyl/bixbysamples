@@ -1,0 +1,22 @@
+result-view{
+  match:MovieInfo(this){
+     from-output:FindMovie(action)
+  }
+  
+  message ()
+  render{
+    if(size(this) == 1){
+    layout-match (this){
+      mode(Details)
+    }
+      }
+  }
+  conversation-drivers{
+    conversation-driver {
+      template("更多上映电影")
+    }
+    conversation-driver {
+      template("更多电影院")
+    }
+  }
+}

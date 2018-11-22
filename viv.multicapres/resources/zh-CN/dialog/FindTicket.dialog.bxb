@@ -1,0 +1,5 @@
+dialog (Progress) {
+  match: Ticket
+  //template-macro(FINDING)
+  template ("")
+}

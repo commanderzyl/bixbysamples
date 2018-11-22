@@ -1,0 +1,5 @@
+dialog (Progress) {
+  match: ctrip.BaseResult(this)
+  //template-macro (FINDING)
+  template ()
+}

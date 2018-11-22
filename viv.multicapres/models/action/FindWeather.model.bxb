@@ -1,0 +1,129 @@
+action (FindWeather) {
+  type (Search)
+  collect {
+    input (where) {
+      min (Required)
+      type (geo.NamedPoint)
+
+      default-init {
+        if ($user.currentLocation.$exists) {
+          intent {
+            goal: geo.NamedPoint
+            value-set: geo.CurrentLocation { $expr ($user.currentLocation) }
+          }
+        } else {
+          intent {
+            goal: geo.NamedPoint
+            value-set { geo.NamedPoint @prompt-behavior(AlwaysElicitation) }
+          }
+        }
+      }
+
+      default-select {
+        with-learning
+        with-rule {
+          select-first
+        }
+      }
+    }
+    input-group (when) {
+      requires(ZeroOrOneOf) // TODO: make required/promptable
+      collect {
+        input (date) {
+          type (time.Date)
+          default-select {
+            with-rule {
+              select-first
+            }
+          }
+        }
+        input (dateTime) {
+          type (time.DateTime)
+          default-select {
+            with-rule {
+              select-first
+            }
+          }
+        }
+        input (dateInterval) {
+          type (time.DateInterval)
+          default-select {
+            with-rule {
+              select-first
+            }
+          }
+        }
+        input (dateTimeInterval) {
+          type (time.DateTimeInterval)
+          default-select {
+            with-rule {
+              select-first
+            }
+          }
+        }
+      }
+    }
+    input (duration) {
+      type (time.DurationPeriod)
+    }
+    input (type) {
+      description (Historical, Current, Forecast, Typical, Hourly)
+      type (weather.WeatherType)
+    }
+    input (tempUnitName) {
+      type (measurement.TemperatureUnitName)
+    }
+    input (dustType) {
+      type (weatherNews.DustType)
+    }
+  }
+
+  output (weatherNews.Weather) {
+    on-empty {
+      if (exists(date)) {
+        drop (date)
+      } else-if (exists(dateTime)) {
+        // P180516-01810 Handled the requested time is before current time but today
+        if (compare(dateTime.date, now().date) == 0) {
+          replan {
+            intent {
+              goal: FindWeather
+              value: time.NamedDate (Today)
+              if (exists(where)) { value{$expr(where)} }
+              if (exists(duration)) { value{$expr(duration)} }
+              if (exists(type)) { value{$expr(type)} }
+              if (exists(tempUnitName)) { value{$expr(tempUnitName)} }
+            }
+          }
+        } else {
+          drop (dateTime)
+        }
+      } else-if (exists(dateInterval)) {
+        drop (dateInterval)
+      } else-if (exists(dateTimeInterval)) {
+        drop (dateTimeInterval)
+      }
+    }
+    
+    throws {
+      error (MissingLocus) {
+        on-catch {
+          halt {
+            dialog {
+              template-macro (Weather_0_100_CommonCheck_Location_notSupported_Yes)
+            }
+          }
+        }
+      }
+      error (NullLocation) {
+        on-catch {
+          halt {
+            dialog {
+              template-macro (ErrorNullLocation)
+            }
+          }
+        }
+      }
+    }
+  }
+}

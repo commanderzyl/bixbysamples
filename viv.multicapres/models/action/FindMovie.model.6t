@@ -1,0 +1,5 @@
+action (FindMovie) {
+  description (the action to find tonight movie)
+  type(Search)
+  output (MovieInfo)
+}

@@ -1,0 +1,112 @@
+<layout-macro-def id="tecentViewNews-layout">
+  <params>
+    <param name="newsInfo" type="tencentNews.NewsInfo" max="Many" min="Optional">
+  </params>
+  <content>
+    <div style="overflow:hidden;">
+      {{#if(exists(newsInfo.news) && size(newsInfo.news)>=1 && newsInfo.isDetail != true )}}
+        {{#each newsInfo.news : index}}
+         {{#if(index == 0)}}
+          <viv:IntentContainer>
+            <onClickIntent>
+              intent {
+              goal {
+              viv.tencentNews.ViewNewsDetail
+              }
+              value{$expr(this)}
+              }
+            </onClickIntent>
+            <children>
+              <div class="content">
+                <div class="news">
+                  <p class="title">{{title}}</p>
+                  <div class="detail">
+                      <p>{{exists(srcfrom)? srcfrom:"腾讯新闻"}}&nbsp;</p>
+                      <p>时间：{{exists(pubtime)? pubtime:"不详！"}}</p>
+                  </div>
+                </div>
+                {{#if (exists(shortcut) && shortcut == 'http://inews.gtimg.com/newsapp_ls/0/3452910918_640330/0')}}
+                {{else}}
+                   {{#if (exists(shortcut))}}
+                      <div class="icon">
+                        <img class="img" src="{{shortcut}}"/>
+                      </div>
+                    {{/if}}
+                {{/if}}
+              </div>
+            </children>
+          </viv:IntentContainer>
+          {{/if}}
+        {{/each}}
+      {{/if}}
+    {{#if(exists(newsInfo.news) && size(newsInfo.news)==1 && newsInfo.isDetail == true )}}
+    <layout-macro id="newsInfo_detail_marco">
+      <news>{{newsInfo.news}}</news>
+    </layout-macro>
+    {{/if}}   
+    </div>
+  </content>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    .content{
+      display:flex;
+      border-radius : 8px;
+      justify-content:space-between;
+      background-color:rgba(250,250,250,0.05);
+      margin:0 0;
+      height:auto;
+      font-size:16px;
+    }
+    .news{
+      display:flex;
+      flex-direction:column;
+      height: 100%;
+      margin: 12px 0 12px 12px;
+    }
+    .title{
+      font-size:1rem;
+      color:rgba(250,250,250,1.0);
+      font-family: PingFangSC-Medium;
+      line-height:1.375rem;
+      margin: 0;
+      margin-top: 6px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+/*       min-height: 1.375rem;
+      max-height:4.125rem; */
+    }
+    .detail{
+      color:rgba(250,250,250,0.6);
+      font-family:PingFangSC-Medium;
+      display:flex;
+      margin-top: 2px;
+    }
+    .detail p{
+      font-size:0.7rem;
+      line-height:1rem;
+      margin: 0;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
+    .icon{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin:0.75rem;
+      width:4.5rem;
+    }
+    img{
+      clip-path: inset(0 24.2% round 4px);
+      height:4.5rem;
+    }
+  </style>
+</layout-macro-def>

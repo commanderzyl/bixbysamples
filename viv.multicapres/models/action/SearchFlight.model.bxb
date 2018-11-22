@@ -1,0 +1,301 @@
+action (SearchFlight) {
+  type(Search)
+  description (搜索航班)
+
+  collect{
+    input(error){
+      type (ctrip.ErrorMessage)
+      min (Optional)
+      max (One)
+      hidden
+    }
+
+    input (departureCity){
+      type (ctrip.DepartureCity)
+      min(Optional)
+      max (One)
+
+      validate{
+
+        if (departureCity == 'null' || departureCity == 'IsProvince'){
+          prompt{  
+            prompt-behavior(AlwaysElicitation)
+          }
+        }else-if (departureCity == 'ToInput'){
+          prompt{  
+            prompt-behavior(AlwaysElicitation)
+          }
+        }
+      }
+
+      default-select {
+
+        with-rule {
+          select-first
+        }
+      }
+    }
+
+    input (location){
+      type (geo.LevelTwoDivisionName)
+      min (Optional)
+      max (One)
+      default-init {
+        if(!exists(departureCity)){
+          if ($user.currentLocation.$exists) {
+            intent {
+              goal:geo.ReverseGeocode
+              subplan{
+                goal: geo.NamedPoint
+                value-set: geo.CurrentLocation { $expr ($user.currentLocation) }
+              }
+            }
+          } else {
+            intent {
+              goal:geo.ReverseGeocode
+              subplan{
+                goal: geo.NamedPoint
+                value-set { geo.NamedPoint @prompt-behavior(AlwaysElicitation) }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    input(arrivalCity){
+      type (ctrip.ArrivalCity)
+      min (Optional)
+      max (One)
+      validate{
+        if (!exists(arrivalCity)){
+          prompt{  
+            prompt-behavior(AlwaysElicitation)
+          }
+        }else-if (arrivalCity == 'null' || arrivalCity == 'IsProvince'){
+          prompt{  
+            prompt-behavior(AlwaysElicitation)
+          }
+        }
+      }
+
+      default-select {
+        with-rule {
+          select-first
+        }
+      }
+    }
+
+    input-group(departDate){
+      requires (OneOrMoreOf)
+      collect {
+
+        input (dateTime) {
+          type (ctrip.NewDateTime)
+          min (Optional) max (One)
+          default-select {
+            with-rule {
+              select-first
+            }
+          }
+        }
+        input (dateTimeInterval) {
+          type (ctrip.NewDateTimeInterval)
+          min (Optional) 
+          max (Many)
+        }
+        input (departureDate) {
+          type (ctrip.DepartureDate)
+          min (Optional) 
+          max (Many)
+          default-init {
+            if (!exists(departureDate)) {
+              intent{
+                goal {time.Date}
+                value : time.NamedDate(Today)
+              }
+            }
+          }
+        }
+      }
+    }
+
+    input(airline){
+      type (ctrip.Airline)
+      min (Optional)
+      max (One)
+
+      default-select {
+        with-rule {
+          select-first
+        }
+      }
+    }
+    input(book_key){
+      type (ctrip.Book_key)
+      min (Optional)
+      max (Many)
+      hidden
+    }
+    input (domain){
+      type (ctrip.Domain)
+      min (Optional)
+      max (Many)
+      hidden
+    }
+
+  }
+
+  output (ctrip.BaseResult){
+    on-empty{
+      // if(exists(departtime) || exists(airline)){
+      //   ordered-effects{
+      //     drop (departtime)
+      //     drop (airline)
+      //   }
+      // }
+      halt{
+        dialog{
+          //template-macro (FlightNotExist)
+          template ()
+        }
+      }
+    }
+
+    throws{
+      error (CityNameError){
+        on-catch{
+          halt{
+            dialog{
+              // template-macro (CityNameError)
+              template ()
+            }
+          }
+        }
+      }
+      error (FlightNotExist){
+        on-catch{
+          halt{
+            dialog{
+              // template-macro (FlightNotExist)
+              template ()
+            }
+          }
+        }
+      }
+      error (ArrivalCityError) {
+        on-catch {
+          replan{
+            intent{
+              goal:SearchFlight
+              value : $expr(departureCity)
+              value : $expr(departureDate)
+              value : $expr(location)
+              value : ctrip.ArrivalCity(null)
+              value : ctrip.ErrorMessage(ArrivalCityError)
+            }
+          }  
+        }
+      }  
+      error (DepartCityError) {
+        on-catch {
+          replan{
+            intent{
+              goal:SearchFlight
+              value : $expr(departureDate)
+              value : $expr(arrivalCity)
+              value : $expr(location)
+              value : ctrip.DepartureCity(null)
+              value : ctrip.ErrorMessage(departCityError)
+            }
+          }  
+        }
+      } 
+
+      error (DepartureDateError) {
+        // on-catch {
+        //   replan{
+        //     intent{
+        //       goal:SearchFlight
+        //       value : $expr(departureCity)
+        //       value : $expr(arrivalCity)
+        //       value : ErrorMessage(DepartureDateError)
+        //     }
+        //   }  
+        // }
+        on-catch{
+          halt{
+            dialog{
+              // template-macro (CanNotChoosePastTime)
+              template ()
+            }
+          }
+        }
+      } 
+
+      error(NotSupportForeignFlight){
+        on-catch{
+          halt{
+            dialog{
+              // template-macro (NotSupportForeignFlight)
+              template ()
+            }
+          }
+        }
+      }
+
+      error (ToInputDepartCity) {
+        on-catch {
+          replan{
+            intent{
+              goal:SearchFlight
+              value : $expr(departureDate)
+              value : $expr(arrivalCity)
+              value : ctrip.DepartureCity(ToInput)
+              value : ctrip.ErrorMessage(departCityError)
+            }
+          }  
+        }
+      } 
+
+      error(DepartCityIsProvince){
+
+        property (isProvince) {
+          type (ctrip.ErrorMessage)
+          min (Optional) 
+          max (One)
+        }
+        on-catch {
+          replan{
+            intent{
+              goal:SearchFlight
+              value : $expr(departureDate)
+              value : $expr(arrivalCity)
+              value : ctrip.DepartureCity(IsProvince)
+              value : ctrip.ErrorMessage$expr(isProvince)
+            }
+          }  
+        }
+      }
+
+      error(ArrivalCityIsProvince){
+
+        property (isProvince) {
+          type (ctrip.ErrorMessage)
+          min (Optional) max (One)
+        }
+        on-catch {
+          replan{
+            intent{
+              goal:SearchFlight
+              value : $expr(departureDate)
+              value : $expr(departureCity)
+              value : ctrip.ArrivalCity(IsProvince)
+              value : ctrip.ErrorMessage$expr(isProvince)
+            }
+          }  
+        }
+      }
+    }
+  }
+}

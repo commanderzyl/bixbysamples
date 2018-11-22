@@ -1,0 +1,29 @@
+result-view{
+  match:Ticket(this){
+     from-output:FindTicket(action)
+  }
+  
+  message {
+    //template ("国庆期间#{value (this.arrivalCity)}机票价格合适，天气晴，还有其他旅游信息供你参考")
+    template ("")
+  }
+  render{
+    if(size(this) >= 1){
+      list-of (this) {
+        where-each (item) {
+          layout-match (item){
+            mode(Details)
+          }
+        }
+      }
+    }
+  }
+  conversation-drivers{
+    conversation-driver {
+      template("换一个城市")
+    }
+    conversation-driver {
+      template("更多成都特价机票")
+    }
+  }
+}

@@ -1,5 +1,5 @@
 var HttpRequestMgr = require("./HttpRequestMgr");
-var Singer = require("./schema/Singer");
+var SearchedSinger = require("./schema/SearchedSinger");
 
 /**
  * 主播对象管理器，建议使用单例模式，如
@@ -10,7 +10,7 @@ function SingerMgr() {}
 /**
  * 搜索含有关键词searchWord的专辑列表
  * @param {string} searchWord 关键词
- * @returns {Array<Singer>} 专辑列表
+ * @returns {Array<SearchedSinger>} 专辑列表
  */
 SingerMgr.prototype.searchSinger = function(searchWord) {
     var httpRequestMgr = HttpRequestMgr.getInstance();
@@ -22,6 +22,22 @@ SingerMgr.prototype.searchSinger = function(searchWord) {
 
     return singerList;
 };
+
+/**
+ * 获取主播下面的最新专辑
+ * @param {SearchedSinger} searchedSinger 主播对象
+ * @returns {SingerAlbum} 主播名下的专辑
+ */
+SingerMgr.prototype.getRecentSingerAlbum = function(searchedSinger) {
+    var httpRequestMgr = HttpRequestMgr.getInstance();
+    var singerAlbum = httpRequestMgr.getRecentSingerAlbum(searchedSinger);
+    if (!singerAlbum) {
+        console.log("failed to search recent album for" + singerAlbum);
+        return null;
+    }
+
+    return singerAlbum;
+}
 
 SingerMgr.getInstance = function() {
     if (SingerMgr.instance) {

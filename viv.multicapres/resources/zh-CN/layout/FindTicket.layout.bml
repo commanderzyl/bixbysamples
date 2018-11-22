@@ -1,0 +1,86 @@
+<layout type="Details">
+  <match>Ticket(ticket)</match>
+  <content>
+    <div>
+      {{#if(exists(ticket.arrivalCity))}}
+      <div class="title_area">
+        <img class="white" src="images/icons/white.gif">
+        <span class="title">国庆期间{{ticket.arrivalCity}}机票价格合适，天气晴，还有其他旅游信息供你参考</span>
+      </div>      
+      {{#if(exists(ticket.ticket) && exists(ticket.ticket.dataInfo))}}
+      <div class="movie_title">
+        <img class="douban_logo" src="images/icons/ctrip.png">
+        <span class="douban_logo_text">携程旅行</span>
+      </div>
+      <layout-macro id="dataInfo-layout">
+        <dataInfo>{{ticket.ticket.dataInfo[0]}}</dataInfo>
+      </layout-macro>
+      {{/if}}
+      <div class="movie_title">
+        <img class="douban_logo" src="images/icons/weather.png">
+        <span class="douban_logo_text">中国天气</span>
+      </div>
+      <layout-macro id="weatherInfo-layout">
+        <ticket>{{ticket}}</ticket>
+        <w>{{ticket.weather.daily}}</w>
+        <month>{{ticket.month}}</month>
+        <day>{{ticket.day}}</day>
+      </layout-macro>
+      <div class="movie_title_tencent">
+        <img class="douban_logo" src="images/icons/tencentnews.png">
+        <span class="douban_logo_text">腾讯新闻</span>
+      </div>
+      <layout-macro id="tecentViewNews-layout">
+        <newsInfo>{{ticket.newsInfo}}</newsInfo>
+      </layout-macro>
+      {{/if}}
+    </div>
+  </content>
+  <style>
+    .title_area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 0 40px 0;
+    }
+    
+    .white {
+        width: 40px;
+    }
+    
+    .title {
+        color: #fafafa;
+        font: 18px arial, sans-serif;
+        text-align: center;
+    }
+    .movie_title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      margin: 10px 0;
+    }
+    
+    .movie_title_tencent {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      margin: 24px 0 10px 0px;
+    }
+
+    .douban_logo {
+      height: 18px;
+      margin: 0 10px;
+    }
+
+    .douban_logo_text {
+      color: white;
+      font: 16px arial, sans-serif;
+      margin: 0 40px 0 0;
+    }
+  </style>
+</layout>

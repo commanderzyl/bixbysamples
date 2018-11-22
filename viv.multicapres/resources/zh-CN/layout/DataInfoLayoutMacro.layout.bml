@@ -1,0 +1,187 @@
+<layout-macro-def id="dataInfo-layout">
+  <params>
+    <param name="dataInfo" type="ctrip.DataInfo" min="Required" max="Many"/>
+  </params>
+  <content>
+    {{#each dataInfo}}
+    <viv:IntentContainer>
+      <onClickIntent>
+        intent {
+        goal {
+          ctrip.ShowDetail
+        }
+        value{$expr(this)}
+        }
+      </onClickIntent>
+      <children>
+        <div style="margin:0 auto;">
+          <div class="structure" style="clear:both;
+                                        margin:0 0 24px 0;
+                                        background: rgba(250,250,250,0.05);
+                                        border-radius: 8px;
+                                        height:184px;
+                                        overflow:hidden">
+            <div class="firstLine" style="margin:12px 12px 13px 12px;
+                                          height:20px;">
+              <img src={{exists(flightIconUrl)?flightIconUrl:"/images/icons/Icon_Flight.jpg"}} alt="" style="float:left;
+                                                                                                             width:20px;
+                                                                                                             height:20px;
+                                                                                                             margin-right:8px"/>
+              <div style="font-family: SamsungOneUISCN-450;
+                          font-size: 14px;
+                          color: rgba(250,250,250,0.60);
+                          line-height: 18px;">
+                {{exists(flightName)?flightName:"未知航班"}}
+              </div>
+            </div>
+
+            <div class="secondLine" style="clear:both;">
+              <div style="float:left;
+                          width:120px;
+                          height:19px;
+                          opacity: 0.6;
+                          font-family: SamsungOneUISCN-450;
+                          font-size: 14px;
+                          color: #FAFAFA;
+                          letter-spacing: 0;
+                          margin-left:40px">
+                {{exists(from)?from:"未知航班"}}
+
+              </div>
+              <div style="float:right;
+                          width:120px;
+                          height:19px;
+                          opacity: 0.6;
+                          font-family: SamsungOneUISCN-450;
+                          font-size: 14px;
+                          color: #FAFAFA;
+                          letter-spacing: 0;
+                          text-align: right;
+                          margin-right:40px;">
+                {{exists(to)?to:"未知航班"}}
+
+              </div>
+            </div>
+
+            <div class="thirdLine" style="clear:both;
+                                          display:flex;">
+              <div style="float:left;
+                          height:30px;
+                          font-family: SamsungOneUI-Regular;
+                          font-size: 22px;
+                          color: #FAFAFA;
+                          letter-spacing: 0;
+                          text-align: left;
+                          line-height: 26px;
+                          margin-left:40px">
+                {{exists(departTime)?departTime:"出发时间"}}
+
+              </div>
+              <hr style="flex:1;margin:13px 9px 0 9px; border:none;border-top:2px dotted #FAFAFA;" />
+              {{#if exists(day) && day == 0}}
+              <div style="float:right;
+                          height:30px;
+                          font-family: SamsungOneUI-Regular;
+                          font-size: 22px;
+                          color: #FAFAFA;
+                          letter-spacing: 0;
+                          text-align: right;
+                          line-height: 26px;
+                          margin-right:40px;">
+                {{exists(arriveTime)?arriveTime:"到达时间"}}
+
+              </div>
+
+              {{/if}}
+
+              {{#if exists(day) && day != 0}}
+              <div style="float:right;
+                          ">
+
+                <div style="float:right;
+                            font-family: SamsungOneUISCN-450;
+                            font-size: 11px;
+                            color: #FAFAFA;
+                            letter-spacing: 0;
+                            text-align: right;
+                            height:19px;
+                            margin-right:11px;
+                            margin-top:7px">
+                  +{{day}}天
+                </div>
+                <div style="float:right;
+                            height:30px;
+                            font-family: SamsungOneUI-Regular;
+                            font-size: 22px;
+                            color: #FAFAFA;
+                            letter-spacing: 0;
+                            text-align: right;
+                            line-height: 26px;
+                            ">
+                  {{exists(arriveTime)?arriveTime:"到达时间"}}
+
+                </div>
+              </div>
+              {{/if}}
+            </div>
+            <div class="fouthLine" style="clear:both;
+                                          width:312px;
+                                          height:19px;
+                                          margin:8px 0 0 12px;
+                                          font-family: SamsungOneUISCN-450;
+                                          font-size: 14px;
+                                          color: rgba(250,250,250,0.60);
+                                          letter-spacing: 0;">
+              {{exists(lable)?lable:"经济舱"}}
+            </div>
+            <div style="margin:0 auto; display:flex">
+              <hr style="clear:both;width:100%; height:1px;border:none;border-top:2px solid rgba(250,250,250,0.18);justify-content:center;margin:12px 6px 0 6px" />
+            </div>
+
+
+
+
+            <div class="fifthLine" style="clear:both;
+                                          padding:12px 12px 12px 12px;
+                                          ">
+
+              {{#if exists(discount) && discount != "0"}}
+              <div style="float:left;
+                          width:100px;
+                          height:27px;
+                          ont-family: SamsungOneUISCN-450;
+                          font-size: 19px;
+                          color: #FAFAFA;">
+                {{exists(discount)?discount:"10"}}折
+              </div>
+              {{/if}}
+
+              {{#if (exists(discount) && discount == "0") || (!exists(discount))}}
+              <div style="float:left;
+                          width:100px;
+                          height:27px;
+                          ont-family: SamsungOneUISCN-450;
+                          font-size: 19px;
+                          color: #FAFAFA;">
+                全价
+              </div>
+              {{/if}}
+              <div style="float:right;
+                          width:100px;
+                          height:27px;
+                          ont-family: SamsungOneUISCN-450;
+                          font-size: 19px;
+                          text-align: right;
+                          color: #FAFAFA;">
+                {{exists(price)?price:"价格"}}元
+              </div>
+            </div>
+          </div>
+        </div>
+      </children>
+    </viv:IntentContainer>
+     {{/each}}
+
+  </content>
+
+</layout-macro-def>

@@ -1,0 +1,103 @@
+action (ViewNews) {
+  description (the action to view news)
+  type(Search)
+  collect {
+    input (newsCategory) {
+      type (tencentNews.NewsCategory)
+      min (Optional) max (Many)
+    }
+    input (dateTime) {
+      type (tencentNews.DateTime)
+      min (Optional) max (One)
+      default-select{
+        with-rule{
+          select-first
+        }
+      }
+    }
+    input (newsDateTimeInterval) {
+      type (tencentNews.NewsDateTimeInterval)
+      min (Optional) max (One)
+      default-select{
+        with-rule{
+          select-first
+        }
+      }
+    }
+    input (person) {
+      type (tencentNews.Person)
+      min (Optional) max (One)
+    }
+    input (srcfrom) {
+      type (tencentNews.Srcfrom)
+      min (Optional) max (One)
+    }
+    input (location) {
+      type (ctrip.ArrivalCity)
+      min (Optional) max (One)
+    }
+    input (keywords) {
+      type (tencentNews.Keywords)
+      min (Optional) max (One)
+    }
+    input (searchOption){
+      type (tencentNews.SearchOption)
+      default-select{
+        with-rule{
+          select-first
+        }
+      }
+      min (Optional) max (One)
+    } 
+    input (currentL){
+      type (geo.GeocodedAddress)
+      min (Optional)
+      max (One)
+      default-init {
+        if (searchOption == 'currentLocation'){
+          if ($user.currentLocation.$exists) {
+            intent {
+              goal:geo.ReverseGeocode
+              subplan{
+                goal: geo.NamedPoint
+                value-set: geo.CurrentLocation { $expr ($user.currentLocation) }
+              }
+            }
+          } else {
+            intent {
+              goal:geo.ReverseGeocode
+              subplan{
+                goal: geo.NamedPoint
+                value-set { geo.NamedPoint @prompt-behavior(AlwaysElicitation) }
+              }
+            }
+          }          
+        }
+      }
+    }
+    input (type){
+      type(tencentNews.NewsType)
+      default-select{
+        with-rule{
+          select-first
+        }
+      }
+      min (Optional) max (One)
+    }
+    input (action){
+      type (tencentNews.View)
+      min (Optional) max (One)
+      default-select{
+        with-rule{
+          select-first
+        }
+      }
+    }
+    input (replan){
+      type (tencentNews.ReplanFlag)
+      min (Optional) max (One)
+      hidden
+    }
+  }
+  output (tencentNews.NewsInfo)
+}

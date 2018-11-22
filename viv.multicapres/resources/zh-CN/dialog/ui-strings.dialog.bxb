@@ -1,0 +1,5 @@
+template-macro-def(FINDING) { 
+  content {
+    template ("请稍等...")
+  }
+}

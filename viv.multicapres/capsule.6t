@@ -1,0 +1,23 @@
+capsule {
+  id (viv.multicapres)
+  version (0.1.2)
+  format (3)
+  targets {
+    target (bixby-mobile-zh-CN)
+  }
+  
+  permissions {
+    user-profile-access
+  }
+  
+  capsule-imports {    
+    import (viv.ctripflight) {as (ctrip) version(1.0.39)}
+    import (viv.weatherNews) {as (weatherNews) version(1.6.4)}
+    import (viv.tencentNews) {as (tencentNews) version(0.1011.7)}
+    import (viv.weather){ as (weather) version-from (weatherNews)}
+    import (viv.geo) { as (geo) version-from (weatherNews) }
+    import (viv.measurement) { as (measurement) version-from (weather)}
+    //import (viv.time) { as (time) version-from (weather)}
+    import (viv.time){as (time) version (2.61.31)}
+  }
+}

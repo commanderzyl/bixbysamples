@@ -5,6 +5,7 @@ var FakeHttpResponseData = require("./http/FakeHttpResponseData");
 var MyDate = require("./lib/DateLib");
 var Album = require("../qqfm/schema/Album");
 var Singer = require("../qqfm/schema/Singer");
+var SearchedSinger = require("../qqfm/schema/SearchedSinger");
 var Show = require("../qqfm/schema/Show");
 
 /**
@@ -105,7 +106,7 @@ HttpRequestMgr.prototype.searchAlbum = function(searchWord) {
 /**
  * 搜索主播
  * @param {string} searchWord 关键词
- * @returns {Array<Singer>} 主播列表
+ * @returns {Array<SearchedSinger>} 主播列表
  */
 HttpRequestMgr.prototype.searchSinger = function(searchWord) {
     var singerList = null;
@@ -119,7 +120,7 @@ HttpRequestMgr.prototype.searchSinger = function(searchWord) {
     // 得到主播列表后，生成对应的Array<Singer>
     var arrayList = [];
     for (var index = 0; index < singerList.length; index++) {
-        arrayList.push(new Singer(singerList[index]));
+        arrayList.push(new SearchedSinger(singerList[index]));
     }
     return arrayList;
 };
@@ -434,6 +435,52 @@ HttpRequestMgr.prototype.getAlbumShowList = function(albumID) {
     }
     return arrayList;
 };
+
+/**
+ * 获取某个主播下面最新的专辑
+ * @param {SearchedSinger} searchedSinger
+ * @returns {SingerAlbum} 最新的专辑
+ */
+HttpRequestMgr.prototype.getRecentSingerAlbum = function(searchedSinger) {
+    if (this.httpClient.disabled()) {
+        return null;
+    }
+
+    var configMgr = ConfigMgr.getInstance();
+    var query = {
+        anchor_id: searchedSinger.getId(),
+        appid: configMgr.getAppId(),
+        deviceid: configMgr.getDeviceId(),
+        pagination_size: 30
+    };
+
+    var uri = "/v1/detail/get_singer_album_list";
+    var url = configMgr.getUrl() + uri;
+    var response = this.httpClient.getUrl(url + "?" + buildQueryUrl(uri, query), {
+        format: "json"
+    });
+
+    if (!checkStatusCode(response)) {
+        console.log("failed to get_singer_album_list, " + response.ret + ", " + response.msg);
+        return null;
+    }
+
+    var albumList = response.album_list;
+    var maxUpdateTimeIndex = 0;
+    var maxUPdateTime = 0;
+    for (var index = 0; index < albumList.length; index++) {
+        if (maxUPdateTime < albumList[index].album_update_timestamp) {
+            maxUPdateTime = albumList[index].album_update_timestamp;
+            maxUpdateTimeIndex = index;
+        }
+    }
+
+    var album = null;
+    if (maxUpdateTimeIndex < albumList.length) {
+        album = new SingerAlbum(albumList[maxUpdateTimeIndex]);
+    }
+    return album;
+}
 
 /**
  * 检查返回的数据是否正确
