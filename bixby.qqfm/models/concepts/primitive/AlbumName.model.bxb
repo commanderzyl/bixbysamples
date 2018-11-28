@@ -1,0 +1,6 @@
+name (AlbumName) {
+  description (专辑名字)
+  features{
+    transient
+  }
+}

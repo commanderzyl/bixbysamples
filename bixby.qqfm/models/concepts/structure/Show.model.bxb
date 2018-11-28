@@ -1,0 +1,32 @@
+structure (Show) {
+  description (节目对象)
+  //节目名字
+  property (name) {
+    type (ShowName)
+    min (Required) max (One)
+  }
+
+  // 节目ID
+  property (id) {
+    type (ShowID)
+    min (Required) max (One)
+  }
+
+  //节目时长
+  property (duration) {
+    type (ShowDuration)
+    min (Required) max (One)
+  }
+
+  //节目更新时间
+  property (updateTimestamp) {
+    type (ShowTimestamp)
+    min (Required) max (One)
+  }
+
+  //播放地址
+  property (playUrl) {
+    type (ShowPlayUrl)
+    min (Required) max (One)
+  }
+}

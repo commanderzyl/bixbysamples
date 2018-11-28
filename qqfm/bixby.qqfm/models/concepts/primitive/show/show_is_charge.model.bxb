@@ -1,0 +1,3 @@
+integer (show_is_charge) {
+  description (__DESCRIPTION__)
+}

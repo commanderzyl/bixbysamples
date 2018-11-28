@@ -1,0 +1,10 @@
+structure (ShowSearchResult) {
+  extends (SearchResult)
+  description (搜索主播获取的结果)
+  
+  // 节目列表
+  property (show_list) {
+    type (Show)
+    min (Optional) max (Many)
+  }
+}

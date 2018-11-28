@@ -1,0 +1,6 @@
+structure (deeplink_uri) {
+  description (链接uri地址)
+  property (uri) {
+    type (Uri)
+  }
+}

@@ -4,11 +4,11 @@ action (ViewSingerDetail) {
   collect {
     input (singer) {
       description (主播对象)
-      type (Singer)
+      type (SearchedSinger)
       min (Required) max (One)
-    }
+    }    
   }
-  output (Singer) {
+  output (SingerShows) {
     description (主播对象，此输出对象包含更详细的内容)
   }
 }

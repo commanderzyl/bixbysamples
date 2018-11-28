@@ -1,0 +1,3 @@
+integer (high_file_size) {
+  description (__DESCRIPTION__)
+}

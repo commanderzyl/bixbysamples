@@ -1,0 +1,12 @@
+action (SearchSingerShows) {
+    type (Search)
+    description (搜索主播名下的节目列表)
+    collect {
+        input (singer) {
+            type(Singer)
+            min (Required) max (One)
+        }
+    }
+
+    output (BigResult)
+}

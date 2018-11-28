@@ -1,0 +1,62 @@
+structure (Singer) {
+  description (主播对象)
+  //主播ID
+  property (anchor_id) {
+    type (anchor_id)
+    min (Required) max (One)
+  }
+  
+  //专辑数量
+  property (anchor_album_num) {
+    type (anchor_album_num)
+    min (Optional) max (One)
+  }
+  
+  //创建时间戳
+  property (anchor_create_timestamp) {
+    type (anchor_create_timestamp)
+    min (Optional) max (One)
+  }
+  
+  //简介
+  property (anchor_desc) {
+    type (anchor_desc)
+    min (Optional) max (One)
+  }
+  
+  //粉丝数量
+  property (anchor_fans_num) {
+    type (anchor_fans_num)
+    min (Optional) max (One)
+  }
+  
+  //性别
+  property (anchor_gender) {
+    type (anchor_gender)
+    min (Optional) max (One)
+  }
+  
+  //logo uri
+  property (anchor_logo) {
+    type (anchor_logo)
+    min (Optional) max (One)
+  }
+  
+  //名字
+  property (anchor_name) {
+    type (anchor_name)
+    min (Optional) max (One)
+  }
+  
+  //节目数
+  property (anchor_show_num) {
+    type (anchor_show_num)
+    min (Optional) max (One)
+  }
+
+  // 最新的专辑名字
+  property (recent_album_name) {
+    type (album_name)
+    min (Optional) max (One)
+  }
+}

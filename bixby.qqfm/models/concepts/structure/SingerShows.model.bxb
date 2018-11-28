@@ -1,0 +1,27 @@
+structure (SingerShows) {
+    description(主播名下的节目信息)
+    
+    // 主播信息
+    property (searchedSinger) {
+        type (SearchedSinger)
+        min (Required) max (One)
+    }
+
+    // 当前节目游标
+    property (cursor) {
+        type (ShowCursor)
+        min (Required) max (One)
+    }
+
+    // 当前节目数量
+    property (size) {
+        type (ShowNum)
+        min (Required) max (One)
+    }
+
+    // 节目名单
+    property (show) {
+        type (Show)
+        min (Required) max (Many)
+    }
+}

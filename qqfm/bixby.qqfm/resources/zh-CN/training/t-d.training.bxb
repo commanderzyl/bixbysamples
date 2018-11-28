@@ -1,0 +1,8 @@
+train (t-df9lgdp4q2crzo6fsew7um2eg) {
+  utterance ("[g:SearchSinger] 在企鹅FM中搜索主播(DJ林浪)[v:anchor_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
+train (t-dxm16p8d3mce3iuk8mc1eqyqb) {
+  utterance ("[g:anchor_name:prompt] (蕊希)[v:anchor_name]")
+  plan (Y2BiEEvKrEiq1CssTMvVS8xLzsgvis9LzE3FKc4IhAwMPEDMBMRANgA=)
+}

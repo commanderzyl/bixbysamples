@@ -1,0 +1,13 @@
+structure (play_first) {
+  description (播放第几个)
+  property (play_result) {
+    type (play_result)
+    min (Optional) max (One)
+  }
+
+  // 如果存在这个deeplink, 那就说明需要跳转
+  property (deeplink_uri) {
+    type (deeplink_uri)
+    min (Optional) max (One)
+  }
+}

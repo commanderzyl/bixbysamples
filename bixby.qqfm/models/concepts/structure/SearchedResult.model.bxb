@@ -1,0 +1,18 @@
+structure (SearchedResult) {
+  description (搜索主播/节目/广播/专辑的结果)
+  //是否是推荐结果
+  property (isRecommonded) {
+    type (IsRecommended)
+    min (Required) max (One)
+  }
+
+  property (searchType) {
+      type (SearchType)
+      min (Required) max (One)
+  }
+
+  property (searchedSinger) {
+      type (SearchedSinger)
+      min (Optional) max (Many)
+  }
+}

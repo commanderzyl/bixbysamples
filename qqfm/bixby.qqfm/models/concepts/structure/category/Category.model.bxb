@@ -1,0 +1,20 @@
+structure (Category) {
+  description (分类信息)
+  // ID
+  property (category_id) {
+    type (category_id)
+    min (Required) max (One)
+  }
+  
+  // 名字
+  property (category_name) {
+    type (category_name)
+    min (Optional) max (One)
+  }
+  
+  // 层级
+  property (level) {
+    type (level)
+    min (Optional) max (One)
+  }
+}

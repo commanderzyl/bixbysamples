@@ -1,0 +1,32 @@
+structure (play_url) {
+  description (节目播放地址,分高 中 低 三个档次,播放地址保证7天有效)
+  property (high) {
+    type (high)
+    min (Optional) max (One)
+  }
+  
+  property (medium) {
+    type (medium)
+    min (Optional) max (One)
+  }
+  
+  property (small) {
+    type (small)
+    min (Optional) max (One)
+  }
+  
+  property (high_file_size) {
+    type (high_file_size)
+    min (Optional) max (One)
+  }
+  
+  property (medium_file_size) {
+    type (medium_file_size)
+    min (Optional) max (One)
+  }
+  
+  property (small_file_size) {
+    type (small_file_size)
+    min (Optional) max (One)
+  }
+}

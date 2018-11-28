@@ -1,0 +1,3 @@
+integer (show_duration) {
+  description (节目时长)
+}

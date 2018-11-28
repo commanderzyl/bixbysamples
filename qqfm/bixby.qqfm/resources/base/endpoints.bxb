@@ -1,0 +1,42 @@
+endpoints {
+  authorization {
+    none    
+  }
+
+  action-endpoints {
+    action-endpoint (SearchSinger) {
+      accepted-inputs (anchor_name, $vivContext)
+      local-endpoint (mobile/SearchSinger.js)
+    }
+
+    action-endpoint (SearchSingerShows) {
+      accepted-inputs (singer, $vivContext)
+      local-endpoint (mobile/SearchSingerShows.js)
+    }
+
+    action-endpoint (GetInputSinger) {
+      accepted-inputs (search_word,$vivContext)
+      local-endpoint (mobile/GetInputSinger.js)
+    }
+
+    action-endpoint (LoadMore) {
+      accepted-inputs (bigResult, $vivContext)
+      local-endpoint (mobile/LoadMore.js)
+    }  
+    
+    action-endpoint (CheckFirst) {
+      accepted-inputs (bigResult, ordinal, $vivContext)
+      local-endpoint (mobile/CheckFirst.js)
+    } 
+    
+    action-endpoint (PlayFirst) {
+      accepted-inputs (bigResult, ordinal, $vivContext)
+      local-endpoint (mobile/PlayFirst.js)
+    }
+    
+    // action-endpoint (First) {
+    //   accepted-inputs (bigResult, ordinal, $vivContext)
+    //   local-endpoint (mobile/First.js)
+    // }
+  }
+}

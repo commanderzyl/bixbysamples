@@ -73,3 +73,5 @@ SingerAlbum.prototype.getId = function() {
 SingerAlbum.prototype.getUpdateTimestamp = function() {
     return this.albumJson.album_update_timestamp;
 }
+
+module && (module.exports = SingerAlbum);

@@ -1,0 +1,3 @@
+integer (FansNum) {
+ description (粉丝数量)
+}

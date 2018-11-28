@@ -11,7 +11,7 @@ input-view {
   
   render {
     auto-complete{
-      type (Singer)
+      type (SearchedSinger)
       no-result-text{template ("未匹配")}
       placeholder{
         template ("请输入要查找的名字")
@@ -24,10 +24,10 @@ input-view {
             }
         }
         label { template ("为你找到以下搜索结果") }
-        where-each (Singer) {
+        where-each (singer) {
           display {
             primary-text {
-                template ("#{value(Singer.name)}")
+                template ("#{value(singer.name)}")
             }
             // secondary-text {          
             //     template ("[#{value(InputInfo.location)}]")
@@ -37,7 +37,7 @@ input-view {
           on-select {
             intent {
               goal: SingerName
-              value: viv.core.FormElement(Singer)
+              value: viv.core.FormElement(singer)
             }
           }
         }

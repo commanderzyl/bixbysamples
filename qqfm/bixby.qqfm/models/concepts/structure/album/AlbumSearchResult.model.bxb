@@ -1,0 +1,10 @@
+structure (AlbumSearchResult) {
+  extends (SearchResult)
+  description (搜索主播获取的结果)
+  
+  // 专辑列表
+  property (album_list) {
+    type (Album)
+    min (Optional) max (Many)
+  }
+}

@@ -1,0 +1,39 @@
+structure (SearchResult) {
+  description (搜索关键字相关主播/专辑/节目/广播结果)
+  
+  //是否是推荐结果
+  property (isRecommonded) {
+    type (isRecommended)
+    min (Optional) max (One)
+  }
+  
+  //搜索关键词
+  property (search_word) {
+    type (search_word)
+    min (Optional) max (One)
+  }
+  
+  // 是否有更多结果
+  property (has_more) {
+    type (has_more)
+    min (Optional) max (One)
+  }    
+  
+  // 分页请求的偏移量
+  property (pagination_cursor) {
+    type (pagination_cursor)
+    min (Optional) max (One)
+  }
+  
+  // 分页请求的大小, 最大30
+  property (pagination_size) {
+    type (pagination_size)
+    min (Optional) max (One)
+  }
+  
+  // 广播列表
+  // property (broadcast_list) {
+  //   type (Broadcast)
+  //   min (Optional) max (Many)
+  // }
+}

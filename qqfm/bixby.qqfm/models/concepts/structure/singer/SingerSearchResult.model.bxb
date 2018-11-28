@@ -1,0 +1,10 @@
+structure (SingerSearchResult) {
+  extends (SearchResult)
+  description (搜索主播获取的结果)
+  
+  // 主播列表
+  property (user_list) {
+    type (Singer)
+    min (Optional) max (Many)
+  }
+}

@@ -1,0 +1,13 @@
+structure (check_first) {
+  description (查看第几个)
+  property (check_result) {
+    type (check_result)
+    min (Optional) max (One)
+  }
+
+  // 如果存在这个deeplink, 那就说明需要跳转
+  property (deeplink_uri) {
+    type (deeplink_uri)
+    min (Optional) max (One)
+  }
+}

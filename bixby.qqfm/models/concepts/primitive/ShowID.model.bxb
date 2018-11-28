@@ -1,0 +1,6 @@
+name (ShowID) {
+  description (节目ID)
+  features{
+    transient
+  }
+}

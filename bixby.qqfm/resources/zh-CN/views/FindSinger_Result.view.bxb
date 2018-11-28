@@ -1,12 +1,12 @@
 result-view {
   match {
-    SearchedSinger(this) {
+    SearchedResult(this) {
       from-output: FindSinger(action)
     }
   }
   
   message {
-    if (size(this) == 0 || this.isRecommonded) {
+    if (!exists(this.searchedSinger) || size(this.searchedSinger) == 0 || this.isRecommonded) {
       template-macro(QQFM_3_2_Search_the_anchors_list_Singer_Match_No)
     } else {
       template-macro(QQFM_3_3_Search_the_anchors_list_Singer_Match_Yes)
@@ -14,8 +14,8 @@ result-view {
   }
   
   render {
-      if (size(this) >= 1) {
-        list-of (this.singer) {
+      if (size(this.searchedSinger) >= 1) {
+        list-of (this.searchedSinger) {
           where-each (item) {
             layout-macro (singer_summary_macro) {
               param (singer) {

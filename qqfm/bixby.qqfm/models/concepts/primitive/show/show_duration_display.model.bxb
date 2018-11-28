@@ -1,0 +1,3 @@
+text (show_duration_display) {
+  description (小时：分钟：秒)
+}

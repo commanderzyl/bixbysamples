@@ -1,0 +1,3 @@
+text (album_id) {
+  description (专辑ID)
+}

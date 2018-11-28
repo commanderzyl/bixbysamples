@@ -1,0 +1,16 @@
+action (PlayFirst) {
+  type (Search)
+  description (播放第几个)
+  collect {
+    input (bigResult) {
+      type (BigResult)
+      min (Optional) max (One)
+    }
+    
+    input (ordinal) {
+      type (common.Ordinal)
+      min (Optional) max (One)
+    }
+  }
+  output (BigResult)
+}

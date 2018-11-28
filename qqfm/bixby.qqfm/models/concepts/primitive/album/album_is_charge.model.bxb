@@ -1,0 +1,3 @@
+integer (album_is_charge) {
+  description (是否付费)
+}

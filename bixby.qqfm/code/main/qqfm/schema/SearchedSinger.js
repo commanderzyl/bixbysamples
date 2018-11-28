@@ -47,4 +47,28 @@ SearchedSinger.prototype.getId = function() {
     return this.singerJson.anchor_id;
 }
 
+/**
+ * 获取粉丝数量
+ * @returns {number} 粉丝数量
+ */
+SearchedSinger.prototype.getFansNum = function() {
+    return this.singerJson.anchor_fans_num;
+}
+
+/**
+ * 获取节目数量
+ * @returns {number} 节目数量
+ */
+SearchedSinger.prototype.getShowNum = function() {
+    return this.singerJson.anchor_show_num;
+}
+
+/**
+ * 获取主播logo
+ * @returns {string} 主播logo
+ */
+SearchedSinger.prototype.getLogoUri = function() {
+    return this.singerJson.anchor_logo;
+}
+
 module && (module.exports = SearchedSinger);

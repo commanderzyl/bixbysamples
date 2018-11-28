@@ -1,0 +1,6 @@
+text (ShowName) {
+  description (节目名字)
+  features{
+    transient
+  }
+}

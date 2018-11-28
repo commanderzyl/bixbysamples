@@ -1,0 +1,3 @@
+integer (is_lost) {
+  description (结果是否可变)
+}

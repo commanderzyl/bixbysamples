@@ -1,0 +1,8 @@
+train (t-fsbl33cggg2is98f6zfsniwlx) {
+  utterance ("[g:CheckFirst:continue:BigResult] 查看(第一个)[v:common.Ordinal:1]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBFEnXOSE3OdsssKi5hECrLLNNLzs/Nzc/T8y9KycxLzGFgYmAEYgYgycgAAlA+AA==)
+}
+train (t-fsqc5urazhdgqa4mt505flwqk) {
+  utterance ("[g:SearchSinger] 在企鹅FM中搜索主播(蕊希)[v:anchor_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}

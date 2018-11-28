@@ -1,0 +1,3 @@
+text (anchor_logo) {
+  description (logo uri)
+}

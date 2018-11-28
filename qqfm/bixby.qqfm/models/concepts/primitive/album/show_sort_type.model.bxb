@@ -1,0 +1,3 @@
+integer (show_sort_type) {
+  description (专辑下节目的排序顺序(按时间) 0逆序  1正序)
+}

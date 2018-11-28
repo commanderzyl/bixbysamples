@@ -1,0 +1,3 @@
+boolean (isRecommended) {
+  description (是否是推荐结果)
+}

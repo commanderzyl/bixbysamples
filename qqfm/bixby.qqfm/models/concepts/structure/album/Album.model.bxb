@@ -1,0 +1,80 @@
+structure (Album) {
+  description (专辑对象)
+  //封面地址
+  property (album_cover) {
+    type (album_cover)
+    min (Optional) max (One)
+  }
+  
+  //简介
+  property (album_desc) {
+    type (album_desc)
+    min (Optional) max (One)
+  }
+  
+  //ID
+  property (album_id) {
+    type (album_id)
+    min (Required) max (One)
+  }
+  
+  //是否付费
+  property (album_is_charge) {
+    type (album_is_charge)
+    min (Optional) max (One)
+  }
+  
+  //???
+  property (album_is_collected) {
+    type (album_is_collected)
+    min (Optional) max (One)
+  }
+  
+  //名字
+  property (album_name) {
+    type (album_name)
+    min (Optional) max (One)
+  }
+  
+  //专辑所属主播
+  property (album_owner) {
+    type (Singer)
+    min (Optional) max (One)
+  }
+  
+  //专辑更新时间
+  property (album_update_timestamp) {
+    type (album_update_timestamp)
+    min (Optional) max (One)
+  }
+  
+  //专辑分类情况
+  property (category) {
+    type (Category)
+    min (Optional) max (Many)
+  }
+  
+  //是否连载
+  property (is_serial) {
+    type (is_serial)
+    min (Optional) max (One)
+  }
+  
+  //专辑下的第一个节目（正序第一或倒叙第一）
+  property (show_list) {
+    type (Show)
+    min (Optional) max (Many)
+  }
+  
+  //专辑下节目数量
+  property (show_num) {
+    type (show_num)
+    min (Optional) max (One)
+  }
+  
+  //专辑下节目的排序顺序(按时间) 0逆序  1正序
+  property (show_sort_type) {
+    type (show_sort_type)
+    min (Optional) max (One)
+  }
+}

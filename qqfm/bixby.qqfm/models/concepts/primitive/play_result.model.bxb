@@ -1,0 +1,3 @@
+integer (play_result) {
+  description (播放第几个是否成功，0 成功 其它不成功)
+}

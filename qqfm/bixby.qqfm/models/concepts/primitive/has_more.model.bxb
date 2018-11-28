@@ -1,0 +1,3 @@
+integer (has_more) {
+  description (是否有更多结果 0 没有 1 有)
+}

@@ -1,0 +1,7 @@
+enum (search_type) {
+  description (搜索类型)
+  symbol (singer)
+  symbol (album)
+  symbol (show)
+  symbol (broadcast)
+}

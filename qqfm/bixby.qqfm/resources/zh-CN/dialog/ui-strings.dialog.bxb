@@ -1,0 +1,180 @@
+template-macro-def(QQFM_0_1_CommonCheck_Permission_Allowed_No) {
+  content {
+    choose(Random) {  
+      template("") {
+        speech ("Need to allow permission. Please check it.")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_0_2_CommonCheck_Feature_Supported_No) {
+  content {
+    choose(Random) {  
+      template("Sorry, I couldn’t do this in the current scenario.") {
+        speech ("Sorry, I couldn’t do this in the current scenario.")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_0_3_CommonCheck_App_Downloaded_No) {
+  content {
+    choose(Random) {  
+      template("You need to download the app if you want to use this feature.") {
+        speech ("You need to download the app if you want to use this feature.")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_3_1_Search_the_anchors_list_Singer_Exist_No) {
+  content {
+    choose(Random) {  
+      template("Who do you want to listen？") {
+        speech ("Who do you want to listen？")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_3_2_Search_the_anchors_list_Singer_Match_No) {
+  content {
+    choose(Random) {  
+      template("Here is no search result that you wanted. See some recommended anchors.") {
+        speech ("Here is no search result that you wanted. See some recommended anchors.")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_3_3_Search_the_anchors_list_Singer_Match_Yes) {
+  content {
+    choose(Random) {  
+      template("Ok here it is.") {
+        speech ("Ok here it is.")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_4_1_Search_album_list_recently_updated_Recent_Exist_No) {
+  content {
+    choose(Random) {  
+      template("What do you want to listen？") {
+        speech ("What do you want to listen？")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_4_2_Search_album_list_recently_updated_Recent_Match_Yes) {
+  content {
+    choose(Random) {  
+      template("Ok here it is.") {
+        speech ("Ok here it is.")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_5_1_Search_programme_list_recently_updated_Recent_Exist_No) {
+  content {
+    choose(Random) {  
+      template("What do you want to listen？") {
+        speech ("What do you want to listen？")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_5_2_Search_programme_list_recently_updated_Recent_Match_Yes) {
+  content {
+    choose(Random) {  
+      template("Ok here it is.") {
+        speech ("Ok here it is.")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_8_1_Play_album_list_recently_updated_Recent_Exist_No) {
+  content {
+    choose(Random) {  
+      template("What do you want to listen？") {
+        speech ("What do you want to listen？")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_9_1_Play_programme_list_recently_updated_Recent_Exist_No) {
+  content {
+    choose(Random) {  
+      template("What do you want to listen？") {
+        speech ("What do you want to listen？")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_12_1_See_one_Number_Match_No) {
+  content {
+    choose(Random) {  
+      template("I couldn’t find the result you wanted. Please check and say again.") {
+        speech ("I couldn’t find the result you wanted. Please check and say again.")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_12_2_See_one_Number_Match_Yes) {
+  content {
+    choose(Random) {  
+      template("Ok.") {
+        speech ("Ok.")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_13_1_Play_one_Number_Match_No) {
+  content {
+    choose(Random) {  
+      template("I couldn’t find the result you wanted. Please check and say again.") {
+        speech ("I couldn’t find the result you wanted. Please check and say again.")
+      }
+    }
+  }
+}
+
+template-macro-def(LOAD_MORE) {
+  content {
+    choose(Random) {  
+      template("加载更多") {
+        speech ("加载更多")
+      }
+    }
+  }
+}
+
+template-macro-def(CHECK_FIRST) {
+  content {
+    choose(Random) {  
+      template("查看第一个") {
+        speech ("查看第一个")
+      }
+    }
+  }
+}
+
+template-macro-def(PLAY_FIRST) {
+  content {
+    choose(Random) {  
+      template("播放第一个") {
+        speech ("播放第一个")
+      }
+    }
+  }
+}
+

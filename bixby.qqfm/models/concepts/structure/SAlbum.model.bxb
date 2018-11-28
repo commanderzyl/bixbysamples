@@ -2,7 +2,7 @@ structure (SAlbum) {
   description (专辑对象)
   //专辑名字
   property (name) {
-    type (TAlbumName)
+    type (AlbumName)
     min (Required) max (One)
   }
 }

@@ -1,0 +1,28 @@
+structure (SingerShows) {
+  description (主播名下的节目列表)
+
+  property (singer) {
+      type (Singer)
+      min (Optional) max (One)
+  }
+
+  property (show_list) {
+      type (Show)
+      min (Optional) max (Many)
+  }
+
+  property(has_more) {
+      type (has_more)
+      min (Optional) max (One)
+  }
+
+  property(pagination_cursor) {
+      type (pagination_cursor)
+      min (Optional) max (One)
+  }
+
+  property(pagination_size) {
+      type (pagination_size)
+      min (Optional) max (One)
+  }
+}

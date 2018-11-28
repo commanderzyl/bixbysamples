@@ -1,12 +1,45 @@
 structure (SearchedSinger) {
   description (搜索主播的结果)
-  property (isRecommonded) {
-    type (IsRecommended)
+
+  //主播ID
+  property (ID) {
+    type (SingerID)
     min (Required) max (One)
   }
   
-  property (singer) {
-    type (Singer)
-    min (Required) max (Many)
+  //主播名字
+  property (name) {
+    type (SingerName)
+    min (Required) max (One)
+  }
+
+  //专辑数量
+  property (albumNum) {
+    type (AlbumNum)
+    min (Required) max (One)
+  }
+
+  //最新专辑名称
+  property (recentAlbumName) {
+    type (AlbumName)
+    min (Optional) max (One)
+  }
+
+  //粉丝数量
+  property (fansNum) {
+    type (FansNum)
+    min (Required) max (One)
+  }
+
+  //节目总数
+  property (showNum) {
+    type (ShowNum)
+    min (Required) max (One)
+  }
+
+  // LOGO uri
+  property (logoUri) {
+    type (SingerLogoURI)
+    min (Optional) max (One)
   }
 }

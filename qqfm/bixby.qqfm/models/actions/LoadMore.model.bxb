@@ -1,0 +1,12 @@
+action (LoadMore) {
+  type (Search)
+  description (加载更多)
+  collect { 
+    input (bigResult) {
+      type (BigResult)
+      min (Required) max (One)
+    }
+  }
+    
+  output (BigResult)
+}

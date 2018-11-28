@@ -1,0 +1,3 @@
+integer (is_serial) {
+  description (是否连载中 1连载 0完结)
+}

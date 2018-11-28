@@ -66,11 +66,12 @@ AlbumMgr.prototype.getRecentAlbum = function() {
 /**
  * 获取某个专辑下面的节目列表
  * @param {string} albumID 专辑ID
+ * @param {object} 分页参数
  * @returns {Array<Show>} 节目列表
  */
-AlbumMgr.prototype.getAlbumShowList = function(albumID) {
+AlbumMgr.prototype.getAlbumShowList = function(albumID, params) {
     var httpRequestMgr = HttpRequestMgr.getInstance();
-    var showList = httpRequestMgr.getAlbumShowList(albumID);
+    var showList = httpRequestMgr.getAlbumShowList(albumID, params);
     if (!showList) {
         console.log("failed to search showList for" + albumID);
         return null;

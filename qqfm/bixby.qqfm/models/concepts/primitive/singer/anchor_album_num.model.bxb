@@ -1,0 +1,3 @@
+integer (anchor_album_num) {
+  description (专辑数量)
+}

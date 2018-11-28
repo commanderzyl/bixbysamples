@@ -1,0 +1,3 @@
+integer (album_update_timestamp) {
+  description (专辑更新时间)
+}

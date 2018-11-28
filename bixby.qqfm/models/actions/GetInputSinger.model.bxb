@@ -8,5 +8,5 @@ action (GetInputSinger) {
       max(One)
     }
   }
-  output (Singer)
+  output (SearchedSinger)
 }

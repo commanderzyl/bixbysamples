@@ -1,0 +1,3 @@
+integer (anchor_show_num) {
+  description (主播节目数)
+}

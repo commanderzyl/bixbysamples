@@ -15,8 +15,8 @@ action (FindSinger) {
     // }
     input (singerName) {
       type(SingerName)
-      min (Required) max (One)
+      min (Required) max (Many)
     }
   }
-  output (SearchedSinger)
+  output (SearchedResult)
 }

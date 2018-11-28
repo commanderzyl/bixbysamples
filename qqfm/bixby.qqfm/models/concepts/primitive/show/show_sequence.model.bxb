@@ -1,0 +1,3 @@
+integer (show_sequence) {
+  description (__DESCRIPTION__)
+}

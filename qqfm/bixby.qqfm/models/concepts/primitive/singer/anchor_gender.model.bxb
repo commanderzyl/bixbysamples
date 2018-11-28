@@ -1,0 +1,4 @@
+integer (anchor_gender) {
+  // -1, 0, 1
+  description (性别)
+}

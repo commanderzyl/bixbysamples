@@ -1,0 +1,3 @@
+integer (anchor_fans_num) {
+  description (粉丝数量)
+}

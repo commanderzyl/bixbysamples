@@ -1,0 +1,3 @@
+integer (pagination_cursor) {
+  description (分页请求的偏移量)
+}

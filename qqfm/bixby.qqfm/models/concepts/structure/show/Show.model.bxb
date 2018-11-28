@@ -1,0 +1,72 @@
+structure (Show) {
+  description (节目对象)
+  //ID
+  property (show_id) {
+    type (show_id)
+    min (Required) max (One)
+  }
+  
+  //封面URL
+  property (show_cover) {
+    type (show_cover)
+    min (Optional) max (One)
+  }
+  
+  //创建时间
+  property (show_create_timestamp) {
+    type (show_create_timestamp)
+    min (Optional) max (One)
+  }
+  
+  //创建时间显示广西
+  property (show_create_timestamp_display) {
+    type (show_create_timestamp_display)
+    min (Optional) max (One)
+  }
+  
+  //简介
+  property (show_desc) {
+    type (show_desc)
+    min (Optional) max (One)
+  }
+  
+  //节目时长
+  property (show_duration) {
+    type (show_duration)
+    min (Optional) max (One)
+  }
+
+  //节目时长显示文本
+  property (show_duration_display) {
+    type (show_duration_display)
+    min (Optional) max (One)
+  }
+  
+  //？？
+  property (show_is_collected) {
+    type (show_is_collected)
+    min (Optional) max (One)
+  }
+  
+  //节目名字
+  property (show_name) {
+    type (show_name)
+    min (Optional) max (One)
+  }
+  
+  //播放地址
+  property (play_url) {
+    type (play_url)
+    min (Optional) max (One)
+  }
+    
+  property (show_is_charge) {
+    type (show_is_charge)
+    min (Optional) max (One)
+  }
+ 
+  property (show_sequence) {
+    type (show_sequence)
+    min (Optional) max (One)
+  }
+}

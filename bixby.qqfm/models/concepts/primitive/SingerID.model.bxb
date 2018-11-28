@@ -1,0 +1,6 @@
+name (SingerID) {
+  description (歌手ID)
+  features{
+    transient
+  }
+}

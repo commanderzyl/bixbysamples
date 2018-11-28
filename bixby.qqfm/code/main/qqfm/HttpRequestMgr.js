@@ -5,8 +5,10 @@ var FakeHttpResponseData = require("./http/FakeHttpResponseData");
 var MyDate = require("./lib/DateLib");
 var Album = require("../qqfm/schema/Album");
 var Singer = require("../qqfm/schema/Singer");
+var SingerAlbum = require("../qqfm/schema/SingerAlbum");
 var SearchedSinger = require("../qqfm/schema/SearchedSinger");
 var Show = require("../qqfm/schema/Show");
+var SearchedResult = require("../qqfm/schema/SearchedResult");
 
 /**
  * 负责企鹅FM的http请求,建议单例模式下使用
@@ -31,9 +33,10 @@ HttpRequestMgr.getInstance = function() {
 /**
  * 获取某个分类下的专辑列表
  * @param {Category} category 分类对象
+ * @param {Object} params 分页参数
  * @returns {Array<Album>} 专辑列表
  */
-HttpRequestMgr.prototype.getAlbumList = function(category) {
+HttpRequestMgr.prototype.getAlbumList = function(category, params) {
     var albumList = null;
     if (this.httpClient.disabled()) {
         albumList = FakeHttpResponseData.getAlbumList();
@@ -46,7 +49,9 @@ HttpRequestMgr.prototype.getAlbumList = function(category) {
             category_id: parseInt(category.getId()),
             appid: configMgr.getAppId(),
             deviceid: configMgr.getDeviceId(),
-            pagination_size: 30
+            pagination_cursor: (params && params.pagination_cursor) ? params.pagination_cursor : 0,
+            pagination_size: (params && params.pagination_size) ? params.pagination_size : 30
+
         };
 
         var response = this.httpClient.getUrl(url + "?" + buildQueryUrl(uri, query), {
@@ -106,23 +111,24 @@ HttpRequestMgr.prototype.searchAlbum = function(searchWord) {
 /**
  * 搜索主播
  * @param {string} searchWord 关键词
- * @returns {Array<SearchedSinger>} 主播列表
+ * @param {object} params 分页参数, 格式如下：
+ * {
+ *  pagination_cursor: 0, 
+ *  pagination_size: 30,//最大30
+ * }
+ * @returns {Array<SearchedResult>} 主播列表
+ * 
  */
-HttpRequestMgr.prototype.searchSinger = function(searchWord) {
-    var singerList = null;
+HttpRequestMgr.prototype.searchSinger = function(searchWord, params) {
+    var searchedResult = null;
     if (this.httpClient.disabled()) {
         singerList = FakeHttpResponseData.getSingerList();
     } else {
         //从config对象中获取请求url, 设置请求参数，然后获取结果即可
-        singerList = search.call(this, "singer", searchWord);
+        searchedResult = search.call(this, "singer", searchWord, params);
     }
 
-    // 得到主播列表后，生成对应的Array<Singer>
-    var arrayList = [];
-    for (var index = 0; index < singerList.length; index++) {
-        arrayList.push(new SearchedSinger(singerList[index]));
-    }
-    return arrayList;
+    return searchedResult;
 };
 
 /**
@@ -156,7 +162,7 @@ HttpRequestMgr.prototype.searchBroadcast = function(searchWord) {
     return null;
 }
 
-function search(searchType, searchWord) {
+function search(searchType, searchWord, params) {
     //从config对象中获取请求url, 设置请求参数，然后获取结果即可
     var configMgr = ConfigMgr.getInstance();
     var uri = "/v1/search/search";
@@ -166,7 +172,8 @@ function search(searchType, searchWord) {
         search_word: searchWord,
         appid: configMgr.getAppId(),
         deviceid: configMgr.getDeviceId(),
-        pagination_size: 30
+        pagination_cursor: (params && params.pagination_cursor) ? params.pagination_cursor : 0,
+        pagination_size: (params && params.pagination_size) ? params.pagination_size : 30
     };
 
     var response = this.httpClient.getUrl(url + "?" + buildQueryUrl(uri, query), {
@@ -178,17 +185,17 @@ function search(searchType, searchWord) {
         return null;
     }
 
-    switch (searchType) {
-        case "album":
-            return response.album_list;
-        case "show":
-            return response.show_list;
-        case "singer":
-            return response.user_list;
-        case "broadcast":
-            return response.broadcast_list;
-    }
-    return null;
+    // switch (searchType) {
+    //     case "album":
+    //         return response.album_list;
+    //     case "show":
+    //         return response.show_list;
+    //     case "singer":
+    //         return response.user_list;
+    //     case "broadcast":
+    //         return response.broadcast_list;
+    // }
+    return new SearchedResult(response);
 }
 
 /**
@@ -395,9 +402,14 @@ HttpRequestMgr.prototype.getShows = function(showIds) {
 /**
  * 获取某个专辑下的节目信息列表
  * @param {string} albumID 专辑ID
+ * @param {object} params 分页参数
+ * {
+ *  pagination_cursor: 0, 
+ *  pagination_size: 30,//最大30
+ * }
  * @returns {Array<Show>} 节目列表
  */
-HttpRequestMgr.prototype.getAlbumShowList = function(albumID) {
+HttpRequestMgr.prototype.getAlbumShowList = function(albumID, params) {
     var showList = null;
     if (this.httpClient.disabled()) {
         showList = FakeHttpResponseData.getRecentAlbumList();
@@ -406,7 +418,10 @@ HttpRequestMgr.prototype.getAlbumShowList = function(albumID) {
         var query = {
             album_id: albumID,
             appid: configMgr.getAppId(),
-            deviceid: configMgr.getDeviceId()
+            deviceid: configMgr.getDeviceId(),
+            pagination_cursor: (params && params.pagination_cursor) ? params.pagination_cursor : 0,
+            pagination_size: (params && params.pagination_size) ? params.pagination_size : 30
+
         };
 
         var uri = "/v1/detail/get_album_show_list";
@@ -435,6 +450,41 @@ HttpRequestMgr.prototype.getAlbumShowList = function(albumID) {
     }
     return arrayList;
 };
+
+/**
+ * 获取主播下面的专辑列表
+ * @param {SearchedSinger} searchedSinger 主播
+ * @param {object} params 分页对象
+ * @return {Array<SingerAlbum>} 专辑数组
+ */
+HttpRequestMgr.prototype.getSingerAlbumList = function(searchedSinger, params) {
+    var configMgr = ConfigMgr.getInstance();
+    var query = {
+        anchor_id: searchedSinger.getId(),
+        appid: configMgr.getAppId(),
+        deviceid: configMgr.getDeviceId(),
+        pagination_cursor: (params && params.pagination_cursor) ? params.pagination_cursor : 0,
+        pagination_size: (params && params.pagination_size) ? params.pagination_size : 30
+    };
+
+    var uri = "/v1/detail/get_singer_album_list";
+    var url = configMgr.getUrl() + uri;
+    var response = this.httpClient.getUrl(url + "?" + buildQueryUrl(uri, query), {
+        format: "json"
+    });
+
+    if (!checkStatusCode(response)) {
+        console.log("failed to get_singer_album_list, " + response.ret + ", " + response.msg);
+        return null;
+    }
+
+    var albumList = response.album_list;
+    var albumArray = [];
+    for (var index = 0; index < albumList.length; index++) {
+        albumArray.push(new SingerAlbum(albumList[index]));
+    }
+    return albumArray;
+}
 
 /**
  * 获取某个主播下面最新的专辑

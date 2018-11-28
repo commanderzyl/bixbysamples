@@ -1,0 +1,7 @@
+enum (SearchType) {
+    description (搜索类型)
+    symbol (主播)
+    symbol (广播)
+    symbol (节目)
+    symbol (专辑)
+}

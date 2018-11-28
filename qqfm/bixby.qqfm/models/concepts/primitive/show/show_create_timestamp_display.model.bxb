@@ -1,0 +1,3 @@
+text (show_create_timestamp_display) {
+  description (YYYY-MM-dd)
+}

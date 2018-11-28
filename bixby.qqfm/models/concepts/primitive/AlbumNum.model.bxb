@@ -1,0 +1,3 @@
+integer (AlbumNum) {
+ description (专辑数量)
+}

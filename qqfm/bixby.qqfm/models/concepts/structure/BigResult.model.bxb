@@ -1,0 +1,26 @@
+structure (BigResult) {
+  // 别问我为什么这么做，被 converstion driver快搞死了， FUCK！
+  description (这是一个大的输出，包含所有想要获取的信息)
+  
+  // QQFM_3 搜索主播列表 3.2 3.3 主播列表界面
+  property (singerSearchResult) {
+    type (SingerSearchResult)
+    min (Optional) max (One)
+  }
+  
+  // QQFM_3 搜索主播列表 3.4 主播名下的节目列表
+  property (singerShows) {
+    type (SingerShows)
+    min (Optional) max (One)
+  }
+  
+  property (check_first) {
+    type (check_first)
+    min (Optional) max (One)
+  }
+  
+  property (play_first) {
+    type (play_first)
+    min (Optional) max (One)
+  }
+}
