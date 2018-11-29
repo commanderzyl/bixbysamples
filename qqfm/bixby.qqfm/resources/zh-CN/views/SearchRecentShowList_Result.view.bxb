@@ -1,0 +1,41 @@
+result-view {
+  match {
+    BigResult(this) {
+      from-output: SearchRecentShowList(action)
+    }
+  }
+  
+  message {     
+    if (!exists(this.recentShowListSearchResult) || !exists(this.recentShowListSearchResult.show_list) || size(this.recentShowListSearchResult.show_list) == 0) {
+      template-macro(QQFM_5_2_Search_programme_list_recently_updated_Result_Match_No)
+    } else {
+      template-macro(QQFM_5_3_Search_programme_list_recently_updated_Result_Match_Yes)
+    }
+  }
+  
+  conversation-drivers {    
+    conversation-driver {
+      template-macro (PLAY_FIRST)
+    }
+    
+    if (exists(this.recentShowListSearchResult) && exists(this.recentShowListSearchResult.has_more) && this.recentShowListSearchResult.has_more == 1) {
+      conversation-driver {
+        template-macro (LOAD_MORE)
+      }
+    }    
+  }
+  
+  render {      
+    if (exists(this.recentShowListSearchResult.show_list) && size(this.recentShowListSearchResult.show_list) >= 1) {
+        list-of (this.recentShowListSearchResult.show_list) {
+          where-each (item) {
+            layout-macro (recent_show_list_summary_macro) {
+              param (show) {
+                expression (item)
+              }
+            }
+          }
+        }
+      }         
+  }  
+}

@@ -77,4 +77,10 @@ structure (Album) {
     type (show_sort_type)
     min (Optional) max (One)
   }
+  
+  // deeplink 地址
+  property (schema) {
+    type (schema)
+    min (Optional) max (One)
+  }
 }

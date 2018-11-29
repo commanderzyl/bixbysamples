@@ -1,0 +1,11 @@
+action (SearchRecentAlbumListDetail) {
+  type (Search)
+  description (搜索某个专辑下面的节目列表)
+  collect {
+    input (album) {
+      type (Album)
+      min (Optional) max (One)
+    }
+  }
+  output (BigResult)
+}

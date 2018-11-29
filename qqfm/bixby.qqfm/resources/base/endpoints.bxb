@@ -13,6 +13,21 @@ endpoints {
       accepted-inputs (singer, $vivContext)
       local-endpoint (mobile/SearchSingerShows.js)
     }
+    
+    action-endpoint (SearchRecentAlbumList) {
+      accepted-inputs (recent, $vivContext)
+      local-endpoint (mobile/SearchRecentAlbumList.js)
+    }
+    
+    action-endpoint (SearchRecentAlbumListDetail) {
+      accepted-inputs (album, $vivContext)
+      local-endpoint (mobile/SearchRecentAlbumListDetail.js)
+    }
+    
+    action-endpoint (SearchRecentShowList) {
+      accepted-inputs (recent, $vivContext)
+      local-endpoint (mobile/SearchRecentShowList.js)
+    }
 
     action-endpoint (GetInputSinger) {
       accepted-inputs (search_word,$vivContext)

@@ -68,7 +68,17 @@ template-macro-def(QQFM_4_1_Search_album_list_recently_updated_Recent_Exist_No) 
   }
 }
 
-template-macro-def(QQFM_4_2_Search_album_list_recently_updated_Recent_Match_Yes) {
+template-macro-def(QQFM_4_2_Search_album_list_recently_updated_Result_Match_No) {
+  content {
+    choose(Random) {  
+      template("Here doesn’t have recently updated albums yet. ") {
+        speech ("Here doesn’t have recently updated albums yet. ")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes) {
   content {
     choose(Random) {  
       template("Ok here it is.") {
@@ -88,7 +98,17 @@ template-macro-def(QQFM_5_1_Search_programme_list_recently_updated_Recent_Exist_
   }
 }
 
-template-macro-def(QQFM_5_2_Search_programme_list_recently_updated_Recent_Match_Yes) {
+template-macro-def(QQFM_5_2_Search_programme_list_recently_updated_Result_Match_No) {
+  content {
+    choose(Random) {  
+      template("Here doesn’t have recently updated programmes yet. ") {
+        speech ("Here doesn’t have recently updated programmes yet. ")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_5_3_Search_programme_list_recently_updated_Result_Match_Yes) {
   content {
     choose(Random) {  
       template("Ok here it is.") {
@@ -108,11 +128,31 @@ template-macro-def(QQFM_8_1_Play_album_list_recently_updated_Recent_Exist_No) {
   }
 }
 
+template-macro-def(QQFM_8_2_Play_album_list_recently_updated_Result_Match_No) {
+  content {
+    choose(Random) {  
+      template("Here doesn’t have recently updated albums yet. ") {
+        speech ("Here doesn’t have recently updated albums yet. ")
+      }
+    }
+  }
+}
+
 template-macro-def(QQFM_9_1_Play_programme_list_recently_updated_Recent_Exist_No) {
   content {
     choose(Random) {  
       template("What do you want to listen？") {
         speech ("What do you want to listen？")
+      }
+    }
+  }
+}
+
+template-macro-def(QQFM_9_2_Play_programme_list_recently_updated_Result_Match_No) {
+  content {
+    choose(Random) {  
+      template("Here doesn’t have recently updated programmes yet. ") {
+        speech ("Here doesn’t have recently updated programmes yet. ")
       }
     }
   }

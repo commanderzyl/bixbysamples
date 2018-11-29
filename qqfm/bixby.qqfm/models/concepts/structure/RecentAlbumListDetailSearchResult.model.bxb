@@ -1,0 +1,14 @@
+structure (RecentAlbumListDetailSearchResult) {
+  extends (SearchResult)
+  description (搜索最新更新的专辑时查看某个专辑的节目列表)
+
+  property (album) {
+    type (Album)
+    min (Optional) max (One)
+  }
+
+  property (show_list) {
+    type (Show)
+    min (Optional) max (Many)
+  }
+}

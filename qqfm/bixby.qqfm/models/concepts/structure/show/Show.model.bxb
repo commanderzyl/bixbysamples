@@ -69,4 +69,17 @@ structure (Show) {
     type (show_sequence)
     min (Optional) max (One)
   }
+  
+  // deeplink 地址
+  property (schema) {
+    type (schema)
+    min (Optional) max (One)
+  }
+  
+  // 所属专辑信息
+  property (belong_album_info) {
+    type (Album)
+    min (Optional) max (One)
+  }
+  
 }

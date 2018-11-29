@@ -19,7 +19,8 @@ module.exports = {
     getFromTime: getFromTime,
     getUserId: getUserId,
     hanziConvrtToUnicode: hanziConvrtToUnicode,
-    timeStampToDateFormat: timeStampToDateFormat
+    timeStampToDateFormat: timeStampToDateFormat,
+    getTimeStampOfCurrentDayZeroClock: getTimeStampOfCurrentDayZeroClock
 }
 
 function getTimeStamp() {
@@ -29,6 +30,11 @@ function getTimeStamp() {
 function getFromTime(dateTime) {
     console.log("year is " + dateTime.year + ",month is " + dateTime.month + ",day is " + dateTime.day);
     return Math.floor((dates.ZonedDateTime.of(dateTime.year, dateTime.month, dateTime.day, 0, 0, 0, 0).getMillisFromEpoch()) / 1000) + "";
+}
+
+function getTimeStampOfCurrentDayZeroClock() {
+    var dateTime = dates.ZonedDateTime.now("UTC");
+    return Math.floor((dates.ZonedDateTime.of(dateTime.getYear(), dateTime.getMonth(), dateTime.getDay(), 0, 0, 0, 0).getMillisFromEpoch()) / 1000) + "";
 }
 
 function getArticalSearchBody(newsCategory, dateTime, person, srcFrom, location, keywords, searchOption, $vivContext) {

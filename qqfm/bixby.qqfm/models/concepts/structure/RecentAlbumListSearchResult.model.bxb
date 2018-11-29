@@ -1,0 +1,23 @@
+structure (RecentAlbumListSearchResult) {
+  extends (SearchResult)
+  description (搜索最新更新的专辑的结果)
+  property (album_list) {
+    type (Album)
+    min (Optional) max (Many)
+  }
+  
+  property (recent) {
+    type (recent)
+    min (Optional) max (One)
+  }
+  
+  property (timestamp_start) {
+    type (timestamp_start)
+    min (Optional) max (One)
+  }
+  
+  property (timestamp_end) {
+    type (timestamp_end)
+    min (Optional) max (One)
+  }
+}

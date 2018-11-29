@@ -23,4 +23,19 @@ structure (BigResult) {
     type (play_first)
     min (Optional) max (One)
   }
+  
+  property (recentAlbumListSearchResult) {
+    type (RecentAlbumListSearchResult)
+    min (Optional) max (One)
+  }
+  
+  property (recentAlbumListDetailSearchResult) {
+    type (RecentAlbumListDetailSearchResult)
+    min (Optional) max (One)
+  }
+  
+  property (recentShowListSearchResult) {
+    type (RecentShowListSearchResult)
+    min (Optional) max (One)
+  }
 }

@@ -1,0 +1,11 @@
+action (SearchRecentShowList) {
+  type (Search)
+  description (搜索最新更新的节目)
+  collect {
+    input (recent) {
+      type (recent)
+      min (Required) max (One)
+    }
+  }
+  output (BigResult)
+}

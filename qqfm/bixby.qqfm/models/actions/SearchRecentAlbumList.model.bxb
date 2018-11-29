@@ -1,0 +1,11 @@
+action (SearchRecentAlbumList) {
+  type (Search)
+  description (Goal ID QQFM_4 Goal : 搜索最近更新的专辑)
+  collect {
+    input (recent) {
+      type (recent)
+      min (Required) max (One)
+    }
+  }
+  output (BigResult)
+}

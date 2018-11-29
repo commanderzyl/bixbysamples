@@ -1,5 +1,5 @@
 var CryptoJS = require("./brix-crypto-js/crypto-js");
-
+var base = require("./base");
 /**
 搜索主播/专辑/节目信息（/v1/search/search）
 接口说明： 搜索关键字相关主播/专辑/节目
@@ -232,6 +232,119 @@ function getSingerShows(singer, params) {
     console.log("getSingerShows, result = " + JSON.stringify(result));
     return result;
 }
+/**
+某个时间段更新的专辑(/v1/update/get_recent_album_list)
+接口说明： 获取在timestamp_start , timestamp_end之间更新的专辑
+参数要求:
+timestamp_start 起始时间戳
+timestamp_end 结束时间戳
+order item排序顺序默认正序 ,为0倒叙
+filter_charge 是否过滤付费专辑，默认拉全部 0 全部（免费+试听收费） 1 拉取免费专辑 2 拉取授权的收费专辑
+is_offline 0 拉取有更新的上架专辑 1 拉取下架专辑
+列表项
+
+* category_id   支持按照分类筛选，默认全部分类
+*/
+function getRecentAlbumList(params) {
+    console.log("getRecentAlbumList, params = " + JSON.stringify(params));
+    if (!params || !params.appid || !params.deviceid) {
+        throw new Error("getRecentAlbumList: params error");
+    }
+
+    if (!params.timestamp_start || !params.timestamp_end) {
+        //params.timestamp_start = base.getTimeStampOfCurrentDayZeroClock();
+        params.timestamp_end = base.getTimeStamp();
+        params.timestamp_start = params.timestamp_end - 3600;
+    }
+
+    var uri = config.get("qqfm.get_recent_album_list_path");
+    var url = config.get("qqfm.host") + uri;
+    var response = http.getUrl(url + "?" + buildQueryUrl(uri, params), {
+        format: "json"
+    });
+
+    if (!checkStatusCode(response)) {
+        console.log("failed to getRecentAlbumList, " + response.ret + ", " + response.msg);
+        return null;
+    }
+
+    response.timestamp_start = params.timestamp_start;
+    response.timestamp_end = params.timestamp_end;
+    console.log("success to getRecentAlbumList: " + JSON.stringify(response));
+    return response;
+}
+/**
+某个时间段内更新的节目(/v1/update/get_recent_show_list)
+接口说明： 获取在timestamp_start , timestamp_end之间新增的节目
+参数要求:
+timestamp_start 起始时间戳
+timestamp_end 结束时间戳
+order item排序顺序默认正序 ,为0倒叙
+filter_charge 是否过滤付费专辑，默认拉全部 0 全部（免费+试听收费） 1 拉取免费专辑 2 拉取授权的收费专辑
+is_offline 0 拉取有更新的上架专辑 1 拉取下架专辑
+category_id 支持按照分类筛选，默认全部分类
+是否分页：是
+*/
+function getRecentShowList(params) {
+    console.log("getRecentShowList, params = " + JSON.stringify(params));
+    if (!params || !params.appid || !params.deviceid) {
+        throw new Error("getRecentShowList: params error");
+    }
+
+    if (!params.timestamp_start || !params.timestamp_end) {
+        //params.timestamp_start = base.getTimeStampOfCurrentDayZeroClock();
+        params.timestamp_end = base.getTimeStamp();
+        params.timestamp_start = params.timestamp_end - 3600;
+    }
+
+    var uri = config.get("qqfm.get_recent_show_list_path");
+    var url = config.get("qqfm.host") + uri;
+    var response = http.getUrl(url + "?" + buildQueryUrl(uri, params), {
+        format: "json"
+    });
+
+    if (!checkStatusCode(response)) {
+        console.log("failed to getRecentShowList, " + response.ret + ", " + response.msg);
+        return null;
+    }
+
+    response.timestamp_start = params.timestamp_start;
+    response.timestamp_end = params.timestamp_end;
+    console.log("success to getRecentShowList: " + JSON.stringify(response));
+    return response;
+}
+
+/**
+ * 获取节目详情（/v1/detail/get_show_info）
+接口说明：
+节目的详细信息
+参数要求: show_id (节目ID) 接口支持批量操作show_ids=ID1,ID2 上限30个
+是否分页：否
+ */
+function getShowInfo(params) {
+    console.log("getShowInfo, params = " + JSON.stringify(params));
+    if (!params || !params.appid || !params.deviceid) {
+        throw new Error("getShowInfo: params error");
+    }
+
+    if (!params.show_id && !params.show_ids) {
+        throw new Error("getShowInfo: params error, must have show_id or show_ids");
+    }
+
+    var uri = config.get("qqfm.get_show_info_path");
+    var url = config.get("qqfm.host") + uri;
+    var response = http.getUrl(url + "?" + buildQueryUrl(uri, params), {
+        format: "json"
+    });
+
+    if (!checkStatusCode(response)) {
+        console.log("failed to getShowInfo, " + response.ret + ", " + response.msg);
+        return null;
+    }
+
+    console.log("success to getShowInfo: " + JSON.stringify(response));
+    return response;
+}
 
 function checkStatusCode(response) {
     return response.ret == '0';
@@ -293,5 +406,9 @@ function buildQueryUrl(uri, query) {
 module.exports = {
     search: search,
     getSingerAlbumList: getSingerAlbumList,
-    getSingerShows: getSingerShows
+    getSingerShows: getSingerShows,
+    getRecentAlbumList: getRecentAlbumList,
+    getShowInfo: getShowInfo,
+    getAlbumShowList: getAlbumShowList,
+    getRecentShowList: getRecentShowList
 };

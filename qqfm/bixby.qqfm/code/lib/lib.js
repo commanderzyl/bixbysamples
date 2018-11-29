@@ -97,6 +97,10 @@ function mapToShow(jsonString) {
         };
     }
 
+    if (a.belong_album_info) {
+        show.belong_album_info = mapToAlbum(a.belong_album_info);
+    }
+
     return show;
 }
 

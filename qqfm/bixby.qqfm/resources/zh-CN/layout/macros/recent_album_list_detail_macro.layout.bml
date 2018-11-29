@@ -1,13 +1,13 @@
-<layout-macro-def id="singershows_summary_macro">
+<layout-macro-def id="recent_album_list_detail_macro">
   <params>
-    <param name="singerShows" type="SingerShows" min="Required" max="One"/>
+    <param name="result" type="RecentAlbumListDetailSearchResult" min="Required" max="One"/>
   </params>
   <content>
     <div class="body">
-          <div id="anchor" style="background: url({{singerShows.singer.anchor_logo}}) no-repeat left top;">
-              <div id="anchor_name">{{singerShows.singer.anchor_name}}</div>
+          <div id="anchor" style="background: url({{result.album.album_cover}}) no-repeat left top;">
+              <div id="anchor_name">{{result.album.album_name}}</div>
           </div>
-          {{#each singerShows.show_list}} 
+          {{#each result.show_list}} 
           <div class="show_area">
               <div class="show_name">{{this.show_name}}</div>
               <div class="duration">
