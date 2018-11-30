@@ -1,0 +1,11 @@
+action (SearchShow) {
+  type (Search)
+  description (搜索节日)
+  collect {
+    input (show_name) {
+      type (show_name)
+      min (Required) max (Many)
+    }
+  }
+  output (BigResult)
+}

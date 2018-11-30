@@ -1,0 +1,11 @@
+action (SearchAlbum) {
+  type (Search)
+  description (搜索专辑)
+  collect {
+    input (album_name) {
+      type (album_name)
+      min (Required) max (Many)
+    }
+  }
+  output (BigResult)
+}

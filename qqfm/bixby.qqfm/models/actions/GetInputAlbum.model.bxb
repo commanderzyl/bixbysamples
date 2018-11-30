@@ -1,0 +1,12 @@
+action (GetInputAlbum) {
+  type (Search)
+  description (输入专辑名字时获取的提示列表)
+  collect {
+    input (search_word) {
+      type (search_word)
+      min(Required)
+      max(One)
+    }
+  }
+  output (album_name)
+}

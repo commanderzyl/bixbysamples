@@ -1,0 +1,8 @@
+structure (SearchShowResult) {
+  extends (SearchResult)
+  description (搜索节目的结果)
+  property (show_list) {
+    type (Show)
+    min (Optional) max (Many)
+  }
+}

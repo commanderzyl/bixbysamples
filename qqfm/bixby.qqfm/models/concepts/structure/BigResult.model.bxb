@@ -38,4 +38,14 @@ structure (BigResult) {
     type (RecentShowListSearchResult)
     min (Optional) max (One)
   }
+  
+  property (searchAlbumResult) {
+    type (SearchAlbumResult)
+    min (Optional) max (One)
+  }
+  
+  property (searchShowResult) {
+    type (SearchShowResult)
+    min (Optional) max (One)
+  }
 }

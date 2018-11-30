@@ -1,0 +1,6 @@
+dialog (NoResult) {
+  match: BigResult {
+    from-output: SearchRecentAlbumList
+  }
+  template("")
+}

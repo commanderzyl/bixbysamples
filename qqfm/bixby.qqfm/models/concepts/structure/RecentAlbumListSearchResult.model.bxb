@@ -9,7 +9,7 @@ structure (RecentAlbumListSearchResult) {
   property (recent) {
     type (recent)
     min (Optional) max (One)
-  }
+  } 
   
   property (timestamp_start) {
     type (timestamp_start)

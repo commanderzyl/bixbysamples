@@ -1,0 +1,42 @@
+input-view {
+  match: album_name {
+    to-input: SearchAlbum
+  }
+
+  message {
+    template-macro(QQFM_4_1_Search_album_list_recently_updated_Recent_Exist_No)    
+  }
+
+  render {
+    auto-complete{
+      type (album_name)
+      no-result-text{template ("未匹配")}
+      placeholder{
+        template ("请输入要查找的专辑")
+      }
+      source{
+        collect-with (query) {
+          intent {
+            goal: GetInputAlbum
+            value: search_word$expr(query)
+          }
+        }
+        label { template ("为你找到以下搜索结果") }
+        where-each (name) {
+          display {
+            primary-text {
+              template ("#{value(name)}")
+            }            
+          }
+
+          on-select {
+            intent {
+              goal: album_name
+              value: viv.core.FormElement(name)
+            }
+          }
+        }
+      }  
+    }      
+  }
+}

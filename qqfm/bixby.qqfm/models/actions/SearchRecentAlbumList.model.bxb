@@ -4,8 +4,16 @@ action (SearchRecentAlbumList) {
   collect {
     input (recent) {
       type (recent)
-      min (Required) max (One)
+      min (Optional) max (One)
     }
   }
-  output (BigResult)
+  output (BigResult) {
+    on-empty {
+      replan{
+        intent {
+          goal {SearchAlbum}
+        }
+      }
+    }
+  }
 }

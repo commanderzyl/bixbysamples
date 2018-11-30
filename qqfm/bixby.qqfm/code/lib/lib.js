@@ -117,7 +117,8 @@ function mapToAlbum(jsonString) {
         category: a.category,
         is_serial: a.is_serial,
         show_num: a.show_num,
-        show_sort_type: a.show_sort_type
+        show_sort_type: a.show_sort_type,
+        schema: a.schema
     };
     if (a.album_owner) {
         album.album_owner = mapToSinger(a.album_owner);
@@ -125,6 +126,7 @@ function mapToAlbum(jsonString) {
     if (a.show_list) {
         album.show_list = a.show_list.map(mapToShow);
     }
+
     return album;
 }
 

@@ -4,42 +4,49 @@ result-view {
       from-output: SearchRecentAlbumList(action)
     }
   }
-  
-  message {     
-    if (!exists(this.recentAlbumListSearchResult) || !exists(this.recentAlbumListSearchResult.album_list) || size(this.recentAlbumListSearchResult.album_list) == 0) {
-      template-macro(QQFM_4_2_Search_album_list_recently_updated_Result_Match_No)
+
+  message {   
+    if (exists(this.recentAlbumListSearchResult)) {
+      if (!exists(this.recentAlbumListSearchResult.album_list) || size(this.recentAlbumListSearchResult.album_list) == 0)       {
+        template-macro(QQFM_4_2_Search_album_list_recently_updated_Result_Match_No)
+      } else {
+        template-macro(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes)
+      }
     } else {
-      template-macro(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes)
+      //template-macro(QQFM_4_1_Search_album_list_recently_updated_Recent_Exist_No)
+      template ()
     }
   }
-  
+
   conversation-drivers {
-    conversation-driver {
-      template-macro (CHECK_FIRST)
+    if (exists(this.recentAlbumListSearchResult) && exists(this.recentAlbumListSearchResult.album_list) && size(this.recentAlbumListSearchResult.album_list) != 0) {
+      conversation-driver {
+        template-macro (CHECK_FIRST)
+      }
+
+      conversation-driver {
+        template-macro (PLAY_FIRST)
+      }
     }
-    
-    conversation-driver {
-      template-macro (PLAY_FIRST)
-    }
-    
+
     if (exists(this.recentAlbumListSearchResult) && exists(this.recentAlbumListSearchResult.has_more) && this.recentAlbumListSearchResult.has_more == 1) {
       conversation-driver {
         template-macro (LOAD_MORE)
       }
     }    
   }
-  
+
   render {      
     if (exists(this.recentAlbumListSearchResult.album_list) && size(this.recentAlbumListSearchResult.album_list) >= 1) {
-        list-of (this.recentAlbumListSearchResult.album_list) {
-          where-each (item) {
-            layout-macro (recent_album_list_summary_macro) {
-              param (album) {
-                expression (item)
-              }
+      list-of (this.recentAlbumListSearchResult.album_list) {
+        where-each (item) {
+          layout-macro (recent_album_list_summary_macro) {
+            param (album) {
+              expression (item)
             }
           }
         }
-      }         
+      }
+    }         
   }  
 }

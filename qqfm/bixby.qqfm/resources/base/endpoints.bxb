@@ -29,9 +29,24 @@ endpoints {
       local-endpoint (mobile/SearchRecentShowList.js)
     }
 
+    action-endpoint (SearchAlbum) {
+      accepted-inputs (album_name, $vivContext)
+      local-endpoint (mobile/SearchAlbum.js)
+    }
+    
+    action-endpoint (SearchShow) {
+      accepted-inputs (show_name, $vivContext)
+      local-endpoint (mobile/SearchShow.js)
+    }
+
     action-endpoint (GetInputSinger) {
       accepted-inputs (search_word,$vivContext)
       local-endpoint (mobile/GetInputSinger.js)
+    }
+    
+    action-endpoint (GetInputAlbum) {
+      accepted-inputs (search_word,$vivContext)
+      local-endpoint (mobile/GetInputAlbum.js)
     }
 
     action-endpoint (LoadMore) {

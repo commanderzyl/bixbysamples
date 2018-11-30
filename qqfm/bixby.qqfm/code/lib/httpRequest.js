@@ -3,7 +3,7 @@ var base = require("./base");
 /**
 搜索主播/专辑/节目信息（/v1/search/search）
 接口说明： 搜索关键字相关主播/专辑/节目
-参数要求: search_type (搜索类型：singer/album/show) search_word (搜索关键字)
+参数要求: search_type (搜索类型：singer/album/show/broadcast) search_word (搜索关键字)
 是否分页：是
 */
 function search(params) {

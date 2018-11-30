@@ -1,0 +1,4 @@
+train (t-iqhnvcyx4sqixj41t2w2nm25u) {
+  utterance ("[g:SearchAlbum] 在企鹅FM中搜一下(华灯初上)[v:album_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBDEg1OTSxKznDMSSrNZRBFEk8EicTnJeamMjAxMAIxA5BkZAABKB8A)
+}

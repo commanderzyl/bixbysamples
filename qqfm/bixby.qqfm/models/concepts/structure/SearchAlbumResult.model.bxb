@@ -1,0 +1,9 @@
+structure (SearchAlbumResult) {
+  extends (SearchResult)
+  description (搜索专辑的结果)
+  // Goal ID: QQFM_2 Goal : 按关键词搜索专辑
+  property (album_list) {
+    type (Album)
+    min (Optional) max (Many)
+  }
+}

@@ -1,5 +1,6 @@
 var base = require("../lib/base");
 var httpRequest = require("../lib/httpRequest");
+var lib = require("../lib/lib");
 
 function GetInputSinger(search_word, $vivContext) {
     var params = {};
@@ -19,7 +20,7 @@ function GetInputSinger(search_word, $vivContext) {
         return null;
     }
 
-    return response.user_list;
+    return response.user_list.map(lib.mapToSinger);
 };
 
 module.exports.function = GetInputSinger;
