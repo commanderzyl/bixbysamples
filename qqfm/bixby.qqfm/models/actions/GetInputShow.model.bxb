@@ -1,0 +1,12 @@
+action (GetInputShow) {
+  type (Search)
+  description (输入节目名字时获取的提示列表)
+  collect {
+    input (search_word) {
+      type (search_word)
+      min(Required)
+      max(One)
+    }
+  }
+  output (show_name)
+}

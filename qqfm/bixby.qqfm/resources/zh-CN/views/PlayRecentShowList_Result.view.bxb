@@ -1,0 +1,33 @@
+result-view {
+  match {
+    BigResult(this) {
+      from-output: PlayRecentShowList(action)
+    }
+  }
+
+  message {   
+    if (exists(this.recentShowListPlayResult)) {
+      if (!exists(this.recentShowListPlayResult.show_list) || size(this.recentShowListPlayResult.show_list) == 0)       {
+        template-macro(QQFM_9_2_Play_programme_list_recently_updated_Result_Match_No)
+      } else {
+        template ()
+      }
+    } else {
+      template ()
+    }
+  }
+  
+  app-launch {     
+        payload-uri{
+          if (exists(this.recentShowListPlayResult) && exists(this.recentShowListPlayResult.show_list) && size(this.recentShowListPlayResult.show_list) != 0){
+              template("#{value(this.recentShowListPlayResult.show_list[0].schema)}")
+          }
+        }
+        requires {
+          app-id (com.tencent.radio)
+          app-name(企鹅FM)
+          // app-min-version (800053000)
+          app-store-url (samsungapps://ProductDetail/com.tencent.radio)    
+        }       
+  }
+}

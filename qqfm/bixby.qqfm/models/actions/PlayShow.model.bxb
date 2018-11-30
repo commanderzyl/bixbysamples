@@ -1,0 +1,17 @@
+action (PlayShow) {
+  type (Search)
+  description (播放节目)
+  collect {
+    input (show_name) {
+      type (show_name)
+      min (Required) max (Many)
+    }
+    
+    input (show_id) {
+      type (show_id)
+      min (Optional) max (One)
+    }
+  }
+  output (BigResult)
+}
+

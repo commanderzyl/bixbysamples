@@ -1,0 +1,23 @@
+structure (RecentShowListPlayResult) {
+  extends (SearchResult)
+  description (播放最新更新的节目的结果)
+  property (show_list) {
+    type (Show)
+    min (Optional) max (Many)
+  }
+  
+  property (recent) {
+    type (recent)
+    min (Optional) max (One)
+  }
+  
+  property (timestamp_start) {
+    type (timestamp_start)
+    min (Optional) max (One)
+  }
+  
+  property (timestamp_end) {
+    type (timestamp_end)
+    min (Optional) max (One)
+  }
+}

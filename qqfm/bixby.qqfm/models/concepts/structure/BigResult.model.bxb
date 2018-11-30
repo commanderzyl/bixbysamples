@@ -29,6 +29,11 @@ structure (BigResult) {
     min (Optional) max (One)
   }
   
+  property (recentAlbumListPlayResult) {
+    type (RecentAlbumListPlayResult)
+    min (Optional) max (One)
+  }
+  
   property (recentAlbumListDetailSearchResult) {
     type (RecentAlbumListDetailSearchResult)
     min (Optional) max (One)
@@ -39,6 +44,11 @@ structure (BigResult) {
     min (Optional) max (One)
   }
   
+  property (recentShowListPlayResult) {
+    type (RecentShowListPlayResult)
+    min (Optional) max (One)
+  }
+  
   property (searchAlbumResult) {
     type (SearchAlbumResult)
     min (Optional) max (One)
@@ -46,6 +56,16 @@ structure (BigResult) {
   
   property (searchShowResult) {
     type (SearchShowResult)
+    min (Optional) max (One)
+  }
+  
+  property (playAlbumResult) {
+    type (PlayAlbumResult)
+    min (Optional) max (One)
+  }
+  
+  property (playShowResult) {
+    type (PlayShowResult)
     min (Optional) max (One)
   }
 }

@@ -1,0 +1,16 @@
+action (PlayAlbum) {
+  type (Search)
+  description (播放专辑)
+  collect {
+    input (album_name) {
+      type (album_name)
+      min (Required) max (Many)
+    }
+    
+    input (album_id) {
+      type (album_id)
+      min (Optional) max (One)
+    }
+  }
+  output (BigResult)
+}

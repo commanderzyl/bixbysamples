@@ -83,7 +83,8 @@ function mapToShow(jsonString) {
         show_is_collected: a.show_is_collected,
         show_name: a.show_name,
         show_is_charge: a.show_is_charge,
-        show_sequence: a.show_sequence
+        show_sequence: a.show_sequence,
+        schema: a.schema
     };
 
     if (a.play_url) {

@@ -95,8 +95,12 @@ function searchRecentShowListWithPagination(recent, params, $vivContext) {
 }
 
 function searchRecentShowList(recent, $vivContext) {
+    if (!recent) {
+        return null;
+    }
     return searchRecentShowListWithPagination(recent, {}, $vivContext);
 }
 
 module.exports.function = searchRecentShowList;
 module.exports.searchRecentShowListWithPagination = searchRecentShowListWithPagination;
+module.exports.searchRecentShowList = searchRecentShowList;

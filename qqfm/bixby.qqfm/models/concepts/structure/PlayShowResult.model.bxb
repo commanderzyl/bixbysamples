@@ -1,0 +1,7 @@
+structure (PlayShowResult) {
+  description (__DESCRIPTION__)
+  property (schema) {
+    type (schema)
+    min (Optional) max (One)
+  }
+}

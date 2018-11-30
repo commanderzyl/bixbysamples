@@ -65,6 +65,20 @@ function searchRecentAlbumListWithRecent(recent, params, $vivContext) {
         timestamp_end: response.timestamp_end,
         album_list: response.album_list ? response.album_list.map(lib.mapToAlbum) : []
     };
+
+    // 获取每个专辑的schema即deeplink信息
+    var album_list = bigResult.recentAlbumListSearchResult.album_list;
+    for (var index = 0; index < album_list.length; index++) {
+        var albumInfoResponse = httpRequest.getAlbumInfo({
+            deviceid: base.getUserId($vivContext.userId),
+            appid: config.get("qqfm.appid"),
+            album_id: album_list[index].album_id
+        });
+
+        if (albumInfoResponse) {
+            album_list[index].schema = albumInfoResponse.schema;
+        }
+    }
     console.log("searchRecentAlbumList, get the recent bigResult: " + JSON.stringify(bigResult));
     return bigResult;
 }
@@ -93,16 +107,17 @@ function searchRecentAlbumListInternal(recent, params, $vivContext) {
     if (recent) {
         return searchRecentAlbumListWithRecent(recent, params, $vivContext);
     } else {
-      return null;
+        return null;
     }
     // } else {
     //     return searchRecentAlbumListWithAlbumName(album_name, params, $vivContext);
     // }
 }
 
-function searchRecentAlbumList(recent, album_name, $vivContext) {
-    return searchRecentAlbumListInternal(recent, album_name, {}, $vivContext);
+function searchRecentAlbumList(recent, $vivContext) {
+    return searchRecentAlbumListInternal(recent, {}, $vivContext);
 }
 
 module.exports.function = searchRecentAlbumList;
 module.exports.searchRecentAlbumListInternal = searchRecentAlbumListInternal;
+module.exports.searchRecentAlbumList = searchRecentAlbumList;

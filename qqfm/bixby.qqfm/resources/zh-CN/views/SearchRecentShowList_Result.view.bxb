@@ -5,17 +5,24 @@ result-view {
     }
   }
   
-  message {     
-    if (!exists(this.recentShowListSearchResult) || !exists(this.recentShowListSearchResult.show_list) || size(this.recentShowListSearchResult.show_list) == 0) {
-      template-macro(QQFM_5_2_Search_programme_list_recently_updated_Result_Match_No)
+  message {
+    if (exists(this.recentShowListSearchResult)) {
+      if (!exists(this.recentShowListSearchResult.show_list) || size(this.recentShowListSearchResult.show_list) == 0) {
+        template-macro(QQFM_5_2_Search_programme_list_recently_updated_Result_Match_No)
+      } else {
+        template-macro(QQFM_5_3_Search_programme_list_recently_updated_Result_Match_Yes)
+      }
     } else {
-      template-macro(QQFM_5_3_Search_programme_list_recently_updated_Result_Match_Yes)
+      template ("")
     }
+
   }
   
   conversation-drivers {    
-    conversation-driver {
-      template-macro (PLAY_FIRST)
+     if (exists(this.recentShowListSearchResult) && exists(this.recentShowListSearchResult.show_list) && size(this.recentShowListSearchResult.show_list) != 0) {
+      conversation-driver {
+        template-macro (PLAY_FIRST)
+      }
     }
     
     if (exists(this.recentShowListSearchResult) && exists(this.recentShowListSearchResult.has_more) && this.recentShowListSearchResult.has_more == 1) {

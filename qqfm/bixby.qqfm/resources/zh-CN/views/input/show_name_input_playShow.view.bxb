@@ -1,0 +1,42 @@
+input-view {
+  match: show_name {
+    to-input: PlayShow
+  }
+
+  message {
+    template-macro(QQFM_9_1_Play_programme_list_recently_updated_Recent_Exist_No)    
+  }
+
+  render {
+    auto-complete{
+      type (show_name)
+      no-result-text{template ("未匹配")}
+      placeholder{
+        template ("请输入要播放的节目")
+      }
+      source{
+        collect-with (query) {
+          intent {
+            goal: GetInputShow
+            value: search_word$expr(query)
+          }
+        }
+        label { template ("为你找到以下搜索结果") }
+        where-each (name) {
+          display {
+            primary-text {
+              template ("#{value(name)}")
+            }            
+          }
+
+          on-select {
+            intent {
+              goal: show_name
+              value: viv.core.FormElement(name)
+            }
+          }
+        }
+      }  
+    }      
+  }
+}

@@ -19,9 +19,19 @@ endpoints {
       local-endpoint (mobile/SearchRecentAlbumList.js)
     }
     
+    action-endpoint (PlayRecentAlbumList) {
+      accepted-inputs (recent, $vivContext)
+      local-endpoint (mobile/PlayRecentAlbumList.js)
+    }
+    
     action-endpoint (SearchRecentAlbumListDetail) {
       accepted-inputs (album, $vivContext)
       local-endpoint (mobile/SearchRecentAlbumListDetail.js)
+    }
+    
+    action-endpoint (PlayRecentShowList) {
+      accepted-inputs (recent, $vivContext)
+      local-endpoint (mobile/PlayRecentShowList.js)
     }
     
     action-endpoint (SearchRecentShowList) {
@@ -38,6 +48,16 @@ endpoints {
       accepted-inputs (show_name, $vivContext)
       local-endpoint (mobile/SearchShow.js)
     }
+    
+    action-endpoint (PlayAlbum) {
+      accepted-inputs (album_name, album_id, $vivContext)
+      local-endpoint (mobile/PlayAlbum.js)
+    }
+    
+    action-endpoint (PlayShow) {
+      accepted-inputs (show_name, show_id, $vivContext)
+      local-endpoint (mobile/PlayShow.js)
+    }
 
     action-endpoint (GetInputSinger) {
       accepted-inputs (search_word,$vivContext)
@@ -47,6 +67,11 @@ endpoints {
     action-endpoint (GetInputAlbum) {
       accepted-inputs (search_word,$vivContext)
       local-endpoint (mobile/GetInputAlbum.js)
+    }
+    
+    action-endpoint (GetInputShow) {
+      accepted-inputs (search_word,$vivContext)
+      local-endpoint (mobile/GetInputShow.js)
     }
 
     action-endpoint (LoadMore) {

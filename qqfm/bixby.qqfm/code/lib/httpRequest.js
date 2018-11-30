@@ -346,6 +346,34 @@ function getShowInfo(params) {
     return response;
 }
 
+/**
+ 获取专辑详情（/v1/detail/get_album_info）
+接口说明：
+专辑的详细信息,
+参数要求: album_id (专辑ID)
+是否分页：否
+ */
+function getAlbumInfo(params) {
+    console.log("getAlbumInfo, params = " + JSON.stringify(params));
+    if (!params || !params.album_id || !params.appid || !params.deviceid) {
+        throw new Error("getAlbumInfo: params error");
+    }
+
+    var uri = config.get("qqfm.get_album_info_path");
+    var url = config.get("qqfm.host") + uri;
+    var response = http.getUrl(url + "?" + buildQueryUrl(uri, params), {
+        format: "json"
+    });
+
+    if (!checkStatusCode(response)) {
+        console.log("failed to getAlbumInfo, " + response.ret + ", " + response.msg);
+        return null;
+    }
+
+    console.log("success to getAlbumInfo: " + JSON.stringify(response));
+    return response;
+}
+
 function checkStatusCode(response) {
     return response.ret == '0';
 }
@@ -410,5 +438,6 @@ module.exports = {
     getRecentAlbumList: getRecentAlbumList,
     getShowInfo: getShowInfo,
     getAlbumShowList: getAlbumShowList,
-    getRecentShowList: getRecentShowList
+    getRecentShowList: getRecentShowList,
+    getAlbumInfo: getAlbumInfo
 };

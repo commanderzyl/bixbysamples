@@ -1,19 +1,20 @@
-action (SearchRecentShowList) {
+action (PlayRecentShowList) {
   type (Search)
-  description (搜索最新更新的节目)
+  description (Goal ID: QQFM_9: 播放最近更新的节目)
   collect {
     input (recent) {
       type (recent)
       min (Optional) max (One)
     }
   }
-  output (BigResult){
+  output (BigResult) {
     on-empty {
       replan{
         intent {
-          goal {SearchShow}
+          goal {PlayShow}
         }
       }
     }
   }
 }
+

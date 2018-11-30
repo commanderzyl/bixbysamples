@@ -70,3 +70,4 @@ function searchAlbum(album_name, $vivContext) {
 
 module.exports.function = searchAlbum;
 module.exports.searchAlbumInternal = searchAlbumInternal;
+module.exports.searchAlbum = searchAlbum;
