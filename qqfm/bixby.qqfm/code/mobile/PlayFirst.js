@@ -64,3 +64,4 @@ function playSingerShows(ordinal, bigResult, $vivContext) {
 }
 
 module.exports.function = PlayFirst;
+module.exports.PlayFirst = PlayFirst;

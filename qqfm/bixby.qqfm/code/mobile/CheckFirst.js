@@ -95,3 +95,4 @@ function checkSingerShows(ordinal, bigResult, $vivContext) {
 }
 
 module.exports.function = CheckFirst;
+module.exports.CheckFirst = CheckFirst;
