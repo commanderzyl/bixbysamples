@@ -4,28 +4,35 @@ result-view {
       from-output: SearchRecentAlbumListDetail(action)
     }
   }
-  
+
   message { 
-      template-macro(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes)    
+    template-macro(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes)    
   }
-  
-  conversation-drivers {    
-    conversation-driver {
-      template-macro (PLAY_FIRST)
-    }
-    
-    if (exists(this.recentAlbumListDetailSearchResult) && exists(this.recentAlbumListDetailSearchResult.has_more) && this.recentAlbumListDetailSearchResult.has_more == 1) {
-      conversation-driver {
-        template-macro (LOAD_MORE)
-      }
-    }    
-  }
-  
-  render {      
-        layout-macro (recent_album_list_detail_macro) {
-        param (result) {
-            expression (this.recentAlbumListDetailSearchResult)
+
+  conversation-drivers { 
+    if (exists(this.recentAlbumListDetailSearchResult)) {
+      if (exists(this.recentAlbumListDetailSearchResult.show_list) && size(this.recentAlbumListDetailSearchResult)!=0) {
+        conversation-driver {
+          template-macro (PLAY_FIRST)
         }
-    }  
+      }
+
+      if (exists(this.recentAlbumListDetailSearchResult.has_more) && this.recentAlbumListDetailSearchResult.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
+      }   
+    }
+  }
+
+  render {
+    if (exists(this.recentAlbumListDetailSearchResult)) {
+      layout-macro (recent_album_list_detail_macro) {
+        param (result) {
+          expression (this.recentAlbumListDetailSearchResult)
+        }
+      } 
+    }
+
   }  
 }

@@ -1,27 +1,31 @@
 result-view {
   match {
     BigResult(this) {
-      from-output: CheckFirst(action)
+      from-output: PlayFirst(action)
     }
   }
 
   message {
-    if (exists(this.check_first)) {
-      if (this.check_first.check_result == 0) {
-        template-macro(QQFM_12_2_See_one_Number_Match_Yes)
-      } else {
-        template-macro(QQFM_12_1_See_one_Number_Match_No)
+    if (exists(this.play_first)) {
+      if (this.play_first.play_result != 0) {
+        template-macro(QQFM_13_1_Play_one_Number_Match_No)
       }
-    }
+    } else-if (exists(this.singerSearchResult)) {
+      if (!exists(this.singerSearchResult.user_list) || size(this.singerSearchResult.user_list) == 0 || this.singerSearchResult.isRecommonded) {
+        template-macro(QQFM_3_2_Search_the_anchors_list_Singer_Match_No)
+      } else {
+        template-macro(QQFM_3_3_Search_the_anchors_list_Singer_Match_Yes)
+      }
+    }  
   }
 
 
   app-launch {     
     payload-uri{
-      if (exists(this.check_first) && this.check_first.check_result == 0 && exists(this.check_first.deeplink_uri)) {
-        if (exists(this.check_first.deeplink_uri.uri)) {
-          template("#{value(this.check_first.deeplink_uri.uri)}")
-        }
+      if (exists(this.play_first) && this.play_first.play_result == 0 && exists(this.play_first.deeplink_uri)) {
+        if (exists(this.play_first.deeplink_uri.uri)) {
+          template("#{value(this.play_first.deeplink_uri.uri)}")
+        }        
       }
     }
     requires {
@@ -125,32 +129,6 @@ result-view {
           expression (this.singerShows)
         }
       }  
-    } else-if (exists(this.recentAlbumListSearchResult.album_list) && size(this.recentAlbumListSearchResult.album_list) >= 1) {
-      list-of (this.recentAlbumListSearchResult.album_list) {
-        where-each (item) {
-          layout-macro (recent_album_list_summary_macro) {
-            param (album) {
-              expression (item)
-            }
-          }
-        }
-      }
-    }else-if (exists(this.recentShowListSearchResult.show_list) && size(this.recentShowListSearchResult.show_list) >= 1) {
-      list-of (this.recentShowListSearchResult.show_list) {
-        where-each (item) {
-          layout-macro (recent_show_list_summary_macro) {
-            param (show) {
-              expression (item)
-            }
-          }
-        }
-      }
-    }else-if (exists(this.recentAlbumListDetailSearchResult)) {
-      layout-macro (recent_album_list_detail_macro) {
-        param (result) {
-          expression (this.recentAlbumListDetailSearchResult)
-        }
-      } 
-    }         
+    }
   }  
 }

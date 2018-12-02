@@ -18,11 +18,14 @@ function formatDuration(duration) {
     var formated = "";
     //小时
     var hour = parseInt(duration / 3600);
-    if (('' + hour).length < 2) {
-        formated += '0' + hour + ":";
-    } else {
-        formated += '' + hour + ":";
+    if (hour != 0) {
+        if (('' + hour).length < 2) {
+            formated += '0' + hour + ":";
+        } else {
+            formated += '' + hour + ":";
+        }
     }
+    
 
     var minute = parseInt((duration - hour * 3600) / 60);
     if (('' + minute).length < 2) {

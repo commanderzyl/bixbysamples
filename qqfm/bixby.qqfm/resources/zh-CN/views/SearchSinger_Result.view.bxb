@@ -14,12 +14,10 @@ result-view {
   }
   
   conversation-drivers {
-    conversation-driver {
-      template-macro (CHECK_FIRST)
-    }
-    
-    conversation-driver {
-      template-macro (PLAY_FIRST)
+    if (exists(this.singerSearchResult) && exists(this.singerSearchResult.user_list) && size(this.singerSearchResult.user_list) >= 1) {
+      conversation-driver {
+        template-macro (CHECK_FIRST)
+      }
     }
     
     if (exists(this.singerSearchResult.has_more) && this.singerSearchResult.has_more == 1) {
@@ -30,7 +28,7 @@ result-view {
   }
   
   render {
-      if (size(this.singerSearchResult.user_list) >= 1) {
+      if (exists(this.singerSearchResult) && exists(this.singerSearchResult.user_list) && size(this.singerSearchResult.user_list) >= 1) {
         list-of (this.singerSearchResult.user_list) {
           where-each (item) {
             layout-macro (singer_summary_macro) {

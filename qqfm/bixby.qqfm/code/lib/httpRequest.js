@@ -134,15 +134,16 @@ function getSingerShows(singer, params) {
     }
 
     //设置最多执行的次数为10次
-    var requestSingerAlbumListNum = 0;
-    var maxRequestForSingerAlbumList = 10;
+    // var requestSingerAlbumListNum = 0;
+    // var maxRequestForSingerAlbumList = 10;
+    //var realShowNum = 0;
     while (!finished) {
         console.log("获取专辑列表, " + JSON.stringify(page));
         console.log("anchor_id: " + singer.anchor_id);
-        requestSingerAlbumListNum++;
-        if (requestSingerAlbumListNum > maxRequestForSingerAlbumList) {
-            break;
-        }
+        // requestSingerAlbumListNum++;
+        // if (requestSingerAlbumListNum > maxRequestForSingerAlbumList) {
+        //     break;
+        // }
         var albumListResponse = getSingerAlbumList({
             anchor_id: singer.anchor_id,
             appid: params.appid,
@@ -194,7 +195,12 @@ function getSingerShows(singer, params) {
             break;
         }
 
-        page.pagination_cursor = curCursor;
+        //如果仍然没有找到节目，则说明需要接着取专辑
+        if (albumListResponse.has_more != 1) {
+            break;
+        }
+        page.pagination_cursor = albumListResponse.pagination_cursor + albumListResponse.pagination_size;
+        page.pagination_size = 30;
     }
 
     var result = {};
@@ -223,7 +229,7 @@ function getSingerShows(singer, params) {
     }
 
     result.pagination_size = result.show_list.length;
-    if ((result.pagination_cursor + result.pagination_size) < singer.anchor_show_num) {
+    if (result.pagination_size == 30 && ((result.pagination_cursor + result.pagination_size) < singer.anchor_show_num)) {
         result.has_more = 1;
     } else {
         result.has_more = 0;

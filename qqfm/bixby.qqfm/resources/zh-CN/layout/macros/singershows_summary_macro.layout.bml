@@ -4,117 +4,142 @@
   </params>
   <content>
     <div class="body">
-          <div id="anchor" style="background: url({{singerShows.singer.anchor_logo}}) no-repeat left top;">
-              <div id="anchor_name">{{singerShows.singer.anchor_name}}</div>
-          </div>
-          {{#each singerShows.show_list}} 
+      <div id="anchor" style="background: url({{exists(singerShows.singer.anchor_logo)?singerShows.singer.anchor_logo:""}}) no-repeat left top;">
+        <div id="anchor_name">
+          {{exists(singerShows.singer.anchor_name)?singerShows.singer.anchor_name:"(主播名未知)"}}
+        </div>
+      </div>
+      {{#each singerShows.show_list}} 
+      <viv:IntentContainer>
+        <onClickIntent>
+          intent {
+          goal {
+            PlayShow
+          }
+          value-set:show_id{$expr(this.show_id)}
+          value: show_name("")
+          }
+        </onClickIntent>
+        <children>
           <div class="show_area">
-              <div class="show_name">{{this.show_name}}</div>
-              <div class="duration">
-                  <img class="duration_logo" src="/image/time.png">
-                  <div class="duration_time">{{this.show_duration_display}}</div>
-                  <div class="update_time">{{this.show_create_timestamp_display}}更新</div>
+            <div class="show_name">
+              {{exists(this.show_name)?this.show_name:"(节目名未知)"}}
+            </div>
+            <div class="duration">
+              <img class="duration_logo" src="/image/time.png">
+              <div class="duration_time">                
+                {{exists(this.show_duration_display)?this.show_duration_display:"播放时长"}}
               </div>
+              <div class="update_time">
+                {{#if exists(this.show_create_timestamp_display)}}
+                  {{this.show_create_timestamp_display}}更新
+                {{else}}
+                  更新时间
+                {{/if}}
+              </div>
+            </div>
           </div>
-          {{/each}}
+        </children>
+      </viv:IntentContainer>
+      {{/each}}
     </div>
   </content>
   <style>
-        .body {
-            font-size: 16px;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-        
-        #anchor {
-            box-sizing: border-box;
-            height: 10.5rem;            
-            border-radius: 8px;
-            padding: 8.19rem 0.75rem 0.88rem 0.75rem;
-            background-size: 100% 100%;
-        }
-        
-        #anchor_name {
-            font-family: Roboto-Regular;
-            font-size: 1.1875rem;
-            color: #FAFAFA;
-            line-height: 1.1875rem;
-            width: 19.5rem;
-            height: 1.44rem;
-        }
-        
-        .show_area {
-            box-sizing: border-box;
-            height: 4.63rem;
-            background: rgba(250, 250, 250, 0.05);
-            border-radius: 8px;
-            padding: 0.75rem 0.75rem 0.84rem 0.75rem;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            margin-top: 0.75rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .show_name {
-            flex: 1 1 auto;
-            box-sizing: border-box;
-            font-family: PingFangSC-Regular;
-            font-size: 1.1875rem;
-            color: #FAFAFA;
-            line-height: 1.625rem;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-/*             width: 19.5rem; */
-            height: 1.69rem;
-        }
-        
-        .duration {
-            box-sizing: border-box;
-            flex: 0 0 auto;
-            display: flex;
-            flex-direction: row;
-            height: 1.25rem;
-            justify-content: space-between;
-        }
-        
-        .duration_logo {
-            margin-top: 0.44rem;
-            flex: 0 0 auto;
-            width: 0.69rem;
-            height: 0.69rem;
-        }
-        
-        .duration_time {
-            flex: auto;
-            width: 2.88rem;
-            height: 1.03rem;
-            font-family: PingFangSC-Regular;
-            font-size: 0.875rem;
-            color: rgba(250, 250, 250, 0.60);
-            letter-spacing: 0;
-            text-align: justify;
-            line-height: 1.125rem;
-            margin-top: 0.31rem;
-            margin-left: 0.38rem;
-        }
-        
-        .update_time {
-            flex: auto;
-            font-family: PingFangSC-Regular;
-            font-size: 0.875rem;
-            color: rgba(250, 250, 250, 0.60);
-            letter-spacing: 0;
-            text-align: right;
-            line-height: 1.125rem;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            width: 7.31rem;
-            height: 1.25rem;
-            margin-left: 3.06rem;
-            margin-top: 0.19rem;
-        }
-    </style>
+    .body {
+      font-size: 16px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    #anchor {
+      box-sizing: border-box;
+      height: 10.5rem;            
+      border-radius: 8px;
+      padding: 8.19rem 0.75rem 0.88rem 0.75rem;
+      background-size: 100% 100%;
+    }
+
+    #anchor_name {
+      font-family: Roboto-Regular;
+      font-size: 1.1875rem;
+      color: #FAFAFA;
+      line-height: 1.1875rem;
+      width: 19.5rem;
+      height: 1.44rem;
+    }
+
+    .show_area {
+      box-sizing: border-box;
+      height: 4.63rem;
+      background: rgba(250, 250, 250, 0.05);
+      border-radius: 8px;
+      padding: 0.75rem 0.75rem 0.84rem 0.75rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .show_name {
+      flex: 1 1 auto;
+      box-sizing: border-box;
+      font-family: PingFangSC-Regular;
+      font-size: 1.1875rem;
+      color: #FAFAFA;
+      line-height: 1.625rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      /*             width: 19.5rem; */
+      height: 1.69rem;
+    }
+
+    .duration {
+      box-sizing: border-box;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: row;
+      height: 1.25rem;
+      justify-content: space-between;
+    }
+
+    .duration_logo {
+      margin-top: 0.44rem;
+      flex: 0 0 auto;
+      width: 0.69rem;
+      height: 0.69rem;
+    }
+
+    .duration_time {
+      flex: auto;
+      width: 2.88rem;
+      height: 1.03rem;
+      font-family: PingFangSC-Regular;
+      font-size: 0.875rem;
+      color: rgba(250, 250, 250, 0.60);
+      letter-spacing: 0;
+      text-align: justify;
+      line-height: 1.125rem;
+      margin-top: 0.31rem;
+      margin-left: 0.38rem;
+    }
+
+    .update_time {
+      flex: auto;
+      font-family: PingFangSC-Regular;
+      font-size: 0.875rem;
+      color: rgba(250, 250, 250, 0.60);
+      letter-spacing: 0;
+      text-align: right;
+      line-height: 1.125rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 7.31rem;
+      height: 1.25rem;
+      margin-left: 3.06rem;
+      margin-top: 0.19rem;
+    }
+  </style>
 </layout-macro-def>

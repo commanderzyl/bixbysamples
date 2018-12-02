@@ -89,6 +89,11 @@ endpoints {
       local-endpoint (mobile/PlayFirst.js)
     }
     
+    action-endpoint (First) {
+      accepted-inputs (bigResult, ordinal, $vivContext)
+      local-endpoint (mobile/First.js)
+    }
+    
     // action-endpoint (First) {
     //   accepted-inputs (bigResult, ordinal, $vivContext)
     //   local-endpoint (mobile/First.js)

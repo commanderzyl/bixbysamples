@@ -4,37 +4,52 @@ result-view {
       from-output: LoadMore(action)
     }
   }
-  
+
   message {
     if (exists(this.singerSearchResult)) {
-        if (!exists(this.singerSearchResult.user_list) || size(this.singerSearchResult.user_list) == 0 || this.singerSearchResult.isRecommonded) {
+      if (!exists(this.singerSearchResult.user_list) || size(this.singerSearchResult.user_list) == 0 || this.singerSearchResult.isRecommonded) {
         template-macro(QQFM_3_2_Search_the_anchors_list_Singer_Match_No)
-        } else {
+      } else {
         template-macro(QQFM_3_3_Search_the_anchors_list_Singer_Match_Yes)
-        }
+      }
     } else-if (exists(this.singerShows)) {
       template-macro(QQFM_3_3_Search_the_anchors_list_Singer_Match_Yes)
     }
   }
-  
-  conversation-drivers {    
-    conversation-driver {
-      template-macro (CHECK_FIRST)
-    }
 
-    if (exists(this.singerSearchResult) && exists(this.singerSearchResult.has_more) && this.singerSearchResult.has_more == 1) {
-      conversation-driver {
-        template-macro (LOAD_MORE)
+  conversation-drivers {
+    if (exists(this.singerSearchResult)) {
+      if (exists(this.singerSearchResult.user_list) && size(this.singerSearchResult.user_list) >= 1) {
+        conversation-driver {
+          template-macro (CHECK_FIRST)
+        }
       }
-    } else-if (exists(this.singerShows) && exists(this.singerShows.has_more) && this.singerShows.has_more == 1) {
-      conversation-driver {
-        template-macro (LOAD_MORE)
+
+      if (exists(this.singerSearchResult.has_more) && this.singerSearchResult.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
       }
+    }
+    
+    if (exists(this.singerShows)) {
+      if (exists(this.singerShows.show_list) && size(this.singerShows.show_list) != 0) {
+        conversation-driver {
+          template-macro (PLAY_FIRST)
+        }
+      }
+
+      if (exists(this.singerShows.has_more) && this.singerShows.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
+      }  
     }
   }
-  
+
   render {
-      if (exists(this.singerSearchResult) && size(this.singerSearchResult.user_list) >= 1) {
+    if (exists(this.singerSearchResult)) {
+      if (exists(this.singerSearchResult.user_list) && size(this.singerSearchResult.user_list) >= 1) {
         list-of (this.singerSearchResult.user_list) {
           where-each (item) {
             layout-macro (singer_summary_macro) {
@@ -44,10 +59,11 @@ result-view {
             }
           }
         }
+      }        
     } else-if (exists(this.singerShows)) {
       layout-macro (singershows_summary_macro) {
         param (singerShows) {
-            expression (this.singerShows)
+          expression (this.singerShows)
         }
       }  
     }

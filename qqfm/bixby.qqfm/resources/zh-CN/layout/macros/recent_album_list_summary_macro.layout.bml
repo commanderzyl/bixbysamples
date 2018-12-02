@@ -19,7 +19,7 @@
                 <img class="logo " src="{{album.album_cover}} ">
             </div>
             <div class="right albumInfo ">
-                <div class="albumName ">{{album.album_name}}</div>
+                <div class="albumName overflow">{{album.album_name}}</div>
                 <div class="recentShow overflow ">更新至：{{album.show_list[0].show_name}}</div>
                 <div class="anchor_line ">
                     <div class="anchor_name ">{{album.album_owner.anchor_name}}</div>

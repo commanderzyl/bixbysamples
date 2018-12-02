@@ -20,9 +20,16 @@ function SearchSingerInternal(anchor_name, pagination_cursor, pagination_size, $
         return null;
     }
 
+    var isRecommonded = false;
+    // 如果没有结果，说明搜索失败, 我们搜索几个人来做为推荐的主播
+    if (!response.user_list || response.user_list.length == 0) {
+        response = getRecommendedSingers($vivContext);
+        isRecommonded = true;
+    }
+
     var bigResult = {};
     bigResult.singerSearchResult = {
-        isRecommonded: false,
+        isRecommonded: isRecommonded,
         search_word: params.search_word,
         has_more: response.has_more,
         pagination_cursor: response.pagination_cursor,
@@ -55,6 +62,38 @@ function SearchSingerInternal(anchor_name, pagination_cursor, pagination_size, $
 
 function SearchSinger(anchor_name, $vivContext) {
     return SearchSingerInternal(anchor_name, 0, 30, $vivContext);
+}
+
+function getRecommendedSingers($vivContext) {
+    var singerList = ["郭德纲", "冷主播", "百家讲坛"];
+    var params = {};
+    //首先设置deviceID
+    params.deviceid = base.getUserId($vivContext.userId);
+    params.appid = config.get("qqfm.appid");
+    params.search_type = "singer";
+    params.pagination_cursor = 0;
+    params.pagination_size = 1;
+
+    var response = {
+        pagination_cursor: 0,
+        pagination_size: singerList.length,
+        has_more: 0,
+        user_list:[],
+        ret: '0'
+    }
+
+    for (var index = 0; index < singerList.length; index++) {
+        var res = httpRequest.search({
+            deviceid: params.deviceid,
+            appid: params.appid,
+            search_type: params.search_type,
+            pagination_size: 1,
+            pagination_cursor: 0,
+            search_word: singerList[index]
+        });
+        response.user_list.push(res.user_list[0]);
+    }
+    return response;
 }
 
 module.exports.function = SearchSinger;

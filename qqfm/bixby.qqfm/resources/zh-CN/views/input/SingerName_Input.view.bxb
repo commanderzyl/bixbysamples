@@ -4,11 +4,11 @@ input-view {
       to-input: SearchSinger (action)
     }
   }
-  
+
   message {
     template-macro(QQFM_3_1_Search_the_anchors_list_Singer_Exist_No)
   }
-  
+
   render {
     auto-complete{
       type (Singer)
@@ -19,26 +19,35 @@ input-view {
       source{
         collect-with (query) {
           intent {
-              goal: GetInputSinger
-              value: search_word$expr(query)
-            }
+            goal: GetInputSinger
+            value: search_word$expr(query)
+          }
         }
         label { template ("为你找到以下搜索结果") }
         where-each (singer) {
+
           display {
             primary-text {
+
+              if (exists(singer.anchor_name)) {
                 template ("#{value(singer.anchor_name)}")
-            }            
+              } else {
+                template ()
+              }   
+            }
           }
-       
+
           on-select {
+
             intent {
               goal: anchor_name
               value: viv.core.FormElement(singer)
             }
           }
+
         }
-      }  
-    }      
-  }
+
+      }
+    }  
+  }      
 }

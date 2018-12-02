@@ -1,4 +1,5 @@
 var SearchSingerShows = require("./SearchSingerShows");
+var PlayShow = require("./PlayShow");
 
 function CheckFirst(bigResult, ordinal, $vivContext) {
     if (!ordinal || !bigResult) {
@@ -19,6 +20,7 @@ function CheckFirst(bigResult, ordinal, $vivContext) {
     }
 
     console.log("checkFirst, bad input, " + ordinal + ", " + JSON.stringify(bigResult));
+    bigResult = {};
     bigResult.check_first = {
         check_result: 1 //失败
     };
@@ -28,6 +30,7 @@ function CheckFirst(bigResult, ordinal, $vivContext) {
 function checkSearchedSinger(ordinal, bigResult, $vivContext) {
     var user_list = bigResult.singerSearchResult.user_list;
     if (!user_list) {
+        bigResult = {};
         bigResult.check_first = {
             check_result: 1 //失败
         };
@@ -43,6 +46,7 @@ function checkSearchedSinger(ordinal, bigResult, $vivContext) {
         singer = (user_list[user_list.length - 2]);
     } else {
         //非法序数
+        bigResult = {};
         bigResult.check_first = {
             check_result: 1 //失败
         };
@@ -60,6 +64,7 @@ function checkSearchedSinger(ordinal, bigResult, $vivContext) {
 function checkSingerShows(ordinal, bigResult, $vivContext) {
     var show_list = bigResult.singerShows.show_list;
     if (!show_list) {
+        bigResult = {};
         bigResult.check_first = {
             check_result: 1 //失败
         };
@@ -75,6 +80,7 @@ function checkSingerShows(ordinal, bigResult, $vivContext) {
         show = (show_list[show_list.length - 2]);
     } else {
         //非法序数
+        bigResult = {};
         bigResult.check_first = {
             check_result: 1 //失败
         };
@@ -83,12 +89,13 @@ function checkSingerShows(ordinal, bigResult, $vivContext) {
 
     // 查看第几个节目，在这个节目列表界面，其实就是播放，所以我们要返回新的结果。
     // 同时为了避免result-view显示有误，删除不必要的属性
-    bigResult.singerShows = null;
-    console.log("check first, 播放第 " + ordinal + " 节目, url = " + JSON.stringify(show.play_url));
+    var uri = PlayShow.PlayShowWidthId(show.show_id, $vivContext).playShowResult.schema;
+    var bigResult = {};
+    console.log("check first, 播放第 " + ordinal + " 节目, deeplink = " + uri);
     bigResult.check_first = {
         check_result: 0, //成功
         deeplink_uri: {
-            uri: "nextradio://a/playshow?notjumpplayer=0&showid=13943903"
+            uri: uri
         }
     };
     return bigResult;

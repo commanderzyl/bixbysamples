@@ -12,28 +12,29 @@ result-view {
       } else {
         template-macro(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes)
       }
-    } else {
-      //template-macro(QQFM_4_1_Search_album_list_recently_updated_Recent_Exist_No)
-      template ()
     }
   }
 
   conversation-drivers {
-    if (exists(this.recentAlbumListSearchResult) && exists(this.recentAlbumListSearchResult.album_list) && size(this.recentAlbumListSearchResult.album_list) != 0) {
-      conversation-driver {
-        template-macro (CHECK_FIRST)
+    if (exists(this.recentAlbumListSearchResult)) {
+      if (exists(this.recentAlbumListSearchResult.album_list) && size(this.recentAlbumListSearchResult.album_list) != 0) {
+        conversation-driver {
+          template-macro (CHECK_FIRST)
+        }
+
+        conversation-driver {
+          template-macro (PLAY_FIRST)
+        }
       }
 
-      conversation-driver {
-        template-macro (PLAY_FIRST)
-      }
+      if (exists(this.recentAlbumListSearchResult.has_more) && this.recentAlbumListSearchResult.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
+      } 
     }
 
-    if (exists(this.recentAlbumListSearchResult) && exists(this.recentAlbumListSearchResult.has_more) && this.recentAlbumListSearchResult.has_more == 1) {
-      conversation-driver {
-        template-macro (LOAD_MORE)
-      }
-    }    
+
   }
 
   render {      

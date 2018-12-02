@@ -12,5 +12,25 @@ action (First) {
       min (Optional) max (One)
     }
   }
-  output (BigResult)
+  output (BigResult) {
+    on-empty {
+      if (exists(bigResult.singerSearchResult)) {
+        replan {
+          intent {
+            goal: CheckFirst
+            value: BigResult$expr(bigResult)
+            value: common.Ordinal$expr(ordinal)
+          }
+        }
+      } else-if (exists(bigResult.singerShows)) {
+        replan {
+          intent {
+            goal: PlayFirst
+            value: BigResult$expr(bigResult)
+            value: common.Ordinal$expr(ordinal)
+          }
+        }
+      }
+    }
+  }
 }

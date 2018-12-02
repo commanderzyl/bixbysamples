@@ -26,7 +26,7 @@ function PlayShowWithName(show_name, $vivContext) {
 }
 
 function PlayShowWidthId(show_id, $vivContext) {
-    var bigResult = httpRequest.getShowInfo({
+    var response = httpRequest.getShowInfo({
         deviceid: base.getUserId($vivContext.userId),
         appid: config.get("qqfm.appid"),
         show_id: show_id
@@ -42,3 +42,4 @@ function PlayShowWidthId(show_id, $vivContext) {
 }
 
 module.exports.function = PlayShow;
+module.exports.PlayShowWidthId = PlayShowWidthId;
