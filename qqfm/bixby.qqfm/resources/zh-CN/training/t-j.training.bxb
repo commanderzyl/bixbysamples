@@ -2,6 +2,10 @@ train (t-jc8rjm6sktb2dm3py3amjjhw0) {
   utterance ("[g:anchor_name:prompt] (郭德纲)[v:anchor_name]")
   plan (Y2BiEEvKrEiq1CssTMvVS8xLzsgvis9LzE3FKc4IhAwMPEDMBMRANgA=)
 }
+train (t-jdue5ais10e9b7yrwfnwuliw1) {
+  utterance ("[g:SearchRecentAlbumList] 在企鹅FM中搜一下(最近)[v:recent]更新的专辑吧")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYVBAEg1OTSxKzghKTU7NK3HMSSrN9cksLmEQRFJRBJZjYGJgBGIGIMnIAAJQPgA=)
+}
 train (t-jfthbg74rc7h1cjfcp7bkzlfu) {
   utterance ("[g:PlayRecentShowList] 在企鹅FM中播放(最新)[v:recent]更新的节目")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBFEg3ISawMSk1OzSsJzsgv98ksLmEQRJIuAksxMDEwAjEDkGRkAAEoHwA=)
@@ -9,4 +13,12 @@ train (t-jfthbg74rc7h1cjfcp7bkzlfu) {
 train (t-jqjdz84mry789rc3fjgbfh104) {
   utterance ("[g:PlayRecentAlbumList] 在企鹅FM中播放(最新)[v:recent]更新的专辑")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBDEg3ISawMSk1OzStxzEkqzfXJLC5hEESSLwLLMTAxMAIxA5BkZAABKB8A)
+}
+train (t-jw1ogdku6kmcttidjizag2css) {
+  utterance ("[g:PlayRecentShowList] 搜索企鹅FM(最新)[v:recent]更新的节目听听")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBFEg3ISawMSk1OzSsJzsgv98ksLmEQRJIuAksxMDEwAjEDkGRkAAEoHwA=)
+}
+train (t-jwixrwt06twnydl2c6tb2g2qj) {
+  utterance ("[g:PlayFirst:continue:BigResult] 听听看(第一个)[v:common.Ordinal:1]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pQRENyEmsdMssKi5hECrLLNNLzs/Nzc/T8y9KycxLzGFgYmAEYgYgycgAAlA+AA==)
 }

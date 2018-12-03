@@ -1,0 +1,8 @@
+train (t-23x9656b73wyy4yp3q7wtw25m) {
+  utterance ("[g:SearchSinger] 看看企鹅FM里的(DJ程一)[v:anchor_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
+train (t-24af1minlls4fvj4k1ov2djdh) {
+  utterance ("[g:SearchRecentAlbumList] 看看企鹅FM中(最新)[v:recent]更新的专辑")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYVBAEg1OTSxKzghKTU7NK3HMSSrN9cksLmEQRFJRBJZjYGJgBGIGIMnIAAJQPgA=)
+}

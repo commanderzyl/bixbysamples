@@ -1,0 +1,20 @@
+train (t-gj0gl03kmy15ya6xyd5ae2n8a) {
+  utterance ("[g:SearchSinger] 听(若素)[v:anchor_name]的节目在企鹅FM")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
+train (t-gt6hyu5e50r8jxjcyu5iqsu0g) {
+  utterance ("[g:PlayRecentAlbumList] 在企鹅FM听(最新)[v:recent]更新的专辑")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBDEg3ISawMSk1OzStxzEkqzfXJLC5hEESSLwLLMTAxMAIxA5BkZAABKB8A)
+}
+train (t-gvq34q6nldai4w5hig4072t1h) {
+  utterance ("[g:SearchRecentShowList] 在企鹅FM中播一下(最近)[v:recent]更新的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBHEg1OTSxKzghKTU7NKwnOyC/3ySwuYRBEUlAElmJgYmAEYgYgycgAAlA+AA==)
+}
+train (t-gxbgob2ao74lwe5vsrmmcjodn) {
+  utterance ("[g:SearchRecentAlbumList] 在企鹅FM中找一下(最新)[v:recent]更新的专辑")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYVBAEg1OTSxKzghKTU7NK3HMSSrN9cksLmEQRFJRBJZjYGJgBGIGIMnIAAJQPgA=)
+}
+train (t-gxzhcfo4mxszjw4yumfzicmx4) {
+  utterance ("[g:PlayRecentShowList] 在企鹅FM中播放(前天)[v:recent]的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBFEg3ISawMSk1OzSsJzsgv98ksLmEQRJIuAksxMDEwAjEDkGRkAAEoHwA=)
+}

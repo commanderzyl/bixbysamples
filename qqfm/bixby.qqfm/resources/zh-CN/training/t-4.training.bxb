@@ -1,0 +1,8 @@
+train (t-47oglkvf8vrhwjry1n9mthk8y) {
+  utterance ("[g:SearchSinger] 看看企鹅FM上的(单田芳)[v:anchor_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
+train (t-4mfwse7zuqup07quwjpzgu21f) {
+  utterance ("[g:PlayRecentAlbumList] 在企鹅FM中播放(前天)[v:recent]的专辑")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBDEg3ISawMSk1OzStxzEkqzfXJLC5hEESSLwLLMTAxMAIxA5BkZAABKB8A)
+}

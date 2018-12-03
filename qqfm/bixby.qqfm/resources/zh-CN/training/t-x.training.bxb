@@ -2,11 +2,23 @@ train (t-x3155qlycnyvwj70109e3szsq) {
   utterance ("[g:PlayRecentAlbumList] 在企鹅FM中播放(最近)[v:recent]更新的专辑")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBDEg3ISawMSk1OzStxzEkqzfXJLC5hEESSLwLLMTAxMAIxA5BkZAABKB8A)
 }
+train (t-x7p821t17e6xwolxz5as0uje7) {
+  utterance ("[g:SearchSinger] 听听企鹅FM里(王玥波)[v:anchor_name]的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
 train (t-xcbzyxnualtcmox8zqzl63399) {
   utterance ("[g:SearchRecentAlbumList] 在企鹅FM中搜索(最近)[v:recent]更新的专辑")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYVBAEg1OTSxKzghKTU7NK3HMSSrN9cksLmEQRFJRBJZjYGJgBGIGIMnIAAJQPgA=)
+}
+train (t-xd3a0s7k9i3qluyr798wfhf94) {
+  utterance ("[g:SearchRecentAlbumList] 搜索(最近)[v:recent]更新的专辑有哪些在企鹅FM中")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYVBAEg1OTSxKzghKTU7NK3HMSSrN9cksLmEQRFJRBJZjYGJgBGIGIMnIAAJQPgA=)
 }
 train (t-xo1k5zl0gkoq9eerfw4j4h12g) {
   utterance ("[g:SearchRecentShowList] 在企鹅FM中搜索(最新)[v:recent]更新的节目")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBHEg1OTSxKzghKTU7NKwnOyC/3ySwuYRBEUlAElmJgYmAEYgYgycgAAlA+AA==)
+}
+train (t-xoqmst7d97unwf7zfcg2j9fpz) {
+  utterance ("[g:SearchSinger] 在企鹅FM里查找主播(童林传)[v:anchor_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
 }

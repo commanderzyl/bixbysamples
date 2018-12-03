@@ -1,0 +1,8 @@
+train (t-nbigswipvrmav7sj673y9l3b4) {
+  utterance ("[g:SearchRecentShowList] 搜一搜企鹅FM(最新)[v:recent]更新的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBHEg1OTSxKzghKTU7NKwnOyC/3ySwuYRBEUlAElmJgYmAEYgYgycgAAlA+AA==)
+}
+train (t-nol5uec23sucra5exj0n76l99) {
+  utterance ("[g:First:continue:BigResult] 我要看(第一个)[v:common.Ordinal:1]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBAEnXLLCouYRAqyyzTS87Pzc3P0/MvSsnMS8xhYGJgBGIGIMnIAAJQPgA=)
+}

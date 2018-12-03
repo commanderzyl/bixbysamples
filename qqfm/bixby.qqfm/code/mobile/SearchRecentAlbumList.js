@@ -11,7 +11,7 @@ var SearchAlbum = require("./SearchAlbum");
  * @param {*} $vivContext 
  */
 function searchRecentAlbumListWithRecent(recent, params, $vivContext) {
-    var validRecent = ["最新", "最近"];
+    var validRecent = ["最新", "最近", "刚刚", "刚才"];
     var nullBigResult = {
         recentAlbumListSearchResult: {}
     };

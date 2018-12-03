@@ -2,3 +2,7 @@ train (t-m476g3diszoqb3ta66mdosnlw) {
   utterance ("[g:First:continue:BigResult] (第一个)[v:common.Ordinal:1]")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBAEnXLLCouYRAqyyzTS87Pzc3P0/MvSsnMS8xhYGJgBGIGIMnIAAJQPgA=)
 }
+train (t-mzek3i2avtj4eo29eelypiz3w) {
+  utterance ("[g:First:continue:BigResult] 看一下(第一个)[v:common.Ordinal:1]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBAEnXLLCouYRAqyyzTS87Pzc3P0/MvSsnMS8xhYGJgBGIGIMnIAAJQPgA=)
+}

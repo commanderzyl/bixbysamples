@@ -1,0 +1,8 @@
+train (t-cp1nozepycqk6xu0hd8lqrvnl) {
+  utterance ("[g:SearchSinger] 在企鹅FM中搜索主播(汉尚华莲)[v:anchor_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
+train (t-cx7c00jjridzbydndvjt3168a) {
+  utterance ("[g:SearchSinger] 在企鹅FM上搜索主播(袁阔成)[v:anchor_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}

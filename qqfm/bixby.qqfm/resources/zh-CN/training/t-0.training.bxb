@@ -1,0 +1,8 @@
+train (t-0g62f95540gl78cwsq0nwnkuq) {
+  utterance ("[g:PlayFirst:continue:BigResult] 听(第一个)[v:common.Ordinal:1]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pQRENyEmsdMssKi5hECrLLNNLzs/Nzc/T8y9KycxLzGFgYmAEYgYgycgAAlA+AA==)
+}
+train (t-0i9srvcl5i163scklu3er1qrp) {
+  utterance ("[g:SearchSinger] 在企鹅FM里找找主播(张萌)[v:anchor_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}

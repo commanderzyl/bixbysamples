@@ -1,4 +1,16 @@
+train (t-l3321a9dycunwy4oyctnjf5ez) {
+  utterance ("[g:SearchRecentShowList] 查找企鹅FM(最近)[v:recent]更新了的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBHEg1OTSxKzghKTU7NKwnOyC/3ySwuYRBEUlAElmJgYmAEYgYgycgAAlA+AA==)
+}
 train (t-lcd6jtzwst81req2t9xk3g9gx) {
   utterance ("[g:First:continue:BigResult] 第(3)[v:common.Ordinal:3]个")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBAEnXLLCouYRAqyyzTS87Pzc3P0/MvSsnMS8xhYGJgBGIGIMnIAAJQPgA=)
+}
+train (t-lrqpxqx4wo8udcoa1pdz3t0ci) {
+  utterance ("[g:SearchRecentShowList] 在企鹅FM中找一下(最新)[v:recent]更新的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBHEg1OTSxKzghKTU7NKwnOyC/3ySwuYRBEUlAElmJgYmAEYgYgycgAAlA+AA==)
+}
+train (t-lrwhsohyhdqo6m8pmnqplimjl) {
+  utterance ("[g:SearchSinger] 在企鹅FM听听(小月姐姐)[v:anchor_name]的故事")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
 }

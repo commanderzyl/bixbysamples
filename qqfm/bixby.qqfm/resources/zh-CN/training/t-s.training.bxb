@@ -1,4 +1,16 @@
+train (t-s8uuz3lxnyy971tm86fnk0dep) {
+  utterance ("[g:PlayRecentShowList] 播放企鹅FM(最近)[v:recent]更新的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBFEg3ISawMSk1OzSsJzsgv98ksLmEQRJIuAksxMDEwAjEDkGRkAAEoHwA=)
+}
 train (t-srgoek27wln0pw8vdqcf4c06i) {
   utterance ("[g:SearchSinger] 在企鹅FM中搜索主播(郭德纲)[v:anchor_name]")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
+train (t-srm0hh73ttdevz3lgmz27bhww) {
+  utterance ("[g:SearchRecentShowList] 在企鹅FM中搜一下(最新)[v:recent]更新的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBHEg1OTSxKzghKTU7NKwnOyC/3ySwuYRBEUlAElmJgYmAEYgYgycgAAlA+AA==)
+}
+train (t-suf9ps0c1k8603dxu3iwg2jjq) {
+  utterance ("[g:SearchRecentShowList] 在企鹅FM中搜一下(最近)[v:recent]更新的节目吧")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBHEg1OTSxKzghKTU7NKwnOyC/3ySwuYRBEUlAElmJgYmAEYgYgycgAAlA+AA==)
 }

@@ -1,0 +1,4 @@
+train (t-hg7kwdo7qt3ckgtfw52orylpd) {
+  utterance ("[g:PlayRecentShowList] 在企鹅FM中播放(上周三)[v:recent]的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBFEg3ISawMSk1OzSsJzsgv98ksLmEQRJIuAksxMDEwAjEDkGRkAAEoHwA=)
+}

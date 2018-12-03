@@ -1,0 +1,8 @@
+train (t-u2ypjiygqiqctk0uvtj8fl08d) {
+  utterance ("[g:PlayRecentAlbumList] 在企鹅FM中播一下(最新)[v:recent]更新的专辑吧")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBDEg3ISawMSk1OzStxzEkqzfXJLC5hEESSLwLLMTAxMAIxA5BkZAABKB8A)
+}
+train (t-uwges2pfjkafht8euew5evilq) {
+  utterance ("[g:SearchRecentShowList] 在企鹅FM中搜索(前天)[v:recent]的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBHEg1OTSxKzghKTU7NKwnOyC/3ySwuYRBEUlAElmJgYmAEYgYgycgAAlA+AA==)
+}

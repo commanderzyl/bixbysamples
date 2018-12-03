@@ -1,6 +1,22 @@
+train (t-dbiunol1mfzj3bvi4kd86d7b1) {
+  utterance ("[g:SearchRecentAlbumList] 查看企鹅FM中(最近)[v:recent]更新的专辑有哪些")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYVBAEg1OTSxKzghKTU7NK3HMSSrN9cksLmEQRFJRBJZjYGJgBGIGIMnIAAJQPgA=)
+}
 train (t-df9lgdp4q2crzo6fsew7um2eg) {
   utterance ("[g:SearchSinger] 在企鹅FM中搜索主播(DJ林浪)[v:anchor_name]")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
+train (t-dm8kv2egofdiwc3kjqtiio5ia) {
+  utterance ("[g:PlayFirst:continue:BigResult] 听听(第一个)[v:common.Ordinal:1]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pQRENyEmsdMssKi5hECrLLNNLzs/Nzc/T8y9KycxLzGFgYmAEYgYgycgAAlA+AA==)
+}
+train (t-dmpje5plhxah1cej7xeje4zbz) {
+  utterance ("[g:SearchSinger] 搜索(田连元)[v:anchor_name]在企鹅FM")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
+train (t-dw0e6gk3mgkods6iyuv6q7zea) {
+  utterance ("[g:SearchRecentAlbumList] 在企鹅FM中查找(最新)[v:recent]更新的专辑有哪些")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYVBAEg1OTSxKzghKTU7NK3HMSSrN9cksLmEQRFJRBJZjYGJgBGIGIMnIAAJQPgA=)
 }
 train (t-dxm16p8d3mce3iuk8mc1eqyqb) {
   utterance ("[g:anchor_name:prompt] (蕊希)[v:anchor_name]")

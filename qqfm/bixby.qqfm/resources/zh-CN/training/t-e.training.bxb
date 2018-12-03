@@ -2,3 +2,11 @@ train (t-e2nd31f8mxuhsdfrw2rc8qr9t) {
   utterance ([g:LoadMore:continue:BigResult] 加载更多)
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBGEvXJT0zxzS9KxaGUiYERiBmAJCMDA4wGAA==)
 }
+train (t-eb3san42lmimyyxqa36n6nplq) {
+  utterance ("[g:First:continue:BigResult] 看(第一个)[v:common.Ordinal:1]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBAEnXLLCouYRAqyyzTS87Pzc3P0/MvSsnMS8xhYGJgBGIGIMnIAAJQPgA=)
+}
+train (t-ei5yyb5lowg0pfwqm0wbhgdtd) {
+  utterance ("[g:PlayFirst:continue:BigResult] 我要听(第一个)[v:common.Ordinal:1]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pQRENyEmsdMssKi5hECrLLNNLzs/Nzc/T8y9KycxLzGFgYmAEYgYgycgAAlA+AA==)
+}

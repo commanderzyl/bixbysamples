@@ -2,3 +2,11 @@ train (t-9ozyi2ziky44u4zyj8c2rxkvp) {
   utterance ("[g:anchor_name:prompt] (DJ林浪)[v:anchor_name]")
   plan (Y2BiEEvKrEiq1CssTMvVS8xLzsgvis9LzE3FKc4IhAwMPEDMBMRANgA=)
 }
+train (t-9yto06xe4b644b6dbipe9t1q8) {
+  utterance ("[g:SearchRecentShowList] 在企鹅FM中搜索(上一周)[v:recent]的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBHEg1OTSxKzghKTU7NKwnOyC/3ySwuYRBEUlAElmJgYmAEYgYgycgAAlA+AA==)
+}
+train (t-9z186yfgghhg3ev26ofniiwoc) {
+  utterance ("[g:SearchRecentAlbumList] 在企鹅FM中搜索(上周)[v:recent]的专辑")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYVBAEg1OTSxKzghKTU7NK3HMSSrN9cksLmEQRFJRBJZjYGJgBGIGIMnIAAJQPgA=)
+}

@@ -10,7 +10,7 @@ var base = require("../lib/base");
  * @param {*} $vivContext 
  */
 function searchRecentShowListWithPagination(recent, params, $vivContext) {
-    var validRecent = ["最新", "最近"];
+    var validRecent = ["最新", "最近", "刚刚", "刚才"];
     var nullBigResult = {
         recentShowListSearchResult: {}
     };

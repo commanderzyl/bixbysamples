@@ -1,0 +1,16 @@
+train (t-o0qgfwhhlg8n4cw3s0mbd8t58) {
+  utterance ("[g:SearchSinger] 找找企鹅FM的(樱桃小丸子)[v:anchor_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
+train (t-oeuuv4ec77g4797jrrmbve2xk) {
+  utterance ("[g:SearchSinger] 我要在企鹅FM听(一禅小和尚)[v:anchor_name]")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
+}
+train (t-owmqjf66jsa8r6kh74ipu9lsq) {
+  utterance ("[g:SearchRecentAlbumList] 在企鹅FM中查找(刚刚)[v:recent]更新的专辑有哪些")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYVBAEg1OTSxKzghKTU7NK3HMSSrN9cksLmEQRFJRBJZjYGJgBGIGIMnIAAJQPgA=)
+}
+train (t-oxl1maur9whhh15rqfimyq9te) {
+  utterance ("[g:SearchRecentShowList] 看看企鹅FM(最近)[v:recent]更新了那些节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBHEg1OTSxKzghKTU7NKwnOyC/3ySwuYRBEUlAElmJgYmAEYgYgycgAAlA+AA==)
+}

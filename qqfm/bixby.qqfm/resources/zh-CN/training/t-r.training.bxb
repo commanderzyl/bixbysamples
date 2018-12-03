@@ -2,3 +2,7 @@ train (t-ria704x6ds1pyncvx32yg33vp) {
   utterance ("[g:PlayFirst:continue:BigResult] 播放(第一个)[v:common.Ordinal:1]")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pQRENyEmsdMssKi5hECrLLNNLzs/Nzc/T8y9KycxLzGFgYmAEYgYgycgAAlA+AA==)
 }
+train (t-rs7fx8pzioek0m427ons4ipq0) {
+  utterance ("[g:PlayRecentShowList] 在企鹅FM中播(最近)[v:recent]更新的节目")
+  plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYZBFEg3ISawMSk1OzSsJzsgv98ksLmEQRJIuAksxMDEwAjEDkGRkAAEoHwA=)
+}
