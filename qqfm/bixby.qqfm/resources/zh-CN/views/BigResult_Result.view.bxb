@@ -1,0 +1,352 @@
+result-view {
+  match {
+    BigResult(this)
+  }
+
+  message {
+    // 搜索主播列表
+    if (exists(this.singerSearchResult)) {
+      if (!exists(this.singerSearchResult.user_list) || size(this.singerSearchResult.user_list) == 0 || this.singerSearchResult.isRecommonded) {
+        template-macro(QQFM_3_2_Search_the_anchors_list_Singer_Match_No)
+      } else {
+        template-macro(QQFM_3_3_Search_the_anchors_list_Singer_Match_Yes)
+      }
+    }
+
+    // 查看主播名下的节目列表
+    if (exists(this.singerShows)) {
+      template-macro(QQFM_3_3_Search_the_anchors_list_Singer_Match_Yes)
+    }
+
+    // 搜索节目
+    if (exists(this.searchShowResult)) {
+      if (!exists(this.searchShowResult.show_list) || size(this.searchShowResult.show_list) == 0) {
+        template-macro(QQFM_5_2_Search_programme_list_recently_updated_Result_Match_No)
+      } else {
+        template-macro(QQFM_5_3_Search_programme_list_recently_updated_Result_Match_Yes)
+      }
+    }
+
+    // 查看最近更新的专辑列表
+    if (exists(this.recentAlbumListSearchResult)) {
+      if (!exists(this.recentAlbumListSearchResult.album_list) || size(this.recentAlbumListSearchResult.album_list) == 0)       {
+        template-macro(QQFM_4_2_Search_album_list_recently_updated_Result_Match_No)
+      } else {
+        template-macro(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes)
+      }
+    }
+
+    // 查看最近更新的专辑列表时，进入某个专辑，查看节目列表
+    if (exists(this.recentAlbumListDetailSearchResult)) {
+      template-macro(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes)   
+    }
+
+    // 搜索最近更新的节目列表
+    if (exists(this.recentShowListSearchResult)) {
+      if (!exists(this.recentShowListSearchResult.show_list) || size(this.recentShowListSearchResult.show_list) == 0) {
+        template-macro(QQFM_5_2_Search_programme_list_recently_updated_Result_Match_No)
+      } else {
+        template-macro(QQFM_5_3_Search_programme_list_recently_updated_Result_Match_Yes)
+      }
+    }
+
+    // 搜索专辑
+    if (exists(this.searchAlbumResult)) {
+      if(!exists(this.searchAlbumResult.album_list) || size(this.searchAlbumResult.album_list) == 0) {
+        template-macro(QQFM_4_2_Search_album_list_recently_updated_Result_Match_No)
+      } else {
+        template-macro(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes)
+      }
+    } 
+
+    // 查看第一个
+    if (exists(this.check_first)) {
+      if (this.check_first.check_result == 0) {
+        template-macro(QQFM_12_2_See_one_Number_Match_Yes)
+      } else {
+        template-macro(QQFM_12_1_See_one_Number_Match_No)
+      }
+    }
+
+    // 播放第一个
+    if (exists(this.play_first)) {
+      if (this.play_first.play_result != 0) {
+        template-macro(QQFM_13_1_Play_one_Number_Match_No)
+      }
+    }
+
+    // 播放节目
+    if (exists(this.playShowResult)) {
+      if (!exists(this.playShowResult.schema))       {
+        template-macro(QQFM_9_2_Play_programme_list_recently_updated_Result_Match_No)
+      } else {
+        template ()
+      }
+    }
+
+    // 播放最近更新的专辑
+    if (exists(this.recentAlbumListPlayResult)) {
+      if (!exists(this.recentAlbumListPlayResult.album_list) || size(this.recentAlbumListPlayResult.album_list) == 0) {
+        template-macro(QQFM_8_2_Play_album_list_recently_updated_Result_Match_No)
+      } else {
+        template ()
+      }
+    }
+
+    // 播放最近更新的节目
+    if (exists(this.recentShowListPlayResult)) {
+      if (!exists(this.recentShowListPlayResult.show_list) || size(this.recentShowListPlayResult.show_list) == 0) {
+        template-macro(QQFM_9_2_Play_programme_list_recently_updated_Result_Match_No)
+      } else {
+        template ()
+      }
+    } 
+
+    // 播放专辑
+    if (exists(this.playAlbumResult)) {
+      if (!exists(this.playAlbumResult.schema))       {
+        template-macro(QQFM_8_2_Play_album_list_recently_updated_Result_Match_No)
+      } else {
+        template ()
+      }
+    }
+  }
+
+
+  app-launch {     
+    payload-uri{
+      if (exists(this.check_first)) {
+        if (this.check_first.check_result == 0 && exists(this.check_first.deeplink_uri)) {
+          if (exists(this.check_first.deeplink_uri.uri)) {
+            template("#{value(this.check_first.deeplink_uri.uri)}")
+          }
+        }
+      } else-if (exists(this.playAlbumResult)) {
+        if (exists(this.playAlbumResult.schema)){
+          template("#{value(this.playAlbumResult.schema)}")
+        }
+      } else-if (exists(this.play_first)) {
+        if (this.play_first.play_result == 0 && exists(this.play_first.deeplink_uri)) {
+          if (exists(this.play_first.deeplink_uri.uri)) {
+            template("#{value(this.play_first.deeplink_uri.uri)}")
+          }        
+        }
+      } else-if (exists(this.recentAlbumListPlayResult)) {
+        if (exists(this.recentAlbumListPlayResult.album_list) && size(this.recentAlbumListPlayResult.album_list) != 0){
+          if (exists(this.recentAlbumListPlayResult.album_list[0].schema)) {
+            template("#{value(this.recentAlbumListPlayResult.album_list[0].schema)}")
+          }
+
+        }
+      } else-if (exists(this.recentShowListPlayResult)) {
+        if (exists(this.recentShowListPlayResult.show_list) && size(this.recentShowListPlayResult.show_list) != 0){
+          if (exists(this.recentShowListPlayResult.show_list[0].schema)) {
+            template("#{value(this.recentShowListPlayResult.show_list[0].schema)}")
+          }
+
+        }
+      } else-if (exists(this.playShowResult)) {
+        if (exists(this.playShowResult.schema)){
+          template("#{value(this.playShowResult.schema)}")
+        }
+      }
+    }
+    requires {
+      app-id (com.tencent.radio)
+      app-name(企鹅FM)
+      // app-min-version (800053000)
+      app-store-url (samsungapps://ProductDetail/com.tencent.radio)    
+    }       
+  }
+
+
+  conversation-drivers {
+    // 搜索主播列表
+    if (exists(this.singerSearchResult)) {
+      if (exists(this.singerSearchResult.user_list) && size(this.singerSearchResult.user_list) != 0) {
+        conversation-driver {
+          template-macro (CHECK_FIRST)
+        }
+      }
+
+      if (exists(this.singerSearchResult.has_more) && this.singerSearchResult.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
+      } 
+    }
+
+    //查看主播名下的所有节目
+    if (exists(this.singerShows)) {
+      if (exists(this.singerShows.show_list) && size(this.singerShows.show_list) != 0) {
+        conversation-driver {
+          template-macro (PLAY_FIRST)
+        }
+      }
+
+      if (exists(this.singerShows.has_more) && this.singerShows.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
+      }
+    }
+
+    // 搜索节目
+    if (exists(this.searchShowResult)) {
+      if (exists(this.searchShowResult.show_list) && size(this.searchShowResult.show_list) != 0) {        
+        conversation-driver {
+          template-macro (PLAY_FIRST)
+        }
+      }    
+
+      if (exists(this.searchShowResult.has_more) && this.searchShowResult.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
+      } 
+    }  
+
+    // 搜索最近更新的专辑
+    if (exists(this.recentAlbumListSearchResult)) {
+      if (exists(this.recentAlbumListSearchResult.album_list) && size(this.recentAlbumListSearchResult.album_list) != 0) {
+        conversation-driver {
+          template-macro (CHECK_FIRST)
+        }
+
+        conversation-driver {
+          template-macro (PLAY_FIRST)
+        }
+      }
+
+      if (exists(this.recentAlbumListSearchResult.has_more) && this.recentAlbumListSearchResult.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
+      } 
+    }
+
+    // 搜索最近更新的节目
+    if (exists(this.recentShowListSearchResult)) {
+      if (exists(this.recentShowListSearchResult.show_list) && size(this.recentShowListSearchResult.show_list) != 0) {
+        conversation-driver {
+          template-macro (PLAY_FIRST)
+        }
+      }
+
+      if (exists(this.recentShowListSearchResult.has_more) && this.recentShowListSearchResult.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
+      } 
+    }
+
+    // 查看最新更新的专辑下的所有节目
+    if (exists(this.recentAlbumListDetailSearchResult)) {
+      if (exists(this.recentAlbumListDetailSearchResult.show_list) && size(this.recentAlbumListDetailSearchResult)!=0){
+        conversation-driver {
+          template-macro (PLAY_FIRST)
+        }
+      }
+
+      if (exists(this.recentAlbumListDetailSearchResult.has_more) && this.recentAlbumListDetailSearchResult.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
+      }   
+    }
+
+    // 搜索专辑
+    if (exists(this.searchAlbumResult)) {
+      if(exists(this.searchAlbumResult.album_list) && size(this.searchAlbumResult.album_list) != 0) {
+        conversation-driver {
+          template-macro (CHECK_FIRST)
+        }
+
+        conversation-driver {
+          template-macro (PLAY_FIRST)
+        }
+      }  
+      if (exists(this.searchAlbumResult.has_more) && this.searchAlbumResult.has_more == 1) {
+        conversation-driver {
+          template-macro (LOAD_MORE)
+        }
+      }  
+    }  
+  }
+
+  render {
+    if (exists(this.singerSearchResult)) {
+      if(size(this.singerSearchResult.user_list) >= 1) {
+        list-of (this.singerSearchResult.user_list) {
+          where-each (item) {
+            layout-macro (singer_summary_macro) {
+              param (singer) {
+                expression (item)
+              }
+            }
+          }
+        }
+      }
+    } else-if (exists(this.singerShows)) {
+      layout-macro (singershows_summary_macro) {
+        param (singerShows) {
+          expression (this.singerShows)
+        }
+      }  
+    } else-if (exists(this.recentAlbumListSearchResult)) {
+      if (exists(this.recentAlbumListSearchResult.album_list) && size(this.recentAlbumListSearchResult.album_list) >= 1) {
+        list-of (this.recentAlbumListSearchResult.album_list) {
+          where-each (item) {
+            layout-macro (recent_album_list_summary_macro) {
+              param (album) {
+                expression (item)
+              }
+            }
+          }
+        }
+      }
+    }else-if (exists(this.recentShowListSearchResult)) {
+      if(exists(this.recentShowListSearchResult.show_list) && size(this.recentShowListSearchResult.show_list) >= 1) {
+        list-of (this.recentShowListSearchResult.show_list) {
+          where-each (item) {
+            layout-macro (recent_show_list_summary_macro) {
+              param (show) {
+                expression (item)
+              }
+            }
+          }
+        }
+      }
+    }else-if (exists(this.recentAlbumListDetailSearchResult)) {
+      layout-macro (recent_album_list_detail_macro) {
+        param (result) {
+          expression (this.recentAlbumListDetailSearchResult)
+        }
+      } 
+    } else-if (exists(this.searchShowResult)) {
+      if(exists(this.searchShowResult.show_list) && size(this.searchShowResult.show_list) >= 1) {
+        list-of (this.searchShowResult.show_list) {
+          where-each (item) {
+            layout-macro (recent_show_list_summary_macro) {
+              param (show) {
+                expression (item)
+              }
+            }
+          }
+        }
+      } 
+    } else-if(exists(this.searchAlbumResult)) {
+      if (exists(this.searchAlbumResult.album_list) && size(this.searchAlbumResult.album_list) >= 1) {
+        list-of (this.searchAlbumResult.album_list) {
+          where-each (item) {
+            layout-macro (recent_album_list_summary_macro) {
+              param (album) {
+                expression (item)
+              }
+            }
+          }
+        }
+      } 
+    }         
+  }  
+}
