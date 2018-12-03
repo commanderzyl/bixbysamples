@@ -1,6 +1,0 @@
-dialog (NoResult) {
-  match: BigResult {
-    from-output: First
-  }
-  template("")
-}

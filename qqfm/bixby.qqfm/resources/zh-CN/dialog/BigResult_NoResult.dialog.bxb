@@ -1,0 +1,4 @@
+dialog (NoResult) {
+  match: BigResult
+  template("")
+}

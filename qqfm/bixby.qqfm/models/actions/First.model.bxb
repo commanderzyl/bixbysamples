@@ -14,7 +14,7 @@ action (First) {
   }
   output (BigResult) {
     on-empty {
-      if (exists(bigResult.singerSearchResult)) {
+      if (exists(bigResult.singerSearchResult) || exists(bigResult.recentAlbumListSearchResult) || exists(bigResult.searchAlbumResult)) {
         replan {
           intent {
             goal: CheckFirst
@@ -22,7 +22,7 @@ action (First) {
             value: common.Ordinal$expr(ordinal)
           }
         }
-      } else-if (exists(bigResult.singerShows)) {
+      } else-if (exists(bigResult.singerShows) || exists(bigResult.recentAlbumListDetailSearchResult) || exists(bigResult.recentShowListSearchResult) || exists(bigResult.searchShowResult)) {
         replan {
           intent {
             goal: PlayFirst

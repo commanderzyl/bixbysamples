@@ -74,3 +74,4 @@ function SearchRecentAlbumListDetail(album, $vivContext) {
 
 module.exports.function = SearchRecentAlbumListDetail;
 module.exports.SearchRecentAlbumListDetailInternal = SearchRecentAlbumListDetailInternal;
+module.exports.SearchRecentAlbumListDetail = SearchRecentAlbumListDetail;

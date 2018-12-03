@@ -43,3 +43,4 @@ function PlayAlbumWithName(album_name, $vivContext) {
 }
 
 module.exports.function = PlayAlbum;
+module.exports.PlayAlbumWithId = PlayAlbumWithId;
