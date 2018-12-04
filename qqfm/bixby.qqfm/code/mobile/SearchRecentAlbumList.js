@@ -69,15 +69,29 @@ function searchRecentAlbumListWithRecent(recent, params, $vivContext) {
     // 获取每个专辑的schema即deeplink信息
     var album_list = bigResult.recentAlbumListSearchResult.album_list;
     for (var index = 0; index < album_list.length; index++) {
-        var albumInfoResponse = httpRequest.getAlbumInfo({
-            deviceid: base.getUserId($vivContext.userId),
-            appid: config.get("qqfm.appid"),
-            album_id: album_list[index].album_id
-        });
+        // 获取第一个节目的schema信息
+        try {
+            var showInfoResponse = httpRequest.getShowInfo({
+                deviceid: base.getUserId($vivContext.userId),
+                appid: config.get("qqfm.appid"),
+                show_id: album_list[index].show_list[0].show_id
+            });
+            if (showInfoResponse) {
+                album_list[index].schema = showInfoResponse.schema;
+            }
+        } catch (error) {
+            console.log("failed to get show info, error = " + JSON.stringify(error));
+            var albumInfoResponse = httpRequest.getAlbumInfo({
+                deviceid: base.getUserId($vivContext.userId),
+                appid: config.get("qqfm.appid"),
+                album_id: album_list[index].album_id
+            });
 
-        if (albumInfoResponse) {
-            album_list[index].schema = albumInfoResponse.schema;
+            if (albumInfoResponse) {
+                album_list[index].schema = albumInfoResponse.schema;
+            }
         }
+
     }
     console.log("searchRecentAlbumList, get the recent bigResult: " + JSON.stringify(bigResult));
     return bigResult;

@@ -1,0 +1,208 @@
+<html>
+
+<head>
+    <style>
+        .body {
+            font-size: 16px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        
+        .summaryArea {
+            display: flex;
+            flex-direction: row;
+            height: 6.38rem;
+            padding: 0.69rem 0.88rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .left {
+            flex: 0 1 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .right {
+            flex: auto;
+            overflow: hidden;
+        }
+        
+        .logo {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 8px;
+        }
+        
+        .accountInfo {
+            display: flex;
+            margin-left: 1.13rem;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .singerName {
+            font-family: PingFangSC-Regular;
+            font-size: 1.18rem;
+            color: #FAFAFA;
+            height: 1.63rem;
+        }
+        
+        .albumInfo {
+            opacity: 0.6;
+            font-family: PingFangSC-Regular;
+            font-size: 0.875rem;
+            color: #FAFAFA;
+            letter-spacing: 0;
+            height: 1.19rem;
+        }
+        
+        .overflow {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        
+        .fansShowLine {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .fansInfo {
+            font-family: PingFangSC-Regular;
+            font-size: 0.875rem;
+            color: rgba(250, 250, 250, 0.60);
+            letter-spacing: 0;
+            height: 1.19rem;
+        }
+        
+        .showInfo {
+            font-family: PingFangSC-Regular;
+            font-size: 0.875rem;
+            color: rgba(250, 250, 250, 0.60);
+            letter-spacing: 0;
+            text-align: right;
+            height: 1.19rem;
+        }
+        
+        .show_area {
+            box-sizing: border-box;
+            height: 4.63rem;
+            background: rgba(250, 250, 250, 0.05);
+            border-radius: 8px;
+            padding: 0.75rem 0.75rem 0.84rem 0.75rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            margin-top: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .show_name {
+            flex: 1 1 auto;
+            box-sizing: border-box;
+            font-family: PingFangSC-Regular;
+            font-size: 1.1875rem;
+            color: #FAFAFA;
+            line-height: 1.625rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            /*             width: 19.5rem; */
+            height: 1.69rem;
+        }
+        
+        .duration {
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: row;
+            height: 1.25rem;
+            justify-content: space-between;
+        }
+        
+        .duration_logo {
+            margin-top: 0.44rem;
+            flex: 0 0 auto;
+            width: 0.69rem;
+            height: 0.69rem;
+        }
+        
+        .duration_time {
+            flex: auto;
+            width: 2.88rem;
+            height: 1.03rem;
+            font-family: PingFangSC-Regular;
+            font-size: 0.875rem;
+            color: rgba(250, 250, 250, 0.60);
+            letter-spacing: 0;
+            text-align: justify;
+            line-height: 1.125rem;
+            margin-top: 0.31rem;
+            margin-left: 0.38rem;
+        }
+        
+        .update_time {
+            flex: auto;
+            font-family: PingFangSC-Regular;
+            font-size: 0.875rem;
+            color: rgba(250, 250, 250, 0.60);
+            letter-spacing: 0;
+            text-align: right;
+            line-height: 1.125rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 7.31rem;
+            height: 1.25rem;
+            margin-left: 3.06rem;
+            margin-top: 0.19rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+        <div class="summaryArea">
+            <div class="left">
+                <img class="logo" src="{{singerShows.singer.anchor_logo}}">
+            </div>
+            <div class="right accountInfo">
+                <div class="singerName overflow">
+                    {{exists(singerShows.singer.anchor_name)?singerShows.singer.anchor_name:"主播名未知"}}
+                </div>
+                <div class="albumInfo overflow">
+                    {{#if exists(singerShows.singer.anchor_album_num)}} 专辑{{singerShows.singer.anchor_album_num}}个 {{else}} 专辑0个 {{/if}} | 最新专辑：{{exists(singerShows.singer.recent_album_name)?singerShows.singer.recent_album_name:"未知"}}
+                </div>
+                <div class="fansShowLine">
+                    <div class="fansInfo overflow">
+                        粉丝 {{number(singerShows.singer.anchor_fans_num/10000, '#.#')}}万
+                    </div>
+
+                    <div class="showInfo overflow">
+                        {{#if exists(singerShows.singer.anchor_show_num)}} 共{{singerShows.singer.anchor_show_num}}集 {{else}} 共0集 {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="show_area">
+        <div class="show_name">
+            {{exists(this.show_name)?this.show_name:"(节目名未知)"}}
+        </div>
+        <div class="duration">
+            <img class="duration_logo" src="/image/time.png">
+            <div class="duration_time">
+                {{exists(this.show_duration_display)?this.show_duration_display:"播放时长"}}
+            </div>
+            <div class="update_time">
+                {{#if exists(this.show_create_timestamp_display)}} {{this.show_create_timestamp_display}}更新 {{else}} 更新时间 {{/if}}
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>

@@ -13,15 +13,42 @@ function PlayAlbum(album_name, album_id, $vivContext) {
 }
 
 function PlayAlbumWithId(album_id, $vivContext) {
-    var response = httpRequest.getAlbumInfo({
+    var schema = null;
+    // 首先获取专辑下面的第一个节目
+    var albumShowListResponse = httpRequest.getAlbumShowList({
         deviceid: base.getUserId($vivContext.userId),
         appid: config.get("qqfm.appid"),
-        album_id: album_id
+        album_id: album_id,
+        pagination_cursor: 0,
+        pagination_size: 5
     });
 
-    if (response && response.schema) {
+    if (albumShowListResponse && albumShowListResponse.show_list) {
+        var show_list = albumShowListResponse.show_list;
+        if (show_list.length != 0) {
+            var showInfoResponse = httpRequest.getShowInfo({
+                deviceid: base.getUserId($vivContext.userId),
+                appid: config.get("qqfm.appid"),
+                show_id: show_list[0].show_id,
+            });
+            if (showInfoResponse && showInfoResponse.schema) {
+                schema = showInfoResponse.schema;
+            }
+        }
+    } else {
+        var response = httpRequest.getAlbumInfo({
+            deviceid: base.getUserId($vivContext.userId),
+            appid: config.get("qqfm.appid"),
+            album_id: album_id
+        });
+        if (response && response.schema) {
+            schema = response.schema;
+        }
+    }
+
+    if (schema) {
         return {
-            playAlbumResult: { schema: response.schema }
+            playAlbumResult: { schema: schema }
         }
 
     }

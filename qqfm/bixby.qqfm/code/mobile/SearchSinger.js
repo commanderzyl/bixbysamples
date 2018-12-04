@@ -46,14 +46,14 @@ function SearchSingerInternal(anchor_name, pagination_cursor, pagination_size, $
 
         if (recentAlbum.ret != '0') {
             console.log("failed to getSingerAlbumList, " + recentAlbum.ret + ", " + recentAlbum.msg);
-            bigResult.singerSearchResult.user_list[index].recent_album_name = "(未知)";
+            //bigResult.singerSearchResult.user_list[index].recent_album_name = "(未知)";
             continue;
         }
 
         if (recentAlbum.album_list && recentAlbum.album_list.length != 0) {
             bigResult.singerSearchResult.user_list[index].recent_album_name = recentAlbum.album_list[0].album_name;
         } else {
-            bigResult.singerSearchResult.user_list[index].recent_album_name = "(未知)";
+            // bigResult.singerSearchResult.user_list[index].recent_album_name = "(未知)";
         }
     }
     console.log("SearchSingerInternal, bigResult:" + JSON.stringify(bigResult));
@@ -78,7 +78,7 @@ function getRecommendedSingers($vivContext) {
         pagination_cursor: 0,
         pagination_size: singerList.length,
         has_more: 0,
-        user_list:[],
+        user_list: [],
         ret: '0'
     }
 

@@ -31,8 +31,20 @@ template-macro-def(QQFM_0_3_CommonCheck_App_Downloaded_No) {
 template-macro-def(QQFM_3_1_Search_the_anchors_list_Singer_Exist_No) {
   content {
     choose(Random) {  
-      template("Who do you want to listen？") {
-        speech ("Who do you want to listen？")
+      template("想听哪个主播的节目呢？") {
+        speech ("想听哪个主播的节目呢？")
+      }
+      template("你想听哪个主播的节目呢？") {
+        speech ("你想听哪个主播的节目呢？")
+      }
+      template("要听哪个主播的节目？") {
+        speech ("要听哪个主播的节目？")
+      }
+      template("想听哪个主播的节目？跟我说一下吧。") {
+        speech ("想听哪个主播的节目？跟我说一下吧。")
+      }
+      template("想听哪个主播的节目？告诉我就可以了。") {
+        speech ("想听哪个主播的节目？告诉我就可以了。")
       }
     }
   }
@@ -41,8 +53,17 @@ template-macro-def(QQFM_3_1_Search_the_anchors_list_Singer_Exist_No) {
 template-macro-def(QQFM_3_2_Search_the_anchors_list_Singer_Match_No) {
   content {
     choose(Random) {  
-      template("Here is no search result that you wanted. See some recommended anchors.") {
-        speech ("Here is no search result that you wanted. See some recommended anchors.")
+      template("没有找到你要的主播。也许我们可以看看推荐的主播。") {
+        speech ("没有找到你要的主播。也许我们可以看看推荐的主播。")
+      }
+      template("你说的主播不存在。也许我们可以看看推荐的主播。") {
+        speech ("你说的主播不存在。也许我们可以看看推荐的主播。")
+      }
+      template("没有这个主播。也许你可以看看推荐的主播。") {
+        speech ("没有这个主播。也许你可以看看推荐的主播。")
+      }
+      template("我没有找到你要的。这里有一些推荐的主播，也许有你喜欢的。") {
+        speech ("我没有找到你要的。这里有一些推荐的主播，也许有你喜欢的。")
       }
     }
   }
@@ -51,8 +72,23 @@ template-macro-def(QQFM_3_2_Search_the_anchors_list_Singer_Match_No) {
 template-macro-def(QQFM_3_3_Search_the_anchors_list_Singer_Match_Yes) {
   content {
     choose(Random) {  
-      template("Ok here it is.") {
-        speech ("Ok here it is.")
+      template("这就是你要的主播。") {
+        speech ("这就是你要的主播。")
+      }
+      template("找到了，看看是不是你要的主播。") {
+        speech ("找到了，看看是不是你要的主播。")
+      }
+      template("找到了。") {
+        speech ("找到了。")
+      }
+      template("这就是你要的主播。") {
+        speech ("这就是你要的主播。")
+      }
+      template("没问题，找到了。") {
+        speech ("没问题，找到了。")
+      }
+      template("找到了你要的主播。") {
+        speech ("找到了你要的主播。")
       }
     }
   }
@@ -61,8 +97,20 @@ template-macro-def(QQFM_3_3_Search_the_anchors_list_Singer_Match_Yes) {
 template-macro-def(QQFM_4_1_Search_album_list_recently_updated_Recent_Exist_No) {
   content {
     choose(Random) {  
-      template("What do you want to listen？") {
-        speech ("What do you want to listen？")
+      template("想听什么内容呢？") {
+        speech ("想听什么内容呢？")
+      }
+      template("想听点什么？") {
+        speech ("想听点什么？")
+      }
+      template("你想听什么内容呢？") {
+        speech ("你想听什么内容呢？")
+      }
+      template("想听点什么？跟我说一下吧。") {
+        speech ("想听点什么？跟我说一下吧。")
+      }
+      template("想听点什么？告诉我就可以了。") {
+        speech ("想听点什么？告诉我就可以了。")
       }
     }
   }
@@ -71,8 +119,11 @@ template-macro-def(QQFM_4_1_Search_album_list_recently_updated_Recent_Exist_No) 
 template-macro-def(QQFM_4_2_Search_album_list_recently_updated_Result_Match_No) {
   content {
     choose(Random) {  
-      template("Here doesn’t have recently updated albums yet. ") {
-        speech ("Here doesn’t have recently updated albums yet. ")
+      template("没有找到你要的专辑。") {
+        speech ("没有找到你要的专辑。")
+      }
+      template("没有找到你想要的专辑。") {
+        speech ("没有找到你想要的专辑。")
       }
     }
   }
@@ -81,8 +132,23 @@ template-macro-def(QQFM_4_2_Search_album_list_recently_updated_Result_Match_No) 
 template-macro-def(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes) {
   content {
     choose(Random) {  
-      template("Ok here it is.") {
-        speech ("Ok here it is.")
+      template("这就是你要的专辑。") {
+        speech ("这就是你要的专辑。")
+      }
+      template("找到了，看看是不是你要的专辑。") {
+        speech ("找到了，看看是不是你要的专辑。")
+      }
+      template("找到了。") {
+        speech ("找到了。")
+      }
+      template("好的，这就是你要的专辑。") {
+        speech ("好的，这就是你要的专辑。")
+      }
+      template("没问题，找到了。") {
+        speech ("没问题，找到了。")
+      }
+      template("找到了你要的专辑。") {
+        speech ("找到了你要的专辑。")
       }
     }
   }
@@ -91,8 +157,20 @@ template-macro-def(QQFM_4_3_Search_album_list_recently_updated_Result_Match_Yes)
 template-macro-def(QQFM_5_1_Search_programme_list_recently_updated_Recent_Exist_No) {
   content {
     choose(Random) {  
-      template("What do you want to listen？") {
-        speech ("What do you want to listen？")
+      template("想听什么内容呢？") {
+        speech ("想听什么内容呢？")
+      }
+      template("想听点什么？") {
+        speech ("想听点什么？")
+      }
+      template("你想听什么内容呢？") {
+        speech ("你想听什么内容呢？")
+      }
+      template("想听点什么？跟我说一下吧。") {
+        speech ("想听点什么？跟我说一下吧。")
+      }
+      template("想听点什么？告诉我就可以了。") {
+        speech ("想听点什么？告诉我就可以了。")
       }
     }
   }
@@ -101,8 +179,11 @@ template-macro-def(QQFM_5_1_Search_programme_list_recently_updated_Recent_Exist_
 template-macro-def(QQFM_5_2_Search_programme_list_recently_updated_Result_Match_No) {
   content {
     choose(Random) {  
-      template("Here doesn’t have recently updated programmes yet. ") {
-        speech ("Here doesn’t have recently updated programmes yet. ")
+      template("没有找到你要的节目。") {
+        speech ("没有找到你要的节目。")
+      }
+      template("没有找到你想要的节目。") {
+        speech ("没有找到你想要的节目。")
       }
     }
   }
@@ -111,8 +192,23 @@ template-macro-def(QQFM_5_2_Search_programme_list_recently_updated_Result_Match_
 template-macro-def(QQFM_5_3_Search_programme_list_recently_updated_Result_Match_Yes) {
   content {
     choose(Random) {  
-      template("Ok here it is.") {
-        speech ("Ok here it is.")
+      template("找到了你要的节目。") {
+        speech ("找到了你要的节目。")
+      }
+      template("这就是你要的内容。") {
+        speech ("这就是你要的内容。")
+      }
+      template("找到了，看看是不是你要的节目吧。") {
+        speech ("找到了，看看是不是你要的节目吧。")
+      }
+      template("找到了。") {
+        speech ("找到了。")
+      }
+      template("这就是你要的节目。") {
+        speech ("这就是你要的节目。")
+      }
+      template("没问题，找到了。") {
+        speech ("没问题，找到了。")
       }
     }
   }
@@ -121,8 +217,20 @@ template-macro-def(QQFM_5_3_Search_programme_list_recently_updated_Result_Match_
 template-macro-def(QQFM_8_1_Play_album_list_recently_updated_Recent_Exist_No) {
   content {
     choose(Random) {  
-      template("What do you want to listen？") {
-        speech ("What do you want to listen？")
+      template("想听什么内容呢？") {
+        speech ("想听什么内容呢？")
+      }
+      template("想听点什么？") {
+        speech ("想听点什么？")
+      }
+      template("你想听什么内容呢？") {
+        speech ("你想听什么内容呢？")
+      }
+      template("想听点什么？跟我说一下吧。") {
+        speech ("想听点什么？跟我说一下吧。")
+      }
+      template("想听点什么？告诉我就可以了。") {
+        speech ("想听点什么？告诉我就可以了。")
       }
     }
   }
@@ -131,8 +239,11 @@ template-macro-def(QQFM_8_1_Play_album_list_recently_updated_Recent_Exist_No) {
 template-macro-def(QQFM_8_2_Play_album_list_recently_updated_Result_Match_No) {
   content {
     choose(Random) {  
-      template("Here doesn’t have recently updated albums yet. ") {
-        speech ("Here doesn’t have recently updated albums yet. ")
+      template("没有找到你要的专辑。") {
+        speech ("没有找到你要的专辑。")
+      }
+      template("没有找到你想要的专辑。") {
+        speech ("没有找到你想要的专辑。")
       }
     }
   }
@@ -141,8 +252,20 @@ template-macro-def(QQFM_8_2_Play_album_list_recently_updated_Result_Match_No) {
 template-macro-def(QQFM_9_1_Play_programme_list_recently_updated_Recent_Exist_No) {
   content {
     choose(Random) {  
-      template("What do you want to listen？") {
-        speech ("What do you want to listen？")
+      template("想听什么内容呢？") {
+        speech ("想听什么内容呢？")
+      }
+      template("想听点什么？") {
+        speech ("想听点什么？")
+      }
+      template("你想听什么内容呢？") {
+        speech ("你想听什么内容呢？")
+      }
+      template("想听点什么？跟我说一下吧。") {
+        speech ("想听点什么？跟我说一下吧。")
+      }
+      template("想听点什么？告诉我就可以了。") {
+        speech ("想听点什么？告诉我就可以了。")
       }
     }
   }
@@ -151,8 +274,11 @@ template-macro-def(QQFM_9_1_Play_programme_list_recently_updated_Recent_Exist_No
 template-macro-def(QQFM_9_2_Play_programme_list_recently_updated_Result_Match_No) {
   content {
     choose(Random) {  
-      template("Here doesn’t have recently updated programmes yet. ") {
-        speech ("Here doesn’t have recently updated programmes yet. ")
+      template("没有找到你要的节目。") {
+        speech ("没有找到你要的节目。")
+      }
+      template("没有找到你想要的节目。") {
+        speech ("没有找到你想要的节目。")
       }
     }
   }
@@ -161,8 +287,17 @@ template-macro-def(QQFM_9_2_Play_programme_list_recently_updated_Result_Match_No
 template-macro-def(QQFM_12_1_See_one_Number_Match_No) {
   content {
     choose(Random) {  
-      template("I couldn’t find the result you wanted. Please check and say again.") {
-        speech ("I couldn’t find the result you wanted. Please check and say again.")
+      template("没有找到你要的内容。也许换个关键字我就能找到它了。") {
+        speech ("没有找到你要的内容。也许换个关键字我就能找到它了。")
+      }
+      template("你说的内容不存在。也许换个关键字我就能找到它了。") {
+        speech ("你说的内容不存在。也许换个关键字我就能找到它了。")
+      }
+      template("没有这样的内容。换个说法再试试看吧。") {
+        speech ("没有这样的内容。换个说法再试试看吧。")
+      }
+      template("我没有找到你要的。换个说法再试试看吧。") {
+        speech ("我没有找到你要的。换个说法再试试看吧。")
       }
     }
   }
@@ -171,8 +306,20 @@ template-macro-def(QQFM_12_1_See_one_Number_Match_No) {
 template-macro-def(QQFM_12_2_See_one_Number_Match_Yes) {
   content {
     choose(Random) {  
-      template("Ok.") {
-        speech ("Ok.")
+      template("好的，可以看了。") {
+        speech ("好的，可以看了。")
+      }
+      template("没问题，弄好了。") {
+        speech ("没问题，弄好了。")
+      }
+      template("可以看了。") {
+        speech ("可以看了。")
+      }
+      template("弄好了，看看是不是你要的吧。") {
+        speech ("弄好了，看看是不是你要的吧。")
+      }
+      template("找到了，看看是不是你要的吧。") {
+        speech ("找到了，看看是不是你要的吧。")
       }
     }
   }
@@ -181,8 +328,17 @@ template-macro-def(QQFM_12_2_See_one_Number_Match_Yes) {
 template-macro-def(QQFM_13_1_Play_one_Number_Match_No) {
   content {
     choose(Random) {  
-      template("I couldn’t find the result you wanted. Please check and say again.") {
-        speech ("I couldn’t find the result you wanted. Please check and say again.")
+      template("没有找到你要的内容。也许换个关键字我就能找到它了。") {
+        speech ("没有找到你要的内容。也许换个关键字我就能找到它了。")
+      }
+      template("你说的内容不存在。也许换个关键字我就能找到它了。") {
+        speech ("你说的内容不存在。也许换个关键字我就能找到它了。")
+      }
+      template("没有这样的内容。换个说法再试试看吧。") {
+        speech ("没有这样的内容。换个说法再试试看吧。")
+      }
+      template("我没有找到你要的。换个说法再试试看吧。") {
+        speech ("我没有找到你要的。换个说法再试试看吧。")
       }
     }
   }

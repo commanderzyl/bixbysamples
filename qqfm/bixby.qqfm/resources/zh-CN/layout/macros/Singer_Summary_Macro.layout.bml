@@ -31,9 +31,11 @@
                 专辑{{singer.anchor_album_num}}个
                 {{else}}
                 专辑0个
-                {{/if}}                   
+                {{/if}}
+                {{#if exists(singer.recent_album_name)}}
                 | 
-                最新专辑：{{exists(singer.recent_album_name)?singer.recent_album_name:"未知"}}
+                最新专辑：{{singer.recent_album_name}}
+                {{/if}}
               </div>
               <div class="fansShowLine">
                 {{#if singer.anchor_fans_num >= 10000}}

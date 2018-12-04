@@ -1,0 +1,10 @@
+description {  
+  description ("the cp capsule of QQFM")
+  name (bixby.qqfm)
+  displayName (企鹅FM)
+  dispatch-name (企鹅FM)
+  companyName (深圳市腾讯计算机系统有限公司)
+  iconUrl (image/icons/qqfm_logo_ic.png)
+  websiteUrl (http://fm.qq.com)
+  termsUrl (https://www.qq.com/contract.shtml)
+}

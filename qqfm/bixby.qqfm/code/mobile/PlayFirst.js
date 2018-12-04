@@ -128,7 +128,11 @@ function playAlbum(album_list, ordinal, $vivContext) {
 
     // 查看第几个节目，在这个节目列表界面，其实就是播放，所以我们要返回新的结果。
     // 同时为了避免result-view显示有误，删除不必要的属性
+    //var uri = album.schema;
+    //if (!uri) {
     var uri = PlayAlbum.PlayAlbumWithId(album.album_id, $vivContext).playAlbumResult.schema;
+    // }
+
     var bigResult = {};
     console.log("play first, 播放第 " + ordinal + " 专辑, url = " + uri);
     bigResult.play_first = {
