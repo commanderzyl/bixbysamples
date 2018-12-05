@@ -6,6 +6,10 @@ train (t-fhff537uwcv8t7euxxpa58zi2) {
   utterance ("[g:SearchSinger] 搜索主播(郭德纲)[v:anchor_name]在企鹅FM中")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBHEg1OTSxKzgjOzEtPLWIQQ5JIzEvOyC+Kz0vMTWVgYmAEYgYgycgAAlA+AA==)
 }
+train (t-fjn8iz9mw7j4qfit3lq96rs1z) {
+  utterance ([g:PlayRandom] 随机播放一个)
+  plan (Y2BiEEnKrEiq1CssTMvVc8pMD0otLs0pYRBFEg3ISawMSsxLyc9lYARCBigGkgA=)
+}
 train (t-fsbl33cggg2is98f6zfsniwlx) {
   utterance ("[g:CheckFirst:continue:BigResult] 查看(第一个)[v:common.Ordinal:1]")
   plan (Y2BmEEnKrEiq1CssTMvVc8pMD0otLs0pYRBFEnXOSE3OdsssKi5hECrLLNNLzs/Nzc/T8y9KycxLzGFgYmAEYgYgycgAAlA+AA==)

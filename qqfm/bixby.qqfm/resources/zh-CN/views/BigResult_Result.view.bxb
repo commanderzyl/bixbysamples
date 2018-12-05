@@ -71,7 +71,11 @@ result-view {
     // 播放第一个
     if (exists(this.play_first)) {
       if (this.play_first.play_result != 0) {
-        template-macro(QQFM_13_1_Play_one_Number_Match_No)
+        if (this.play_first.play_result == 2) {
+          template-macro (QQFM_0_4_CommonCheck_Album_Blank_Yes)
+        } else {
+          template-macro (QQFM_13_1_Play_one_Number_Match_No)
+        }        
       }
     }
 
@@ -167,6 +171,10 @@ result-view {
         conversation-driver {
           template-macro (CHECK_FIRST)
         }
+        
+        conversation-driver {
+          template-macro (PLAY_RANDOM)
+        }        
       }
 
       if (exists(this.singerSearchResult.has_more) && this.singerSearchResult.has_more == 1) {
@@ -180,8 +188,8 @@ result-view {
     if (exists(this.singerShows)) {
       if (exists(this.singerShows.show_list) && size(this.singerShows.show_list) != 0) {
         conversation-driver {
-          template-macro (PLAY_FIRST)
-        }
+          template-macro (PLAY_RANDOM)
+        } 
       }
 
       if (exists(this.singerShows.has_more) && this.singerShows.has_more == 1) {
@@ -195,7 +203,7 @@ result-view {
     if (exists(this.searchShowResult)) {
       if (exists(this.searchShowResult.show_list) && size(this.searchShowResult.show_list) != 0) {        
         conversation-driver {
-          template-macro (PLAY_FIRST)
+          template-macro (PLAY_RANDOM)
         }
       }    
 
@@ -214,7 +222,7 @@ result-view {
         }
 
         conversation-driver {
-          template-macro (PLAY_FIRST)
+          template-macro (PLAY_RANDOM)
         }
       }
 
@@ -229,7 +237,7 @@ result-view {
     if (exists(this.recentShowListSearchResult)) {
       if (exists(this.recentShowListSearchResult.show_list) && size(this.recentShowListSearchResult.show_list) != 0) {
         conversation-driver {
-          template-macro (PLAY_FIRST)
+          template-macro (PLAY_RANDOM)
         }
       }
 
@@ -244,7 +252,7 @@ result-view {
     if (exists(this.recentAlbumListDetailSearchResult)) {
       if (exists(this.recentAlbumListDetailSearchResult.show_list) && size(this.recentAlbumListDetailSearchResult)!=0){
         conversation-driver {
-          template-macro (PLAY_FIRST)
+          template-macro (PLAY_RANDOM)
         }
       }
 
@@ -263,7 +271,7 @@ result-view {
         }
 
         conversation-driver {
-          template-macro (PLAY_FIRST)
+          template-macro (PLAY_RANDOM)
         }
       }  
       if (exists(this.searchAlbumResult.has_more) && this.searchAlbumResult.has_more == 1) {

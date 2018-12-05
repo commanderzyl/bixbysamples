@@ -94,9 +94,9 @@ endpoints {
       local-endpoint (mobile/First.js)
     }
     
-    // action-endpoint (First) {
-    //   accepted-inputs (bigResult, ordinal, $vivContext)
-    //   local-endpoint (mobile/First.js)
-    // }
+    action-endpoint (PlayRandom) {
+      accepted-inputs (bigResult, $vivContext)
+      local-endpoint (mobile/PlayRandom.js)
+    }
   }
 }

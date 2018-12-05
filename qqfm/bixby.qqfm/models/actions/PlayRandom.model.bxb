@@ -1,0 +1,11 @@
+action (PlayRandom) {
+  type (Search)
+  description (随机播放)
+  collect {
+    input (bigResult) {
+      type (BigResult)
+      min (Optional) max (One)
+    }
+  }
+  output (BigResult)
+}

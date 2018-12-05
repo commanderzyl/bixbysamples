@@ -18,6 +18,19 @@ template-macro-def(QQFM_0_2_CommonCheck_Feature_Supported_No) {
   }
 }
 
+template-macro-def(QQFM_0_4_CommonCheck_Album_Blank_Yes) {
+  content {
+    choose(Random) {  
+      // template("The contents of anchor cannot be obtained temporarily due to copyright reasons.") {
+      //   speech ("The contents of anchor cannot be obtained temporarily due to copyright reasons.")
+      // }
+      template("由于版权原因我们暂时无法获取该主播的内容。") {
+        speech ("由于版权原因我们暂时无法获取该主播的内容。")
+      }
+    }
+  }
+}
+
 template-macro-def(QQFM_0_3_CommonCheck_App_Downloaded_No) {
   content {
     choose(Random) {  
@@ -369,6 +382,16 @@ template-macro-def(PLAY_FIRST) {
     choose(Random) {  
       template("播放第一个") {
         speech ("播放第一个")
+      }
+    }
+  }
+}
+
+template-macro-def(PLAY_RANDOM) {
+  content {
+    choose(Random) {  
+      template("随机播放") {
+        speech ("随机播放")
       }
     }
   }

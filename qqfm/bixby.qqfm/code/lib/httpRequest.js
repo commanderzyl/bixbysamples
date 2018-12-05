@@ -413,7 +413,7 @@ function buildQueryUrl(uri, query) {
 
     // 4. 将HTTP请求方式，第1步以及第3步中的到的字符串用&拼接起来，得到源串
     propString = "GET&" + uri + "&" + propString;
-    console.log("请求源串:" + propString);
+    //console.log("请求源串:" + propString);
 
     // 5. 构造密钥
     appkey += "&";
@@ -433,7 +433,7 @@ function buildQueryUrl(uri, query) {
         queryStr += key + "=" + query[key] + "&";
     }
     queryStr = queryStr.substring(0, queryStr.length - 1);
-    console.log("buildQueryUrl: " + queryStr);
+    //console.log("buildQueryUrl: " + queryStr);
     return queryStr;
 }
 

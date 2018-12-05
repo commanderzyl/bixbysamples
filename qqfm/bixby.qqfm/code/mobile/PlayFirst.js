@@ -1,6 +1,7 @@
-var SearchSinger = require("./SearchSinger");
+var httpRequest = require("../lib/httpRequest");
 var PlayShow = require("./PlayShow");
 var PlayAlbum = require("./PlayAlbum");
+var base = require("../lib/base");
 
 function PlayFirst(bigResult, ordinal, $vivContext) {
     if (!ordinal || !bigResult) {
@@ -14,7 +15,9 @@ function PlayFirst(bigResult, ordinal, $vivContext) {
         return bigResult;
     }
 
-    if (bigResult.singerShows) {
+    if (bigResult.singerSearchResult) {
+        return playSingerSearchResult(ordinal, bigResult, $vivContext);
+    } else if (bigResult.singerShows) {
         return playSingerShows(ordinal, bigResult, $vivContext);
     } else if (bigResult.recentAlbumListSearchResult) {
         return playRecentAlbumListSearchResult(ordinal, bigResult, $vivContext);
@@ -67,6 +70,51 @@ function playSingerShows(ordinal, bigResult, $vivContext) {
     var uri = PlayShow.PlayShowWidthId(show.show_id, $vivContext).playShowResult.schema;
     var bigResult = {};
     console.log("play first, 播放第 " + ordinal + " 节目, url = " + uri);
+    bigResult.play_first = {
+        play_result: 0, //成功
+        deeplink_uri: {
+            uri: uri
+        }
+    };
+    return bigResult;
+}
+
+function playSingerSearchResult(ordinal, bigResult, $vivContext) {
+    console.log("playSingerSearchResult, ordinal:" + ordinal + ", bigResult:" + JSON.stringify(bigResult));
+    var singer_list = bigResult.singerSearchResult.user_list;
+    var singer = null;
+    if (ordinal > 0 && ordinal <= singer_list.length) {
+        singer = (singer_list[ordinal - 1]);
+    } else if (ordinal == -1) { //last one
+        singer = (singer_list[singer_list.length - 1]);
+    } else if (ordinal == -2 && singer_list.length >= 2) {
+        singer = (singer_list[singer_list.length - 2]);
+    } else {
+        //非法序数
+        bigResult = {};
+        bigResult.play_first = {
+            play_result: 1 //失败
+        };
+        return bigResult;
+    }
+
+    var albumListResponse = httpRequest.getSingerAlbumList({
+        anchor_id: singer.anchor_id,
+        deviceid: base.getUserId($vivContext.userId),
+        appid: config.get("qqfm.appid")
+    });
+
+    if (!albumListResponse || !albumListResponse.album_list || albumListResponse.album_list.length == 0) {
+        bigResult = {};
+        bigResult.play_first = {
+            play_result: 2 //失败
+        };
+        return bigResult;
+    }
+    var uri = PlayAlbum.PlayAlbumWithId(albumListResponse.album_list[0].album_id, $vivContext).playAlbumResult.schema;
+
+    bigResult = {};
+    console.log("playSingerSearchResult, 播放第 " + ordinal + " 专辑, url = " + uri);
     bigResult.play_first = {
         play_result: 0, //成功
         deeplink_uri: {

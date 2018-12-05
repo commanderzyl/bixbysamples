@@ -1,3 +1,3 @@
 integer (play_result) {
-  description (播放第几个是否成功，0 成功 其它不成功)
+  description (播放第几个是否成功，0 成功 其它不成功, 2 版本原因无法播放主播名下的专辑或节目)
 }
