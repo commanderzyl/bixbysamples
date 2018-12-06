@@ -1,0 +1,9 @@
+hints {
+  hint-set (Things to try) {
+    utterance ([g:SearchSinger] 在企鹅FM中搜索主播(蕊希)[v:anchor_name])
+    utterance ([g:SearchRecentAlbumList] 在企鹅FM中搜索(最新)[v:recent]更新的专辑)
+    utterance ([g:SearchRecentShowList] 在企鹅FM中搜索(最新)[v:recent]更新的节目)
+    utterance ([g:PlayRecentAlbumList] 在企鹅FM中播放(最新)[v:recent]更新的专辑)
+    utterance ([g:PlayRecentShowList] 在企鹅FM中播放(最近)[v:recent]更新的节目)
+  }  
+}
